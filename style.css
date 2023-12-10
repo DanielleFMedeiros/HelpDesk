@@ -1,0 +1,157 @@
+body {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  /* Alterei a cor de fundo para um cinza claro */
+}
+
+h1 {
+  color: green;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+
+footer {
+  background-color: #4CAF50;
+  /* Alterei a cor de fundo do rodapé */
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 10px;
+}
+
+.container,
+.container2 {
+  flex: 1 1 100%;
+  /* Alterei a largura dos containers para ocupar 100% do espaço disponível */
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container input,
+.container2 input,
+.container button,
+.container2 button,
+.container textarea,
+/* Adicionei estilos para a área de texto */
+.container2 textarea {
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.container button,
+.container2 button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.container button:hover,
+.container2 button:hover {
+  background-color: #45a049;
+}
+
+#mapa {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.container a button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.container a button:hover {
+  background-color: #45a049;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Estilos para os elementos dentro da div de opções 'opcoesSemInternet' */
+#opcoesSemInternet select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 10px;
+}
+
+#opcoesSemInternet label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Estilos para os elementos dentro da div de opções 'opcoesInternetLenta' */
+#opcoesInternetLenta select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 10px;
+}
+
+#opcoesInternetLenta label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Estilos para os elementos dentro da div de opções 'opcoesTvTacDefeito' */
+#opcoesTvTacDefeito select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 10px;
+}
+
+#opcoesTvTacDefeito label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+#textoGerado {
+  max-width: 600px;
+  /* Defina a largura máxima desejada */
+  overflow-x: auto;
+  /* Adiciona uma barra de rolagem horizontal se necessário */
+  margin: 10px 0;
+  /* Adiciona um pequeno espaçamento para melhorar a aparência */
+}
+

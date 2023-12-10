@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAC</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="favicon/tac-telecom.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/tac-telecom.jpeg">
+
+</head>
+
+<body>
+
+  <div class="flex-container">
+
+    <div class="containers-row">
+      <h1 class="container">TAC helpdesk</h1>
+      <div class="container">
+        <h2>Formatador de CPF</h2>
+        <label for="cpfInput">Cole o CPF (11 dígitos):</label>
+        <input type="text" id="cpfInput">
+        <button onclick="formatarCpf()">Formatar CPF</button>
+        <p id="cpfResultado"></p>
+        <button id="botaoCopiarCPF" onclick="copiarResultadoCPF()">Copiar CPF</button>
+      </div>
+      <div class="container">
+        <h2>Formatador de CNPJ</h2>
+        <label for="cnpjInput">Cole o CNPJ (14 dígitos):</label>
+        <input type="text" id="cnpjInput">
+        <button onclick="formatarCnpj()">Formatar CNPJ</button>
+        <p id="cnpjResultado"></p>
+        <button id="botaoCopiarCNPJ" onclick="copiarResultadoCnpj()">Copiar CNPJ</button>
+      </div>
+    </div>
+
+    <div class="containers-row">
+    <!-- <div class="container">
+        <h2>Verificar MAC</h2>
+        <input type="text" id="macInput" placeholder="Digite o endereço MAC">
+        <button onclick="verificarMac()">Verificar</button>
+        <p id="resultado"></p>
+      </div> -->
+
+      <div class="container">
+        <h2>Conversor m para M</h2>
+        <textarea id="inputTexto" placeholder="Digite seu texto"></textarea>
+        <button onclick="converterMaiusculas()">Converter para Maiúsculas</button>
+        <button onclick="converterMinusculas()">Converter para Minúsculas</button>
+        <p id="textoConvertido"></p>
+        <button id="botaoCopiarTexto" onclick="copiarTextoConversor()">Copiar Texto</button>
+
+      </div>
+
+      <div class="container">
+        <h2>Gerador de O.S</h2>
+        <form id="formulario">
+          <div>
+            <label for="problemaSelect">Selecione o problema:</label>
+            <select id="problemaSelect" name="problemaSelect">
+              <option value="">-- Selecione --</option>
+              <option value="semInternet">SEM INTERNET</option>
+              <option value="internetLenta">INTERNET LENTA</option>
+              <option value="tvTac">TV TAC COM DEFEITO</option>
+            </select>
+          </div>
+
+          <!-- SEM INTERNET -->
+          <div id="opcoesSemInternet" class="opcoes hidden">
+
+            <div id="regiaoMk" class="opcoes hidden">
+              <label for="regiao">Adicione cidade, bairro e defeito</label>
+              <input type="text" id="regiao" name="regiao" placeholder="Ex: Jaguaruna, centro - sem internet">
+            </div>
+
+            <div id="horarioMk" class="opcoes hidden">
+              <label for="horario">Restrição de horário:</label>
+              <input type="text" id="horario" name="horario" placeholder="Ex: (Somente hoje as 16h)">
+            </div>
+
+            <div id="solicitanteMk" class="opcoes hidden">
+              <label for="solicitante">Solicitante:</label>
+              <input type="text" id="solicitante" name="solicitante" placeholder="Nome de quem solicitou a o.s">
+            </div>
+
+            <label for="ledVermelho">Há LED vermelho nos equipamentos? *</label>
+            <select id="ledVermelho" name="ledVermelho">
+              <option value="">-- Selecione --</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+
+            <div id="opcoesLedVermelhoSim" class="opcoes hidden">
+              <label for="ledVermelho">Realizou procedimento completo? *</label>
+              <select id="procedimentoCompleto" name="procedimentoCompleto">
+                <option value="">-- Selecione --</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </div>
+
+            <div id="opcoesProcedimentoSim" class="opcoes hidden">
+              <label for="ledVermelho">Cliente é: *</label>
+              <select id="tipoCliente" name="tipoCliente">
+                <option value="">-- Selecione --</option>
+                <option value="epon">Epon</option>
+                <option value="gpon">Gpon</option>
+              </select>
+            </div>
+
+            <div id="opcoesLedVermelhoNao" class="opcoes hidden">
+              <label for="ledVermelhoNao">Cabos estão bem conectados? *</label>
+              <select id="cabosConectados" name="cabosConectados">
+                <option value="">-- Selecione --</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </div>
+
+            <div id="tempoMk" class="opcoes hidden">
+              <label for="tempo">Está OFFLINE no sistema desde? *</label>
+              <input type="text" id="tempo" name="tempo" placeholder="Digite a data">
+            </div>
+
+            <div id="extrasc" class="opcoes hidden">
+              <label for="extras">Adicione informações extras</label>
+              <input type="text" id="extras" name="extras" placeholder="Modelo do equipamento, é defeito recorrente?">
+            </div>
+
+            <div id="telefoneMk" class="opcoes hidden">
+              <label for="telefone">Telefone para contato: </label>
+              <input type="text" id="telefone" name="telefone" placeholder="Ex: 4836600800">
+            </div>
+
+            <div id="refMk" class="opcoes hidden">
+              <label for="ref">Referência do local: </label>
+              <input type="text" id="ref" name="ref" placeholder="Ex: Casa cinza ao lado do mercado ">
+            </div>
+
+            <div id="localMk" class="opcoes hidden">
+              <label for="local">Cole o link da localização do google maps </label>
+              <input type="text" id="local" name="local" placeholder="Link localização google maps">
+            </div>
+
+          </div>
+
+          <!-- INTERNET LENTA -->
+
+          <div id="opcoesInternetLenta" class="opcoes hidden">
+
+            <div id="regiaoMk2" class="opcoes hidden">
+              <label for="regiao2">Adicione cidade, bairro e defeito</label>
+              <input type="text" id="regiao2" name="regiao2" placeholder="Ex: Jaguaruna, centro - internet lenta">
+            </div>
+
+            <div id="horarioMk2" class="opcoes hidden">
+              <label for="horario2">Restrição de horário:</label>
+              <input type="text" id="horario2" name="horario2" placeholder="Ex: (Somente hoje as 16h)">
+            </div>
+
+            <div id="solicitanteMk2" class="opcoes hidden">
+              <label for="solicitante2">Solicitante:</label>
+              <input type="text" id="solicitante2" name="solicitante2" placeholder="Nome de quem solicitou a o.s">
+            </div>
+
+            <label for="procedimentoCompletoLento">Realizou procedimento completo? *</label>
+            <select id="procedimentoCompletoLento" name="procedimentoCompletoLento">
+              <option value="">-- Selecione --</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+
+            <div id="conectadoCabo" class="opcoes hidden">
+              <label for="cabosConectadosDiv">Cabos estão bem conectados? *</label>
+              <select id="cabosConectadosDiv" name="cabosConectadosDiv">
+                <option value="">-- Selecione --</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </div>
+
+            <div id="dispositivosDiv" class="opcoes hidden">
+              <label for="dispositivosDiv">Está lento em: *</label>
+              <input type="text" id="dispositivos" name="dispositivosDiv"
+                placeholder="Digite em quais dispositivos está apresentando lentidão">
+            </div>
+
+            <div id="tvCabeada" class="opcoes hidden">
+              <label for="tvCabeadaDiv">TV é cabeada? </label>
+              <select id="tvCabeadaDiv">
+                <option value="">-- Selecione --</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </div>
+
+            <div id="sinalDiv" class="opcoes hidden">
+              <label for="sinal">Qual o sinal que aparece no unm? *</label>
+              <input type="text" id="sinal" name="sinal" placeholder="sinal? Normalidade entre: -18 e -25">
+            </div>
+
+            <div id="extrasc2" class="opcoes hidden">
+              <label for="extras2">Adicione informações extras</label>
+              <input type="text" id="extras2" name="extras2"
+                placeholder="Possível defeito, quedas no sistema?, conf. alteradas, modelo do equipamento, é reincidente? Obs da última manut.">
+            </div>
+
+            <div id="telefoneMk2" class="opcoes hidden">
+              <label for="telefone2">Telefone para contato: </label>
+              <input type="text" id="telefone2" name="telefone2" placeholder="Ex: 4836600800">
+            </div>
+
+            <div id="refMk2" class="opcoes hidden">
+              <label for="ref2">Referência do local: </label>
+              <input type="text" id="ref2" name="ref2" placeholder="Ex: Casa cinza ao lado do mercado ">
+            </div>
+
+            <div id="localMk2" class="opcoes hidden">
+              <label for="local2">Cole o link da localização do google maps </label>
+              <input type="text" id="local2" name="local2" placeholder="Link localização google maps">
+            </div>
+          </div>
+
+          <!-- TV TAC COM DEFEITO -->
+
+          <div id="opcoesTvTacDefeito" class="opcoes hidden">
+
+            <div id="regiaoMk3" class="opcoes hidden">
+              <label for="regiao3">Adicione cidade, bairro e defeito</label>
+              <input type="text" id="regiao3" name="regiao3" placeholder="Ex: Jaguaruna, centro - tv tac com defeito">
+            </div>
+
+            <div id="horarioMk3" class="opcoes hidden">
+              <label for="horario3">Restrição de horário:</label>
+              <input type="text" id="horario3" name="horario3" placeholder="Ex: (Somente hoje as 16h)">
+            </div>
+
+            <div id="solicitanteMk3" class="opcoes hidden">
+              <label for="solicitante2">Solicitante:</label>
+              <input type="text" id="solicitante3" name="solicitante3" placeholder="Nome de quem solicitou a o.s">
+            </div>
+
+            <label for="procedimentoCompletoTv3">Realizou procedimento completo? *</label>
+            <select id="procedimentoCompletoTv3" name="procedimentoCompletoTv3">
+              <option value="">-- Selecione --</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+
+            <div id="conectadoCabo3" class="opcoes hidden">
+              <label for="cabosConectadosDiv3">Cabos estão bem conectados? *</label>
+              <select id="cabosConectadosDiv3" name="cabosConectadosDiv3">
+                <option value="">-- Selecione --</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </div>
+
+            <div id="minimiza" class="opcoes hidden">
+              <label for="minimiza">Está minimizando a tela? *</label>
+              <select id="minimiza3" name="minimiza3">
+                <option value="">-- Selecione --</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </div>
+
+            <div id="tvCabeada3" class="opcoes hidden">
+              <label for="tvCabeadaDiv3">TV é cabeada? </label>
+              <select id="tvCabeadaDiv3">
+                <option value="">-- Selecione --</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </div>
+
+            <div id="extrasc3" class="opcoes hidden">
+              <label for="extras3">Adicione informações extras</label>
+              <input type="text" id="extras3" name="extras3"
+                placeholder="Possível defeito. Propaganda? É reincidente? Obs da última manut.">
+            </div>
+
+            <div id="telefoneMk3" class="opcoes hidden">
+              <label for="telefone3">Telefone para contato: </label>
+              <input type="text" id="telefone3" name="telefone3" placeholder="Ex: 4836600800">
+            </div>
+
+            <div id="refMk3" class="opcoes hidden">
+              <label for="ref3">Referência do local: </label>
+              <input type="text" id="ref3" name="ref3" placeholder="Ex: Casa cinza ao lado do mercado ">
+            </div>
+
+            <div id="localMk3" class="opcoes hidden">
+              <label for="local3">Cole o link da localização do google maps </label>
+              <input type="text" id="local3" name="local3" placeholder="Link localização google maps">
+            </div>
+          </div>
+
+          <button type="button" onclick="gerarTexto()">Gerar texto</button>
+          <p id="textoGerado"></p>
+          <button type="button" id="copiarTextoo" class="hidden">Copiar Texto</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="containers-row">
+      <div class="container">
+        <h2>Formatador de Localização</h2>
+        <label for="localizacaoInput">Cole a localização:</label>
+        <input type="text" id="localizacaoInput" placeholder="Lat: -28.7134130 / Long: -49.054707">
+        <button onclick="formatarLocalizacao()">Gerar Link</button>
+        <p id="localizacaoFormatada"></p>
+        <button onclick="copiarResultado()">Copiar Link</button>
+      </div>
+
+
+      <div class="container">
+        <a class="botao" href="https://www.google.com.br/maps" target="_blank">
+          <button>Ir para Google Maps</button>
+        </a>
+      </div>
+      <!--<div class="container">
+        <h2>Visualizar Mapa</h2>
+        <label for="coordenadasInput">Cole coordenadas:</label>
+        <input type="text" id="coordenadasInput" placeholder="Lat: -28.633459, Long: -49.134450">
+        <button onclick="gerarIFrame()">Gerar iframe</button>
+        <div id="mapa"></div>
+      </div>-->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
