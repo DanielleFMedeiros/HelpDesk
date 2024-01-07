@@ -235,7 +235,7 @@ function copiarTextoConversor() {
 
 // MAC VENDORS
 
-function verificarMac() {
+/*function verificarMac() {
   const macDigitado = document.getElementById('macInput').value.toUpperCase();
   obterFabricanteDoMacPHP(macDigitado);
 }
@@ -257,7 +257,7 @@ function obterFabricanteDoMacPHP(mac) {
   };
 
   xhr.send();
-}
+}*/
 
 
 //o.s
@@ -339,18 +339,35 @@ function gerarTexto() {
   const refMk2 = obterValorElemento('ref2');
   const localMk2 = obterValorElemento('local2');
 
-  /* tv */
+
+  /* caindo */
   const regiaoMk3 = obterValorElemento('regiao3');
   const horarioMk3 = obterValorElemento('horario3');
   const solicitanteMk3 = obterValorElemento('solicitante3');
-  const procedimentoCompletoTv3 = obterValorElemento('procedimentoCompletoTv3');
-  const cabosConectadosDiv3 = obterValorElemento('cabosConectadosDiv3');
-  const minimiza = obterValorElemento('minimiza3');
-  const tvCabeadaDiv3 = obterValorElemento('tvCabeadaDiv3');
+  const procedimentoCompletoCaindo = obterValorElemento('procedimentoCompletoCaindo');
+  const quedas = obterValorElemento('quedas');
+  const tipo = obterValorElemento('tipo');
+  const tipoCliente1 = obterValorElemento('tipoCliente1');
+  const cabosConectadosDiv1 = obterValorElemento('cabosConectadosDiv1');
+  const dispositivosDiv1 = obterValorElemento('dispositivos1');
+  const sinalDiv1 = obterValorElemento('sinal1');
   const extras3 = obterValorElemento('extras3');
   const telefoneMk3 = obterValorElemento('telefone3');
   const refMk3 = obterValorElemento('ref3');
   const localMk3 = obterValorElemento('local3');
+
+ /* tv */
+ const regiaoMk4 = obterValorElemento('regiao4');
+ const horarioMk4 = obterValorElemento('horario4');
+ const solicitanteMk4 = obterValorElemento('solicitante4');
+ const procedimentoCompletoTv4 = obterValorElemento('procedimentoCompletoTv4');
+ const cabosConectadosDiv4 = obterValorElemento('cabosConectadosDiv4');
+ const minimiza = obterValorElemento('minimiza4');
+ const tvCabeadaDiv4 = obterValorElemento('tvCabeadaDiv4');
+ const extras4 = obterValorElemento('extras4');
+ const telefoneMk4 = obterValorElemento('telefone4');
+ const refMk4 = obterValorElemento('ref4');
+ const localMk4 = obterValorElemento('local4');
 
   let textoIntro = "";
   let textoGerado = "";
@@ -361,24 +378,33 @@ function gerarTexto() {
   //SEM INTERNET
   if (problema === 'semInternet') {
 
-    textoIntro = regiaoMk + '\n' + "(" + horarioMk+ ")" + '\n'+ '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
+    textoIntro = regiaoMk + " - SEM INTERNET" + '\n' + "(" + horarioMk+ ")" + '\n'+ '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
     texto = "CLIENTE ESTÁ SEM INTERNET. ";
 
-    if (ledVermelho === 'sim' && procedimentoCompleto === 'sim') {
-      texto += "HÁ LED VERMELHO NOS EQUIPAMENTOS DE INTERNET, CLIENTE JÁ REALIZOU O PROCEDIMENTO COMPLETO. ";
-    } else if (ledVermelho === 'sim' && procedimentoCompleto === 'nao') {
-      texto += "HÁ LED VERMELHO NOS EQUIPAMENTOS DE INTERNET, CLIENTE NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
-    } else if (ledVermelho === 'nao' && procedimentoCompleto === 'sim') {
-      texto += "NÃO HÁ LED VERMELHO NOS EQUIPAMENTOS DE INTERNET, CLIENTE JÁ REALIZOU O PROCEDIMENTO COMPLETO. ";
-    } else if (ledVermelho === 'nao' && procedimentoCompleto === 'nao') {
-      texto += "NÃO HÁ LED VERMELHO NOS EQUIPAMENTOS DE INTERNET, CLIENTE NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
+    
+    if (ledVermelho === 'sim') {
+      texto += "HÁ LED VERMELHO NOS EQUIPAMENTOS DE INTERNET. ";
+    } else if (ledVermelho === 'nao') {
+      texto += "NÃO HÁ LED VERMELHO NOS EQUIPAMENTOS DE INTERNET. ";
     }
 
+    if (procedimentoCompleto === 'sim') {
+      texto += "CLIENTE JÁ REALIZOU O PROCEDIMENTO COMPLETO. ";
+    } else if (procedimentoCompleto === 'nao') {
+      texto += "CLIENTE NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
+    } 
+
+    if (cabosConectados === 'sim') {
+      texto += "CABOS ESTÃO BEM CONECTADOS. ";
+    } else if (cabosConectados === 'nao') {
+      texto += "CABOS ESTAVAM MAL CONECTADOS. ";
+    } 
+
     if (tempoOffline) {
-      if (tipoCliente && cabosConectados === 'sim') {
-        texto += ` CLIENTE É ${tipoCliente.toUpperCase()}, CABOS ESTÃO BEM CONECTADOS. `;
-      } else if (tipoCliente && cabosConectados === 'nao') {
-        texto += ` CLIENTE É ${tipoCliente.toUpperCase()}, CABOS ESTAVAM MAL CONECTADOS. `;
+      if (tipoCliente) {
+        texto += ` CLIENTE É ${tipoCliente.toUpperCase()}. `;
+      } else if (tipoCliente) {
+        texto += ` CLIENTE É ${tipoCliente.toUpperCase()}. `;
       }
       texto += "ESTÁ OFFLINE NO SISTEMA DESDE: " + tempoOffline + ". " + extras + ". " ;
     }
@@ -390,7 +416,7 @@ function gerarTexto() {
 
   //INTERNET LENTA
   if (problema === 'internetLenta') {
-    textoIntro = regiaoMk2 + '\n' + "(" + horarioMk2+ ")" + '\n'+ '\n' + "SOLICITANTE: " + solicitanteMk2+ '\n'+ '\n';
+    textoIntro = regiaoMk2 + " - INTERNET LENTA" + '\n' + "(" + horarioMk2+ ")" + '\n'+ '\n' + "SOLICITANTE: " + solicitanteMk2+ '\n'+ '\n';
     texto = "CLIENTE ESTÁ COM INTERNET LENTA. ";
 
     if (procedimentoCompletoLento === 'nao') {
@@ -421,20 +447,60 @@ function gerarTexto() {
 
   }
 
+//INTERNET CAINDO
+if (problema === 'internetCaindo') {
+  textoIntro = regiaoMk3 + " - INTERNET CAINDO" + '\n' + "(" + horarioMk3+ ")" + '\n'+ '\n' + "SOLICITANTE: " + solicitanteMk3+ '\n'+ '\n';
+  texto = "CLIENTE ESTÁ COM INTERNET CAINDO. ";
+
+  if (procedimentoCompletoCaindo === 'nao') {
+    texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
+  } else if (procedimentoCompletoCaindo === 'sim') {
+    texto += "REALIZOU O PROCEDIMENTO COMPLETO. ";
+  }
+
+  if (cabosConectadosDiv1 === 'sim') {
+    texto += "CABOS ESTÃO BEM CONECTADOS. ";
+  } else if (cabosConectadosDiv === 'nao') {
+    texto += "CABOS ESTÃO MAL CONECTADOS. ";
+  }
+
+  if (quedas === 'sim') {
+    texto += "APRESENTAM QUEDAS SIGNIFICATIVAS NO SISTEMA. ";
+  } else if (cabosConectadosDiv === 'nao') {
+    texto += "NÃO APRESENTAM QUEDAS NO SISTEMA. ";
+  }
+
+  if (tipoCliente1 === 'epon') {
+    texto += ` CLIENTE É ${tipoCliente1.toUpperCase()}. `;
+  } else if (tipoCliente1 === 'gpon') {
+    texto += ` CLIENTE É ${tipoCliente1.toUpperCase()}. `;
+  }
+
+  texto += "Há QUEDAS EM: " + dispositivosDiv1 + ". ";
+
+  textoLocal = localMk3;
+  texto += "SINAL ESTÁ: " + sinalDiv1 + ". " + extras3;
+
+  telefone = '\n' + telefoneMk3 + '\n' + refMk3 + '\n';
+  textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() +  textoLocal;
+
+}
+
+
   //TV TAC COM DEFEITO
   if (problema === 'tvTac') {
-    textoIntro = regiaoMk3 + '\n' + "(" + horarioMk3+ ")" + '\n'+ '\n' + "SOLICITANTE: " + solicitanteMk3+ '\n'+ '\n';
+    textoIntro = regiaoMk4 + " - TV TAC COM DEFEITO" + '\n' + "(" + horarioMk4+ ")" + '\n'+ '\n' + "SOLICITANTE: " + solicitanteMk4+ '\n'+ '\n';
     texto = "CLIENTE ESTÁ COM PROBLEMAS NA TV TAC. ";
 
-    if (procedimentoCompletoTv3 === 'nao') {
+    if (procedimentoCompletoTv4 === 'nao') {
       texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
-    } else if (procedimentoCompletoTv3 === 'sim') {
+    } else if (procedimentoCompletoTv4 === 'sim') {
       texto += "REALIZOU O PROCEDIMENTO COMPLETO. ";
     }
 
-    if (cabosConectadosDiv3 === 'sim') {
+    if (cabosConectadosDiv4 === 'sim') {
       texto += "CABOS ESTÃO BEM CONECTADOS. ";
-    } else if (cabosConectadosDiv3 === 'nao') {
+    } else if (cabosConectadosDiv4 === 'nao') {
       texto += "CABOS ESTÃO MAL CONECTADOS. ";
     }
 
@@ -444,15 +510,15 @@ function gerarTexto() {
       texto += "TV NÃO ESTÁ MINIMIZANDO A TELA. ";
     }
 
-    if (tvCabeadaDiv3 === 'sim') {
+    if (tvCabeadaDiv4 === 'sim') {
       texto += "TV É CABEADA. ";
-    } else if (tvCabeadaDiv3 === 'nao') {
+    } else if (tvCabeadaDiv4 === 'nao') {
       texto += "TV NÃO É CABEADA. ";
     }
 
-    texto += extras3;
-    telefone = '\n' + telefoneMk3 + '\n'+ refMk3;
-    textoLocal = localMk3;
+    texto += extras4;
+    telefone = '\n' + telefoneMk4 + '\n'+ refMk4;
+    textoLocal = localMk4;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
 
   }
@@ -481,6 +547,7 @@ function adicionarEventoProblema() {
     esconderElemento(tempoMk);
     esconderElemento(extrasc);
     esconderElemento(opcoesInternetLenta);
+    esconderElemento(opcoesInternetCaindo);
     esconderElemento(opcoesTvTacDefeito);
 
     // Verifica o problema selecionado e mostra as opções correspondentes
@@ -513,19 +580,36 @@ function adicionarEventoProblema() {
       mostrarElemento(refMk2);
       mostrarElemento(localMk2);
 
-    } else if (problemaSelect.value === 'tvTac') {
-      mostrarElemento(opcoesTvTacDefeito);
+    } else if (problemaSelect.value === 'internetCaindo') {
+      mostrarElemento(opcoesInternetCaindo);
       mostrarElemento(regiaoMk3);
       mostrarElemento(horarioMk3);
       mostrarElemento(solicitanteMk3)
-      mostrarElemento(procedimentoCompletoTv3);
-      mostrarElemento(conectadoCabo3);
-      mostrarElemento(minimiza);
-      mostrarElemento(tvCabeada3);
+      mostrarElemento(procedimentoCompletoCaindo);
+      mostrarElemento(conectadoCabo1);
+      mostrarElemento(tipo);
+      mostrarElemento(tipoCliente1);
+      mostrarElemento(quedas);
+      mostrarElemento(dispositivosDiv1);
+      mostrarElemento(sinalDiv1);
       mostrarElemento(extrasc3);
       mostrarElemento(telefoneMk3);
       mostrarElemento(refMk3);
       mostrarElemento(localMk3);
+
+    } else if (problemaSelect.value === 'tvTac') {
+      mostrarElemento(opcoesTvTacDefeito);
+      mostrarElemento(regiaoMk4);
+      mostrarElemento(horarioMk4);
+      mostrarElemento(solicitanteMk4)
+      mostrarElemento(procedimentoCompletoTv4);
+      mostrarElemento(conectadoCabo4);
+      mostrarElemento(minimiza);
+      mostrarElemento(tvCabeada4);
+      mostrarElemento(extrasc4);
+      mostrarElemento(telefoneMk4);
+      mostrarElemento(refMk4);
+      mostrarElemento(localMk4);
     } 
   });
 }
