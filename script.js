@@ -63,18 +63,26 @@ function copiarResultadoNome() {
 
 
 function verificarMac() {
-
-
-  var macAddress = document.getElementById("macInput").value;
-  var apiUrl = "/api/verificarMac.php?mac_address=" + encodeURIComponent(macAddress);
-
-  // Obter o elemento input
-  let inputElement = document.getElementById("macInput");
-
   // Obter o valor do input
-  let macAddress = inputElement.value;
+  var macAddress = document.getElementById("macInput").value;
 
+  // Verificar se o valor está vazio
+  if (macAddress.trim() === "") {
+    console.log("Endereço MAC vazio.");
+    return;
+  }
+
+  // Exibir o valor do input no elemento com id "resultado"
+  document.getElementById("resultado").innerText = macAddress;
+
+  // Construir a URL da solicitação
+  var apiUrl = "/helpdesk/api/verificarMac.php?mac_address=" + encodeURIComponent(macAddress);
+  console.log('URL da solicitação:', apiUrl);
+
+  // Criar uma instância de XMLHttpRequest
   var xhr = new XMLHttpRequest();
+
+  // Definir a função de callback para lidar com a resposta da solicitação
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
@@ -85,9 +93,13 @@ function verificarMac() {
     }
   };
 
+  // Abrir a solicitação GET para a URL da API
   xhr.open("GET", apiUrl, true);
+
+  // Enviar a solicitação
   xhr.send();
 }
+
 
 
 //LOCALIZAÇÃO
