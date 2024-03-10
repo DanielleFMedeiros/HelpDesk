@@ -3,12 +3,12 @@
     "short_name": "TAC",
     "icons": [
       {
-        "src": "/favicon/tac-telecom.jpeg",
+        "src": "/favicon/tac-telecom.png",
         "sizes": "192x192",
         "type": "image/jpeg"
       },
       {
-        "src": "/favicon/tac-telecom.jpeg",
+        "src": "/favicon/tac-telecom.png",
         "sizes": "512x512",
         "type": "image/jpeg"
       }
