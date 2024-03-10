@@ -81,9 +81,6 @@ function verificarMac() {
   // Realizar a pesquisa diretamente no iframe
   document.getElementById("iframeResultado").src = apiUrl;
 
-  // Exibir a URL atualizada na tela
-  document.getElementById("urlAtualizada").innerText = "URL atualizada do iframe: " + apiUrl;
-
   // Limpar o campo de entrada
   document.getElementById("macInputVerificar").value = "";
 
