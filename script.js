@@ -62,23 +62,31 @@ function copiarResultadoNome() {
 }
 
 
+//MAC
 function verificarMac() {
   // Obter o valor do input
-  var macAddress = document.getElementById("macInput").value;
+  var macAddress = document.getElementById("macInputVerificar").value;
 
   // Verificar se o valor está vazio
   if (macAddress.trim() === "") {
-    console.log("Endereço MAC vazio.");
+    document.getElementById("resultado").innerText = "Endereço MAC vazio.";
     return;
   }
 
-  // Exibir o valor do input no elemento com id "resultado"
-  document.getElementById("resultado").innerText = macAddress;
-
   // Construir a URL da solicitação
-  var apiUrl = "/helpdesk/api/verificarMac.php?mac_address=" + encodeURIComponent(macAddress);
-  console.log('URL da solicitação:', apiUrl);
+  var apiUrl = "https://api.macvendors.com/" + encodeURIComponent(macAddress);
 
+  // Abrir uma nova guia com a URL da API
+  window.open(apiUrl, '_blank');
+
+  // Limpar o campo de entrada
+  document.getElementById("macInputVerificar").value = "";
+
+  // Exibir o valor construído no elemento com id "resultado"
+  document.getElementById("resultado").innerText = "Verificando...";
+}
+
+function realizarPesquisaMac(apiUrl) {
   // Criar uma instância de XMLHttpRequest
   var xhr = new XMLHttpRequest();
 
@@ -102,26 +110,30 @@ function verificarMac() {
 
 
 
-//LOCALIZAÇÃO
+// LOCALIZAÇÃO
 function formatarLocalizacao() {
+  // Obtém o valor do input de localização
   let localizacaoEntrada = document.getElementById("localizacaoInput").value;
 
-  // Remove letras, espaços e vírgulas da entrada usando expressão regular
+  // Utiliza expressão regular para extrair números decimais
   let numeros = localizacaoEntrada.match(/-?\d+\.\d+/g);
 
   if (numeros && numeros.length >= 2) {
+    // Gera a localização formatada
     let localizacaoFormatada = "https://maps.google.com/?q=" + numeros.join(',');
+    
+    // Atualiza o texto e o link no HTML
     document.getElementById("localizacaoFormatada").textContent = localizacaoFormatada;
-
-    // Adiciona "https://maps.google.com/?q=" na frente para gerar o link
-    let linkMapa = "https://maps.google.com/?q=" + localizacaoFormatada;
-    document.getElementById("localizacaoFormatada").setAttribute("data-link-mapa", linkMapa);
+    document.getElementById("localizacaoFormatada").setAttribute("data-link-mapa", localizacaoFormatada);
   } else {
+    // Exibe mensagem de localização inválida
     document.getElementById("localizacaoFormatada").textContent = "Localização inválida.";
   }
 }
 
+// Função para copiar o resultado
 function copiarResultado() {
+  // Obtém o resultado formatado
   let resultado = document.getElementById("localizacaoFormatada").getAttribute("data-link-mapa");
 
   // Cria um elemento de texto temporário para a área de transferência
@@ -139,10 +151,11 @@ function copiarResultado() {
   // Remove o elemento temporário
   document.body.removeChild(tempInput);
 
-  // Exibe uma mensagem informando que o link foi copiado
+  // Exibe mensagem de sucesso
   alert("Link do mapa copiado para a área de transferência:\n" + resultado);
 }
 
+// Função para gerar o link do mapa com coordenadas
 function gerarLinkMapa(coordenadas) {
   // Gera o link do mapa com as coordenadas
   let linkMapa = "https://www.google.com/maps?q=" + coordenadas.join(',');
@@ -150,122 +163,6 @@ function gerarLinkMapa(coordenadas) {
   // Atualiza o atributo href do elemento de link
   document.getElementById("linkMapa").setAttribute("href", linkMapa);
 }
-function copiarResultado() {
-  let resultado = document.getElementById("localizacaoFormatada").textContent;
-
-  // Cria um elemento de texto temporário para a área de transferência
-  const tempInput = document.createElement("textarea");
-  tempInput.value = resultado;
-  document.body.appendChild(tempInput);
-
-  // Seleciona o texto no elemento temporário
-  tempInput.select();
-  tempInput.setSelectionRange(0, 99999); // Para dispositivos móveis
-
-  // Copia o texto para a área de transferência
-  document.execCommand("copy");
-
-  // Remove o elemento temporário
-  document.body.removeChild(tempInput);
-
-  // Limpa o campo de entrada da localização
-  document.getElementById("localizacaoInput").value = "";
-
-  // Limpa o resultado formatado
-  document.getElementById("localizacaoFormatada").textContent = "";
-
-  alert("Localização formatada copiada para a área de transferência: " + resultado);
-}
-
-function gerarLinkMapa(coordenadas) {
-  // Gera o link do mapa com as coordenadas
-  let linkMapa = "https://www.google.com/maps?q=" + coordenadas.join(',');
-
-  // Atualiza o atributo href do elemento de link
-  document.getElementById("linkMapa").setAttribute("href", linkMapa);
-}
-function copiarResultado() {
-  let resultado = document.getElementById("localizacaoFormatada").textContent;
-
-  // Cria um elemento de texto temporário para a área de transferência
-  const tempInput = document.createElement("textarea");
-  tempInput.value = resultado;
-  document.body.appendChild(tempInput);
-
-  // Seleciona o texto no elemento temporário
-  tempInput.select();
-  tempInput.setSelectionRange(0, 99999); // Para dispositivos móveis
-
-  // Copia o texto para a área de transferência
-  document.execCommand("copy");
-
-  // Remove o elemento temporário
-  document.body.removeChild(tempInput);
-
-  // Limpa o campo de entrada da localização
-  document.getElementById("localizacaoInput").value = "";
-
-  // Limpa o resultado formatado
-  document.getElementById("localizacaoFormatada").textContent = "";
-
-  alert("Localização formatada copiada para a área de transferência: " + resultado);
-}
-
-/* iframe 
-function gerarELink() {
-  let coordenadasEntrada = document.getElementById("coordenadasInput").value;
- 
-  // Extrai as coordenadas de latitude e longitude usando expressão regular
-  let matches = coordenadasEntrada.match(/-?\d+\.\d+/g);
- 
-  if (matches && matches.length >= 2) {
-    let lat = matches[0];
-    let lng = matches[1];
-    let link = `https://maps.app.goo.gl/${lat},${lng}`;
- 
-    // Exibe o link formatado
-    document.getElementById("linkFormatado").textContent = `Link formatado: ${link}`;
- 
-    // Atualiza o valor do atributo data-clipboard-text para o valor do link
-    document.getElementById("linkFormatado").setAttribute("data-clipboard-text", link);
- 
-    // Torna o botão de copiar visível
-    document.getElementById("botaoCopiarLink").style.display = "inline-block";
-  } else {
-    document.getElementById("linkFormatado").textContent = "Coordenadas inválidas.";
- 
-    // Oculta o botão de copiar se as coordenadas forem inválidas
-    document.getElementById("botaoCopiarLink").style.display = "none";
-  }
-}
-function gerarIFrame() {
-  let coordenadasEntrada = document.getElementById("coordenadasInput").value;
- 
-  // Extrai os valores de latitude e longitude usando expressões regulares
-  let match = coordenadasEntrada.match(/Lat:\s*(-?\d+\.\d+),\s*Long:\s*(-?\d+\.\d+)/);
- 
-  if (match) {
-    let lat = parseFloat(match[1]);
-    let lng = parseFloat(match[2]);
- 
-    // Cria o elemento iframe
-    let iframe = document.createElement("iframe");
-    iframe.setAttribute("src", `https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d13903.137096218743!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM4JzAxLjMiUyA1MMKwMDMnNDkuNiJX!5e1!3m2!1spt-BR!2sbr!4v1698898368309!5m2!1spt-BR!2sbr`);
-    iframe.setAttribute("width", "600");
-    iframe.setAttribute("height", "450");
-    iframe.setAttribute("style", "border:0;");
-    iframe.setAttribute("allowfullscreen", "");
-    iframe.setAttribute("loading", "lazy");
-    iframe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
- 
-    // Substitua o conteúdo existente do elemento "mapa" pelo novo iframe
-    let mapaDiv = document.getElementById("mapa");
-    mapaDiv.innerHTML = "";
-    mapaDiv.appendChild(iframe);
-  } else {
-    alert("Coordenadas inválidas. Certifique-se de usar o formato 'Lat: -28.7134130, Long: -49.054707'.");
-  }
-}*/
 
 /* CONVERSÃO MINÚSCULA PARA MAIÚSCULA */
 function converterMaiusculas() {
