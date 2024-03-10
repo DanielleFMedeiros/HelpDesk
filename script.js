@@ -63,7 +63,7 @@ function formatarCpf() {
   
   
   function verificarMac() {
-  <<<<<<< HEAD:HelpDesk/script.js
+ 
     var macAddress = document.getElementById("macInput").value;
     var apiUrl = "/api/verificarMac.php?mac_address=" + encodeURIComponent(macAddress);
   
@@ -82,54 +82,7 @@ function formatarCpf() {
     xhr.send();
   }
   
-  
-  
-  =======
-      // Atribuir um valor diretamente para teste
-      let macAddress = "00:11:22:33:44:55";
-  
-      // Verificar se o valor está vazio
-      if (macAddress.trim() === "") {
-          console.log("Endereço MAC vazio.");
-          return;
-      }
-  
-      // Exibir o valor do input no elemento com id "resultado"
-      document.getElementById("resultado").innerText = macAddress;
-  
-      // Construir a URL da solicitação
-      var url = "https://help-desk-eta.vercel.app/api/verificar-mac/" + encodeURIComponent(macAddress);
-      console.log('URL da solicitação:', url);
-  
-      // Enviar a solicitação à API
-      fetch(url, {
-          method: 'GET',
-          mode: 'cors'
-      })
-      .then(response => {
-          console.log('Status da resposta:', response.status);
-          if (response.ok) {
-              return response.text();
-          } else {
-              throw new Error(response.status);
-          }
-      })
-      .then(data => {
-          console.log('Resposta da API (Vendor):', data);
-          if (data === "404") {
-              document.getElementById("resultado").innerText = "Vendor não encontrado para o endereço MAC " + macAddress + ".";
-          } else {
-              document.getElementById("resultado").innerText = "Vendor: " + data;
-          }
-      })
-      .catch(error => {
-          console.error('Erro na solicitação à API:', error);
-          document.getElementById("resultado").innerText = "Erro na solicitação à API.";
-      });
-  }
-  
-  
-  >>>>>>> a7b24640584fdc16dc037cab5caa6b15e69d52fd:script.js
+
   //LOCALIZAÇÃO
   function formatarLocalizacao() {
     let localizacaoEntrada = document.getElementById("localizacaoInput").value;
