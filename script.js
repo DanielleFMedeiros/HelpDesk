@@ -69,6 +69,8 @@ function verificarMac() {
 
   // Verificar se o valor está vazio
   if (macAddress.trim() === "") {
+    // Limpar o iframe se o campo estiver vazio
+    document.getElementById("iframeResultado").src = "";
     document.getElementById("resultado").innerText = "Endereço MAC vazio.";
     return;
   }
@@ -76,8 +78,11 @@ function verificarMac() {
   // Construir a URL da solicitação
   var apiUrl = "https://api.macvendors.com/" + encodeURIComponent(macAddress);
 
-  // Abrir uma nova guia com a URL da API
-  window.open(apiUrl, '_blank');
+  // Realizar a pesquisa diretamente no iframe
+  document.getElementById("iframeResultado").src = apiUrl;
+
+  // Exibir a URL atualizada na tela
+  document.getElementById("urlAtualizada").innerText = "URL atualizada do iframe: " + apiUrl;
 
   // Limpar o campo de entrada
   document.getElementById("macInputVerificar").value = "";
@@ -85,30 +90,6 @@ function verificarMac() {
   // Exibir o valor construído no elemento com id "resultado"
   document.getElementById("resultado").innerText = "Verificando...";
 }
-
-function realizarPesquisaMac(apiUrl) {
-  // Criar uma instância de XMLHttpRequest
-  var xhr = new XMLHttpRequest();
-
-  // Definir a função de callback para lidar com a resposta da solicitação
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        document.getElementById("resultado").innerText = "Fornecedor: " + xhr.responseText;
-      } else {
-        document.getElementById("resultado").innerText = "Erro ao verificar o MAC.";
-      }
-    }
-  };
-
-  // Abrir a solicitação GET para a URL da API
-  xhr.open("GET", apiUrl, true);
-
-  // Enviar a solicitação
-  xhr.send();
-}
-
-
 
 // LOCALIZAÇÃO
 function formatarLocalizacao() {
@@ -121,7 +102,7 @@ function formatarLocalizacao() {
   if (numeros && numeros.length >= 2) {
     // Gera a localização formatada
     let localizacaoFormatada = "https://maps.google.com/?q=" + numeros.join(',');
-    
+
     // Atualiza o texto e o link no HTML
     document.getElementById("localizacaoFormatada").textContent = localizacaoFormatada;
     document.getElementById("localizacaoFormatada").setAttribute("data-link-mapa", localizacaoFormatada);
