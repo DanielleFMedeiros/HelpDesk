@@ -52,15 +52,18 @@ function copiarParaAreaTransferencia(texto) {
 //DMVIEW
 function formatar_nome() {
   var nomeOriginal = document.getElementById("macInput").value;
-  var nomeFormatado = nomeOriginal.replace(/ /g, '_');
-  document.getElementById("nomeResultado").innerText = nomeFormatado;
+  if (nomeOriginal.trim() === "") {
+    document.getElementById("nomeResultado").innerText = "Por favor, digite um nome.";
+  } else {
+    var nomeFormatado = nomeOriginal.replace(/ /g, '_').toUpperCase();
+    document.getElementById("nomeResultado").innerText = nomeFormatado;
+  }
 }
 
 function copiarResultadoNome() {
   let resultadoNome = document.getElementById("nomeResultado").textContent;
   copiarParaAreaTransferencia(resultadoNome);
 }
-
 
 //MAC
 function verificarMac() {
@@ -167,7 +170,6 @@ function copiarTextoConversor() {
   alert("Texto copiado para a área de transferência: " + textoConvertido);
 }
 
-
 //o.s
 
 const problemaSelect = document.getElementById('problemaSelect');
@@ -218,8 +220,6 @@ function limitarTexto(texto, limite) {
 
 function gerarTexto() {
 
-
-
   /* sem */
   const regiaoMk = obterValorElemento('regiao');
   const horarioMk = obterValorElemento('horario');
@@ -258,7 +258,6 @@ function gerarTexto() {
   const refMk2 = obterValorElemento('ref2');
   const localMk2 = obterValorElemento('local2');
 
-
   /* caindo */
   const regiaoMk3 = obterValorElemento('regiao3');
   const horarioMk3 = obterValorElemento('horario3');
@@ -288,7 +287,6 @@ function gerarTexto() {
   const refMk5 = obterValorElemento('ref5');
   const localMk5 = obterValorElemento('local5');
 
-
   /* tv */
   const regiaoMk4 = obterValorElemento('regiao4');
   const horarioMk4 = obterValorElemento('horario4');
@@ -315,9 +313,9 @@ function gerarTexto() {
     texto = "CLIENTE ESTÁ SEM INTERNET. " + ledVermelho + " ";
 
     if (procedimentoCompleto === 'sim') {
-      texto += "CLIENTE JÁ REALIZOU O PROCEDIMENTO COMPLETO. ";
+      texto += "CLIENTE JÁ REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR O ROTEADOR. ";
     } else if (procedimentoCompleto === 'nao') {
-      texto += "CLIENTE NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
+      texto += "CLIENTE NÃO REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR O ROTEADOR. ";
     }
 
     if (cabosConectados === 'sim') {
@@ -356,9 +354,9 @@ function gerarTexto() {
     texto = "CLIENTE ESTÁ COM INTERNET LENTA. ";
 
     if (procedimentoCompletoLento === 'nao') {
-      texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
+      texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR ROTEADOR. ";
     } else if (procedimentoCompletoLento === 'sim') {
-      texto += "REALIZOU O PROCEDIMENTO COMPLETO. ";
+      texto += "REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR ROTEADOR. ";
     }
 
     if (cabosConectadosDiv === 'sim') {
@@ -389,9 +387,9 @@ function gerarTexto() {
     texto = "CLIENTE ESTÁ COM INTERNET CAINDO. ";
 
     if (procedimentoCompletoCaindo === 'nao') {
-      texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
+      texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR ROTEADOR. ";
     } else if (procedimentoCompletoCaindo === 'sim') {
-      texto += "REALIZOU O PROCEDIMENTO COMPLETO. ";
+      texto += "REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR ROTEADOR. ";
     }
 
     if (cabosConectadosDiv1 === 'sim') {
@@ -447,16 +445,15 @@ function gerarTexto() {
 
   }
 
-
   //TV TAC COM DEFEITO
   if (problema === 'tvTac') {
     textoIntro = regiaoMk4 + " - TV TAC COM DEFEITO" + '\n' + "(" + horarioMk4 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk4 + '\n' + '\n';
     texto = "CLIENTE ESTÁ COM PROBLEMAS NA TV TAC. ";
 
     if (procedimentoCompletoTv4 === 'nao') {
-      texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO. ";
+      texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR EQUIPAMENTOS. ";
     } else if (procedimentoCompletoTv4 === 'sim') {
-      texto += "REALIZOU O PROCEDIMENTO COMPLETO. ";
+      texto += "REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR EQUIPAMENTOS. ";
     }
 
     if (cabosConectadosDiv4 === 'sim') {
@@ -486,16 +483,13 @@ function gerarTexto() {
 
   const textoLimitado = limitarTexto(textoGerado, 47);
 
-
   // Atualiza o elemento de texto com o resultado
   document.getElementById('textoGerado').textContent = textoLimitado;
-
 
   // Mostra o botão de copiar texto
   const botaoCopiarTexto = document.getElementById('copiarTextoo');
   botaoCopiarTexto.classList.remove('hidden');
   console.log("Texto gerado:", textoGerado);
-
 }
 
 function adicionarEventoProblema() {
