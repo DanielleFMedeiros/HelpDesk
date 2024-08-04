@@ -240,6 +240,7 @@ function gerarTexto() {
   const horarioMk6 = obterValorElemento('horario6');
   const solicitanteMk6 = obterValorElemento('solicitante6');
   const extras6 = obterValorElemento('extras6');
+  const osanterior = obterValorElemento('osanterior');
   const telefoneMk6 = obterValorElemento('telefone6');
   const refMk6 = obterValorElemento('ref6');
   const localMk6 = obterValorElemento('local6');
@@ -342,9 +343,14 @@ function gerarTexto() {
   if (problema === 'personalization') {
     textoIntro = regiaoMk6 + '\n' + "(" + horarioMk6 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk6 + '\n' + '\n';
     textoLocal = localMk6;
-    texto += extras6;
+    texto += extras6 ;
+    
+    if (osanterior) {
+     texto += '\n' +'\n' + `O.S ANTERIOR: `+osanterior+'.';
+    }
+   
 
-    telefone = '\n' + telefoneMk6 + '\n' + refMk6 + '\n';
+    telefone = '\n' + telefoneMk6+ '\n' + '\n' + refMk6 + '\n';
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
   }
 
@@ -529,6 +535,7 @@ function adicionarEventoProblema() {
       mostrarElemento(horarioMk6);
       mostrarElemento(solicitanteMk6)
       mostrarElemento(extrasc6);
+      mostrarElemento(osanteriores);
       mostrarElemento(telefoneMk6);
       mostrarElemento(refMk6);
       mostrarElemento(localMk6);
