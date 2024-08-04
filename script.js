@@ -91,6 +91,33 @@ function verificarMac() {
   document.getElementById("resultado").innerText = "Verificando...";
 }
 
+//TELEFONE FORMATAR
+function formatarTelefone(numero) {
+  let telefoneFormatado = numero.replace(/\D/g, '');
+  if (!telefoneFormatado.startsWith('55')) {
+      telefoneFormatado = '55' + telefoneFormatado;
+  }
+  return telefoneFormatado;
+}
+
+function formatarTelefoneInput() {
+  const input = document.getElementById('telefoneInput');
+  const formatado = formatarTelefone(input.value);
+  document.getElementById('telefoneFormatado').textContent = formatado;
+}
+
+function copiarTelefoneFormatado() {
+  const telefoneFormatado = document.getElementById('telefoneFormatado').textContent;
+  const tempInput = document.createElement('input');
+  tempInput.value = telefoneFormatado;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  tempInput.setSelectionRange(0, 99999);
+  document.execCommand('copy');
+  document.body.removeChild(tempInput);
+  alert('Núm. formatado copiado: ' + telefoneFormatado);
+}
+
 // LOCALIZAÇÃO
 function formatarLocalizacao() {
   // Obtém o valor do input de localização

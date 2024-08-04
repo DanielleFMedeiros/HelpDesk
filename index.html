@@ -15,10 +15,11 @@
   <div class="flex-container">
 
     <div class="containers-row">
-      <h1 class="container">TAC helpdesk</h1>
       <div class="container">
-        <button onclick="abrirLink()">DRIVE SUPORTE!!!</button>
+        <h1 class="">TAC helpdesk</h1>
+        <button class=""onclick="abrirLink()">DRIVE SUPORTE!!!</button>
       </div>
+
       <div class="container">
         <h2>Formatador de CPF</h2>
         <label for="cpfInput">Cole o CPF (11 dígitos):</label>
@@ -34,6 +35,17 @@
         <button onclick="formatarCnpj()">Formatar CNPJ</button>
         <p id="cnpjResultado"></p>
         <button id="botaoCopiarCNPJ" onclick="copiarResultadoCnpj()">Copiar CNPJ</button>
+      </div>
+
+      <div class="container">
+        <h2>Formatador de Telefone</h2>
+        <div>
+            <label for="telefoneInput">Digite o telefone:</label>
+            <input type="text" id="telefoneInput" placeholder="(48) 3660-0800">
+        </div>
+        <button type="button" onclick="formatarTelefoneInput()">Formatar Número</button>
+        <p id="telefoneFormatado"></p>
+        <button type="button" onclick="copiarTelefoneFormatado()">Copiar Número</button>
       </div>
     </div>
 
@@ -552,6 +564,8 @@
         <p id="resultado"></p>
         <iframe  id="iframeResultado" scrolling="" frameborder="no"></iframe>
       </div>
+
+ 
 
       <div class="container">
         <h2>Formatador de Nome <span class="destaque">dmview</span></h2>
