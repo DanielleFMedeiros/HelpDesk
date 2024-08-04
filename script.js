@@ -630,6 +630,92 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.removeChild(tempInput);
 
     // Alerta o usuário que o texto foi copiado
-    alert('Texto copiado para a área de transferência: ' + textoGerado);
+    alert('Texto copiado: ' +'\n'+ textoGerado);
   });
+});
+
+
+//gerador de atendimento
+
+const problemaSelect2 = document.getElementById('problemaSelect2');
+
+function mostrarElemento2(elemento2) {
+    if (elemento2) {
+        elemento2.classList.remove('hidden');
+    }
+}
+
+function esconderElemento2(elemento2) {
+    if (elemento2 && elemento2.classList) {
+        elemento2.classList.add('hidden');
+    }
+}
+
+function obterValorElemento2(id) {
+    return document.getElementById(id).value;
+}
+
+function gerarA() {
+    const problema2 = problemaSelect2.value;
+    const cliente = obterValorElemento2('cliente');
+    const contato = obterValorElemento2('contatos');
+    const relato = obterValorElemento2('relatos');
+    const plano = obterValorElemento2('planos');
+    const alteracoes = obterValorElemento2('alteracoesr');
+    const extrasate = obterValorElemento2('extrasatendimento');
+
+    let textoGerado2 = "";
+
+    if (problema2 === 'personalizationA') {
+        const textoComeco = "Tratado com: " + cliente+ '.' + '\n' + "Telefone: " + contato + '.'+ '\n' + "Plano, roteador e sinal: "+  plano +'.' + '\n';
+        const textomeio = "Relato: " + relato + '\n' + "Alterações realizadas: " + alteracoes+ '.' + '\n';
+        const textoadd = extrasate ? "Informações importantes: " + extrasate + '.' : "";
+
+        textoGerado2 = textoComeco + '\n' + textomeio + '\n' + textoadd;
+    }
+
+    const botaoCopiarTexto = document.getElementById('copiarA');
+    botaoCopiarTexto.classList.remove('hidden');
+    console.log("Texto gerado:", textoGerado2);
+
+    document.getElementById('atendimento').textContent = textoGerado2;
+}
+
+function adicionarEventoProblema2() {
+    problemaSelect2.addEventListener('change', function () {
+        esconderElemento2(document.getElementById('opcoesPersonalizavel1'));
+
+        if (problemaSelect2.value === 'personalizationA') {
+            mostrarElemento2(document.getElementById('opcoesPersonalizavel1'));
+            mostrarElemento2(document.getElementById('clientes'));
+            mostrarElemento2(document.getElementById('contato'));
+            mostrarElemento2(document.getElementById('plano'));
+            mostrarElemento2(document.getElementById('relato'));
+            mostrarElemento2(document.getElementById('alteracoes'));
+            mostrarElemento2(document.getElementById('extrasate'));
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    adicionarEventoProblema2();
+
+    const botaoCopiarTexto2 = document.getElementById('copiarA');
+    botaoCopiarTexto2.addEventListener('click', function () {
+        const textoGerado2 = document.getElementById('atendimento').textContent;
+
+        const tempInput2 = document.createElement('textarea');
+        tempInput2.value = textoGerado2;
+
+        document.body.appendChild(tempInput2);
+
+        tempInput2.select();
+        tempInput2.setSelectionRange(0, 99999);
+
+        document.execCommand('copy');
+
+        document.body.removeChild(tempInput2);
+
+        alert('Texto copiado: ' + '\n' + textoGerado2);
+    });
 });

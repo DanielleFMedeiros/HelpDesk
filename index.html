@@ -489,6 +489,50 @@
           <button type="button" id="copiarTextoo" class="hidden">Copiar Texto</button>
         </form>
       </div>
+
+      <div class="container">
+        <h2>Gerador de Atendimento</h2>
+        <form id="formulario1">
+            <div>
+                <label for="problemaSelect2">Selecione o problema:</label>
+                <select id="problemaSelect2" name="problemaSelect2">
+                    <option value="">-- Selecione --</option>
+                    <option value="personalizationA">PERSONALIZAVEL</option>
+                </select>
+            </div>
+            <!-- PERSONALIZAVEL -->
+            <div id="opcoesPersonalizavel1" class="opcoes hidden">
+                <div id="clientes" class="opcoes hidden">
+                    <label for="cliente">Tratado com:</label>
+                    <input type="text" id="cliente" name="cliente" placeholder="Quem solicitou atendimento">
+                </div>
+                <div id="contato" class="opcoes hidden">
+                    <label for="contatos">Telefone: </label>
+                    <input type="text" id="contatos" name="contatos" placeholder="Ex: 4836600800">
+                </div>
+                <div id="plano" class="opcoes hidden">
+                    <label for="planos">Plano, roteador e sinal: </label>
+                    <input type="text" id="planos" name="planos" placeholder="Ex: 400MB, HUAWEI AX3S, RX-25">
+                </div>
+                <div id="relato" class="opcoes hidden">
+                    <label for="relatos">Relato:</label>
+                    <input type="text" id="relatos" name="relatos" placeholder="Relato do problema">
+                </div>
+                <div id="alteracoes" class="opcoes hidden">
+                    <label for="alteracoesr">Alterações realizadas:</label>
+                    <input type="text" id="alteracoesr" name="alteracoesr" placeholder="Ex: Alterado critografia, desativado ipv6">
+                </div>
+                <div id="extrasate" class="opcoes hidden">
+                    <label for="extrasatendimento">Adicione mais informações:</label>
+                    <input type="text" id="extrasatendimento" name="extrasatendimento" placeholder="Adicione mais informações">
+                </div>
+            </div>
+            <button type="button" onclick="gerarA()">Gerar atendimento</button>
+            <p id="atendimento"></p>
+            <button type="button" id="copiarA" class="hidden">Copiar Texto</button>
+        </form>
+    </div>
+
     </div>
 
     <div class="containers-row">
@@ -517,8 +561,6 @@
         <button id="botaoCopiarNome" onclick="copiarResultadoNome()">Copiar Nome</button>
       </div>
 
-
-      
 
       <!--
       <div class="container">
