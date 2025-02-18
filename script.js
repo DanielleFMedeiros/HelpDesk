@@ -554,6 +554,11 @@ function gerarTexto() {
 
   //CABEAMENTO
   if (problema === 'cabeamento') {
+
+    const cienteMk = document.getElementById("ciente").checked 
+    ? document.getElementById("ciente").value 
+    : "";
+
     textoIntro = regiaoMk7 + " - CABEAMENTO" + '\n' + "(" + horarioMk7 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk7 + '\n' + '\n';
     textoLocal = localMk7;
 
@@ -566,11 +571,12 @@ function gerarTexto() {
     }
 
     if (cienteMk) {
-      texto += '\n' + cienteMk + " COBRAR 2,50 O METRO DO CABO  + 50,00 A HORA TÉCNICA. ";
+      texto += '\n' + cienteMk + " - COBRAR 2,50 O METRO DO CABO  + 50,00 A HORA TÉCNICA. " +'\n';
     }
+    
 
     if (pagamentoMk) {
-      texto += '\n' + `Será pago no: ` + pagamentoMk + '.' + '\n';
+      texto += '\n' + pagamentoMk + '.' + '\n';
     }
 
     if (extras7) {

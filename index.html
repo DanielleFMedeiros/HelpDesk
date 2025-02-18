@@ -639,15 +639,19 @@
             </div>
 
             <div id="cienteMk" class="opcoes hidden">
-              <label for="ciente">Cliente está ciente dos valores?: </label>
+              <label for="ciente">Cliente está ciente dos valores? (se aplicável): </label>
               <input type="checkbox" id="ciente" name="ciente" value="Cliente está ciente dos valores">
             </div>
 
             <div id="pagamentoMk" class="opcoes hidden">
               <label for="pagamento">Pagamento: </label>
               <select id="pagamento" name="pagamento">
-                <option value="pix">Pix</option>
-                <option value="boleto">Boleto</option>
+                <option value="">-- Selecione --</option>
+                <option value="Será pago no: Pix">Pix</option>
+                <option value="Será pago no: Boleto">Boleto</option>
+                <option value="**Não será cobrado**">Nao será cobrado</option>
+                <option value="**Não será cobrado, cliente renovou plano**">Nao será cobrado/renovou</option>
+
               </select>
             </div>
 
