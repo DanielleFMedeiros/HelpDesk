@@ -688,8 +688,9 @@ function adicionarEventoProblema() {
       mostrarElemento(telefoneMk4);
       mostrarElemento(refMk4);
       mostrarElemento(localMk4);
+
     } else if (problemaSelect.value === 'cabeamento') {
-      mostrarElemento(cabeamento);
+      mostrarElemento(opcoesComercial);
       mostrarElemento(regiaoMk7);
       mostrarElemento(horarioMk7);
       mostrarElemento(solicitanteMk7)
