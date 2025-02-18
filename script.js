@@ -569,9 +569,9 @@ function gerarTexto() {
     }
 
     if (extras7) {
-      texto += '\n' +">> " + extras7 + '.';
+      texto += '\n' + ">> " + extras7 + '.';
     }
- 
+
     telefone = '\n' + telefoneMk7 + '\n' + '\n' + refMk7 + '\n';
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
   }
@@ -690,7 +690,7 @@ function adicionarEventoProblema() {
       mostrarElemento(localMk4);
 
     } else if (problemaSelect.value === 'cabeamento') {
-      mostrarElemento(opcoesComercial);
+      mostrarElemento(opcoesCabeamento);
       mostrarElemento(regiaoMk7);
       mostrarElemento(horarioMk7);
       mostrarElemento(solicitanteMk7)
