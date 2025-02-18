@@ -337,6 +337,7 @@ function gerarTexto() {
   const solicitanteMk7 = obterValorElemento('solicitante7');
   const cabearOq = obterValorElemento('cabear');
   const metragemMk = obterValorElemento('metragem');
+  const cienteMk = obterValorElemento('ciente');
   const pagamentoMk = obterValorElemento('pagamento');
   const extras7 = obterValorElemento('extras7');
   const telefoneMk7 = obterValorElemento('telefone7');
@@ -564,6 +565,10 @@ function gerarTexto() {
       texto += '\n' + `EM TORNO DE: ` + metragemMk + '.';
     }
 
+    if (cienteMk) {
+      texto += '\n' + cienteMk + " COBRAR 2,50 O METRO DO CABO  + 50,00 A HORA TÉCNICA. ";
+    }
+
     if (pagamentoMk) {
       texto += '\n' + `Será pago no: ` + pagamentoMk + '.' + '\n';
     }
@@ -696,12 +701,12 @@ function adicionarEventoProblema() {
       mostrarElemento(solicitanteMk7)
       mostrarElemento(cabearOq);
       mostrarElemento(metragemMk);
+      mostrarElemento(cienteMk);
       mostrarElemento(pagamentoMk);
       mostrarElemento(extrasc7);
       mostrarElemento(telefoneMk7);
       mostrarElemento(refMk7);
       mostrarElemento(localMk7);
-
     }
   });
 }

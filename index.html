@@ -628,17 +628,23 @@
             </div>
 
             <div id="cabearOq" class="opcoes hidden">
-              <label for="cabear">Deseja cabear o que? </label>
-              <input type="text" id="cabear" name="cabear" placeholder="Ex: Cliente solicita passagem de cabo para sua TV">
+              <label for="cabear">Deseja cabear o que? * </label>
+              <input type="text" id="cabear" name="cabear"
+                placeholder="Ex: Cliente solicita passagem de cabo para sua TV">
             </div>
 
             <div id="metragemMk" class="opcoes hidden">
-              <label for="metragem">Metragem:</label>
+              <label for="metragem">Metragem: *</label>
               <input type="text" id="metragem" name="metragem" placeholder="10 metros">
             </div>
 
+            <div id="cienteMk" class="opcoes hidden">
+              <label for="ciente">Cliente está ciente dos valores?: </label>
+              <input type="checkbox" id="ciente" name="ciente" value="Cliente está ciente dos valores">
+            </div>
+
             <div id="pagamentoMk" class="opcoes hidden">
-              <label for="pagamento">Pagamento: *</label>
+              <label for="pagamento">Pagamento: </label>
               <select id="pagamento" name="pagamento">
                 <option value="pix">Pix</option>
                 <option value="boleto">Boleto</option>
