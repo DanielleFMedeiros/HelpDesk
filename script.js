@@ -95,7 +95,7 @@ function verificarMac() {
 function formatarTelefone(numero) {
   let telefoneFormatado = numero.replace(/\D/g, '');
   if (!telefoneFormatado.startsWith('55')) {
-      telefoneFormatado = '55' + telefoneFormatado;
+    telefoneFormatado = '55' + telefoneFormatado;
   }
   return telefoneFormatado;
 }
@@ -222,25 +222,28 @@ function obterElementosSelecionados(tipo) {
   return Array.from(checkboxes).map(checkbox => checkbox.value);
 }
 
-function limitarTexto(texto, limite) {
-  const palavras = texto.split(' ');
-  let linhaAtual = '';
-  let linhas = [];
+function limitarTextoComQuebras(texto, limite) {
+  return texto
+    .split('\n') // Divide o texto mantendo as quebras de linha originais
+    .map(linha => linha.trim() ? limitarTexto(linha, limite) : linha) // Aplica a limitação onde necessário
+    .join('\n'); // Junta as linhas mantendo as quebras intactas
+}
 
-  for (let i = 0; i < palavras.length; i++) {
-    const palavra = palavras[i];
-    if (linhaAtual.length + palavra.length <= limite) {
-      linhaAtual += palavra + ' ';
+function limitarTexto(texto, limite) {
+  let palavras = texto.split(' ');
+  let linhas = [];
+  let linhaAtual = '';
+
+  for (let palavra of palavras) {
+    if ((linhaAtual + palavra).length <= limite) {
+      linhaAtual += (linhaAtual ? ' ' : '') + palavra; // Adiciona espaço apenas se já houver texto na linha
     } else {
-      linhas.push(linhaAtual.trim());
-      linhaAtual = palavra + ' ';
+      linhas.push(linhaAtual);
+      linhaAtual = palavra;
     }
   }
 
-  // Adiciona a última linha, se houver
-  if (linhaAtual.trim() !== '') {
-    linhas.push(linhaAtual.trim());
-  }
+  if (linhaAtual) linhas.push(linhaAtual); // Adiciona a última linha se houver conteúdo
 
   return linhas.join('\n');
 }
@@ -328,11 +331,26 @@ function gerarTexto() {
   const refMk4 = obterValorElemento('ref4');
   const localMk4 = obterValorElemento('local4');
 
+  /* cabeamento*/
+  const regiaoMk7 = obterValorElemento('regiao7');
+  const horarioMk7 = obterValorElemento('horario7');
+  const solicitanteMk7 = obterValorElemento('solicitante7');
+  const cabearOq = obterValorElemento('cabear');
+  const metragemMk = obterValorElemento('metragem');
+  const pagamentoMk = obterValorElemento('pagamento');
+  const extras7 = obterValorElemento('extras7');
+  const telefoneMk7 = obterValorElemento('telefone7');
+  const refMk7 = obterValorElemento('ref7');
+  const localMk7 = obterValorElemento('local7');
+
   let textoIntro = "";
   let textoGerado = "";
   let textoLocal = "";
   let texto = "";
   let telefone = "";
+
+
+
 
   //SEM INTERNET
   if (problema === 'semInternet') {
@@ -370,14 +388,14 @@ function gerarTexto() {
   if (problema === 'personalization') {
     textoIntro = regiaoMk6 + '\n' + "(" + horarioMk6 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk6 + '\n' + '\n';
     textoLocal = localMk6;
-    texto += extras6 ;
-    
-    if (osanterior) {
-     texto += '\n' +'\n' + `O.S ANTERIOR: `+osanterior+'.';
-    }
-   
+    texto += extras6;
 
-    telefone = '\n' + telefoneMk6+ '\n' + '\n' + refMk6 + '\n';
+    if (osanterior) {
+      texto += '\n' + '\n' + `O.S ANTERIOR: ` + osanterior + '.';
+    }
+
+
+    telefone = '\n' + telefoneMk6 + '\n' + '\n' + refMk6 + '\n';
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
   }
 
@@ -507,11 +525,55 @@ function gerarTexto() {
       texto += "TV NÃO É CABEADA. ";
     }
 
+    //CABEAMENTO
+    if (problema === 'cabeamento') {
+      textoIntro = regiaoMk7 + " - CABEAMENTO" + '\n' + "(" + horarioMk7 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk7 + '\n' + '\n';
+      textoLocal = localMk7;
+
+      if (metragemMk) {
+        texto += '\n' + '\n' + `EM TORNO DE: ` + metragemMk + '.';
+      }
+
+      if (pagamentoMk) {
+        texto += '\n' + '\n' + `Será pago no: ` + pagamento + '.';
+      }
+      texto += extras7;
+
+
+      telefone = '\n' + telefoneMk7 + '\n' + '\n' + refMk7 + '\n';
+      textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
+    }
+
     texto += extras4;
     telefone = '\n' + telefoneMk4 + '\n' + refMk4;
     textoLocal = localMk4;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
 
+  }
+
+  //CABEAMENTO
+  if (problema === 'cabeamento') {
+    textoIntro = regiaoMk7 + " - CABEAMENTO" + '\n' + "(" + horarioMk7 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk7 + '\n' + '\n';
+    textoLocal = localMk7;
+
+    if (cabearOq) {
+      texto += cabearOq;
+    }
+
+    if (metragemMk) {
+      texto += '\n' + `EM TORNO DE: ` + metragemMk + '.';
+    }
+
+    if (pagamentoMk) {
+      texto += '\n' + `Será pago no: ` + pagamentoMk + '.' + '\n';
+    }
+
+    if (extras7) {
+      texto += '\n' +">> " + extras7 + '.';
+    }
+ 
+    telefone = '\n' + telefoneMk7 + '\n' + '\n' + refMk7 + '\n';
+    textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
   }
 
   const textoLimitado = limitarTexto(textoGerado, 47);
@@ -626,6 +688,19 @@ function adicionarEventoProblema() {
       mostrarElemento(telefoneMk4);
       mostrarElemento(refMk4);
       mostrarElemento(localMk4);
+    } else if (problemaSelect.value === 'cabeamento') {
+      mostrarElemento(cabeamento);
+      mostrarElemento(regiaoMk7);
+      mostrarElemento(horarioMk7);
+      mostrarElemento(solicitanteMk7)
+      mostrarElemento(cabearOq);
+      mostrarElemento(metragemMk);
+      mostrarElemento(pagamentoMk);
+      mostrarElemento(extrasc7);
+      mostrarElemento(telefoneMk7);
+      mostrarElemento(refMk7);
+      mostrarElemento(localMk7);
+
     }
   });
 }
@@ -657,7 +732,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.removeChild(tempInput);
 
     // Alerta o usuário que o texto foi copiado
-    alert('Texto copiado: ' +'\n'+ textoGerado);
+    alert('Texto copiado: ' + '\n' + textoGerado);
   });
 });
 
@@ -667,82 +742,82 @@ document.addEventListener('DOMContentLoaded', function () {
 const problemaSelect2 = document.getElementById('problemaSelect2');
 
 function mostrarElemento2(elemento2) {
-    if (elemento2) {
-        elemento2.classList.remove('hidden');
-    }
+  if (elemento2) {
+    elemento2.classList.remove('hidden');
+  }
 }
 
 function esconderElemento2(elemento2) {
-    if (elemento2 && elemento2.classList) {
-        elemento2.classList.add('hidden');
-    }
+  if (elemento2 && elemento2.classList) {
+    elemento2.classList.add('hidden');
+  }
 }
 
 function obterValorElemento2(id) {
-    return document.getElementById(id).value;
+  return document.getElementById(id).value;
 }
 
 function gerarA() {
-    const problema2 = problemaSelect2.value;
-    const cliente = obterValorElemento2('cliente');
-    const contato = obterValorElemento2('contatos');
-    const relato = obterValorElemento2('relatos');
-    const plano = obterValorElemento2('planos');
-    const alteracoes = obterValorElemento2('alteracoesr');
-    const extrasate = obterValorElemento2('extrasatendimento');
+  const problema2 = problemaSelect2.value;
+  const cliente = obterValorElemento2('cliente');
+  const contato = obterValorElemento2('contatos');
+  const relato = obterValorElemento2('relatos');
+  const plano = obterValorElemento2('planos');
+  const alteracoes = obterValorElemento2('alteracoesr');
+  const extrasate = obterValorElemento2('extrasatendimento');
 
-    let textoGerado2 = "";
+  let textoGerado2 = "";
 
-    if (problema2 === 'personalizationA') {
-        const textoComeco = "Tratado com: " + cliente+ '.' + '\n' + "Telefone: " + contato + '.'+ '\n' + "Plano, roteador e sinal: "+  plano +'.' + '\n';
-        const textomeio = "Relato: " + relato + '\n' + "Alterações realizadas: " + alteracoes+ '.' + '\n';
-        const textoadd = extrasate ? "Informações importantes: " + extrasate + '.' : "";
+  if (problema2 === 'personalizationA') {
+    const textoComeco = "Tratado com: " + cliente + '.' + '\n' + "Telefone: " + contato + '.' + '\n' + "Plano, roteador e sinal: " + plano + '.' + '\n';
+    const textomeio = "Relato: " + relato + '\n' + "Alterações realizadas: " + alteracoes + '.' + '\n';
+    const textoadd = extrasate ? "Informações importantes: " + extrasate + '.' : "";
 
-        textoGerado2 = textoComeco + '\n' + textomeio + '\n' + textoadd;
-    }
+    textoGerado2 = textoComeco + '\n' + textomeio + '\n' + textoadd;
+  }
 
-    const botaoCopiarTexto = document.getElementById('copiarA');
-    botaoCopiarTexto.classList.remove('hidden');
-    console.log("Texto gerado:", textoGerado2);
+  const botaoCopiarTexto = document.getElementById('copiarA');
+  botaoCopiarTexto.classList.remove('hidden');
+  console.log("Texto gerado:", textoGerado2);
 
-    document.getElementById('atendimento').textContent = textoGerado2;
+  document.getElementById('atendimento').textContent = textoGerado2;
 }
 
 function adicionarEventoProblema2() {
-    problemaSelect2.addEventListener('change', function () {
-        esconderElemento2(document.getElementById('opcoesPersonalizavel1'));
+  problemaSelect2.addEventListener('change', function () {
+    esconderElemento2(document.getElementById('opcoesPersonalizavel1'));
 
-        if (problemaSelect2.value === 'personalizationA') {
-            mostrarElemento2(document.getElementById('opcoesPersonalizavel1'));
-            mostrarElemento2(document.getElementById('clientes'));
-            mostrarElemento2(document.getElementById('contato'));
-            mostrarElemento2(document.getElementById('plano'));
-            mostrarElemento2(document.getElementById('relato'));
-            mostrarElemento2(document.getElementById('alteracoes'));
-            mostrarElemento2(document.getElementById('extrasate'));
-        }
-    });
+    if (problemaSelect2.value === 'personalizationA') {
+      mostrarElemento2(document.getElementById('opcoesPersonalizavel1'));
+      mostrarElemento2(document.getElementById('clientes'));
+      mostrarElemento2(document.getElementById('contato'));
+      mostrarElemento2(document.getElementById('plano'));
+      mostrarElemento2(document.getElementById('relato'));
+      mostrarElemento2(document.getElementById('alteracoes'));
+      mostrarElemento2(document.getElementById('extrasate'));
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    adicionarEventoProblema2();
+  adicionarEventoProblema2();
 
-    const botaoCopiarTexto2 = document.getElementById('copiarA');
-    botaoCopiarTexto2.addEventListener('click', function () {
-        const textoGerado2 = document.getElementById('atendimento').textContent;
+  const botaoCopiarTexto2 = document.getElementById('copiarA');
+  botaoCopiarTexto2.addEventListener('click', function () {
+    const textoGerado2 = document.getElementById('atendimento').textContent;
 
-        const tempInput2 = document.createElement('textarea');
-        tempInput2.value = textoGerado2;
+    const tempInput2 = document.createElement('textarea');
+    tempInput2.value = textoGerado2;
 
-        document.body.appendChild(tempInput2);
+    document.body.appendChild(tempInput2);
 
-        tempInput2.select();
-        tempInput2.setSelectionRange(0, 99999);
+    tempInput2.select();
+    tempInput2.setSelectionRange(0, 99999);
 
-        document.execCommand('copy');
+    document.execCommand('copy');
 
-        document.body.removeChild(tempInput2);
+    document.body.removeChild(tempInput2);
 
-        alert('Texto copiado: ' + '\n' + textoGerado2);
-    });
+    alert('Texto copiado: ' + '\n' + textoGerado2);
+  });
 });
