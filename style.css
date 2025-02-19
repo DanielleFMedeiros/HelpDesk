@@ -13,7 +13,7 @@ h1 {
 }
 
 .destaque {
-  font-size: 0.8em;
+  font-size: 0.8em; 
   font-style: italic;
   color: #45a049;
 }
@@ -112,25 +112,31 @@ footer {
   display: none;
 }
 
-#opcoesSemInternet {
-  padding: 5px;
-  /* Reduz o preenchimento interno */
-  margin: 5px 0;
-  /* Reduz a margem superior e inferior */
-  font-size: 12px;
-  /* Fonte menor */
+
+/* Estilos para os elementos dentro da div de opções 'opcoesCabeamento' */
+#opcoesCabeamento select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 10px;
 }
 
-#opcoesSemInternet select,
-#opcoesSemInternet input {
-  padding: 5px;
+#opcoesCabeamento label {
+  font-weight: bold;
   margin-bottom: 5px;
-  font-size: 12px;
 }
 
-#opcoesSemInternet label {
-  font-weight: normal;
-  margin-bottom: 3px;
+/* Estilos para os elementos dentro da div de opções 'opcoesInstalacao' */
+#opcoesInstalacao select {
+  width: 50%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 10px;
+}
+#opcoesInstalacao label {
+  font-weight: bold;
+  margin-bottom: 5px;
+
 }
 
 #extraInstalacaoFibra label {
@@ -156,18 +162,6 @@ footer {
   margin: 0;
 }
 
-/* Estilos para os elementos dentro da div de opções 'opcoesCabeamento' */
-#opcoesCabeamento select {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 10px;
-}
-
-#opcoesCabeamento label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
 
 
 /* Estilos para os elementos dentro da div de opções 'opcoesPersonalizavel' */
@@ -256,4 +250,11 @@ footer {
   /* Adiciona uma barra de rolagem horizontal se necessário */
   margin: 10px 0;
   /* Adiciona um pequeno espaçamento para melhorar a aparência */
+}
+
+.container textarea,
+.container2 textarea {
+  max-width: 100%; /* Impede que o textarea ultrapasse o contêiner */
+  width: 100%;     /* Faz o textarea ocupar 100% do contêiner, sem passar dos limites */
+  resize: vertical; /* Permite redimensionar apenas verticalmente */
 }

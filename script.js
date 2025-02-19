@@ -587,12 +587,12 @@ function gerarTexto() {
   if (problema === 'instalacao') {
     textoIntro = regiaoMkComercial + " - INSTALAÇÃO FIBRA" + '\n' + "(" + horarioMkComercial + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMkComercial + '\n' + '\n';
 
-    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " + metragemCabos + '\n'
+    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " + "Metragem de Cabeamento Disponível: "+ metragemCabos + '\n'
       + "VENC:" + vencimentoFatura + '\n' + "FIAÇÃO:" + fiacao + "\n" + "\n";
 
     let checkboxesMarcados = obterCheckBoxesMarcados();
     if (checkboxesMarcados.length > 0) {
-      texto += "**CIENTE SOBRE " + checkboxesMarcados.join(" / ") + "**" + '\n'; // Adicionando espaçamento correto
+      texto += "**" + checkboxesMarcados.join(" / ") + "**" + '\n'; // Adicionando espaçamento correto
     }
 
     texto += "**CONTRATO " + contrato + "**" + '\n';
