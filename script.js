@@ -250,6 +250,8 @@ function limitarTexto(texto, limite) {
 
 function gerarTexto() {
 
+  var valorElemento = obterValorElemento('idDoElemento');
+
   /* sem */
   const regiaoMk = obterValorElemento('regiao');
   const horarioMk = obterValorElemento('horario');
@@ -344,14 +346,30 @@ function gerarTexto() {
   const refMk7 = obterValorElemento('ref7');
   const localMk7 = obterValorElemento('local7');
 
+  /* instalacao */
+  const regiaoMkComercial = obterValorElemento('regiaoComercial');
+  const horarioMkComercial = obterValorElemento('horarioComercial');
+  const solicitanteMkComercial = obterValorElemento('solicitanteComercial');
+  const extraInstalacaoFibra = obterValorElemento('extraInstalacaoFibra');
+  const nomeAtendente = obterValorElemento('nomeAtendente');
+  const planoCliente = obterValorElemento('planoCliente');
+  const cobrancaInstalacao = obterValorElemento('cobrancaInstalacao');
+  const tipoRoteador = obterValorElemento('roteador');
+  const appsCortesia = obterValorElemento('appsCortesia');
+  const metragemCabos = obterValorElemento('metragemCabos');
+  const vencimentoFatura = obterValorElemento('vencimentoFatura');
+  const fiacao = obterValorElemento('fiacao');
+  const clienteCiente = obterValorElemento('clienteCiente');
+  const contrato = obterValorElemento('contrato');
+  const telefoneMkComercial = obterValorElemento('telefoneComercial');
+  const refMkComercial = obterValorElemento('refComercial');
+  const localMkComercial = obterValorElemento('localComercial');
+
   let textoIntro = "";
   let textoGerado = "";
   let textoLocal = "";
   let texto = "";
   let telefone = "";
-
-
-
 
   //SEM INTERNET
   if (problema === 'semInternet') {
@@ -551,13 +569,46 @@ function gerarTexto() {
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
 
   }
+  //INSTALACAO
+  // Função para pegar os valores dos checkboxes marcados
+  function obterCheckBoxesMarcados() {
+    let checkboxes = document.querySelectorAll('.clienteCiente');
+    let valoresMarcados = [];
+
+    checkboxes.forEach(function (checkbox) {
+      if (checkbox.checked) {
+        valoresMarcados.push(checkbox.value); // Adiciona o valor ao array
+      }
+    });
+
+    return valoresMarcados;
+  }
+
+  if (problema === 'instalacao') {
+    textoIntro = regiaoMkComercial + " - INSTALAÇÃO FIBRA" + '\n' + "(" + horarioMkComercial + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMkComercial + '\n' + '\n';
+
+    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n"+ appsCortesia + " + " + metragemCabos + '\n'
+      + "VENC:" + vencimentoFatura + '\n' + "FIAÇÃO:" + fiacao + "\n" + "\n";
+
+    let checkboxesMarcados = obterCheckBoxesMarcados();
+    if (checkboxesMarcados.length > 0) {
+      texto += "**CIENTE SOBRE " + checkboxesMarcados.join(" / ") + "**" + '\n'; // Adicionando espaçamento correto
+    }
+
+    texto += "**CONTRATO " + contrato + "**" + '\n';
+
+    telefone = '\n' + "CONTATO: " + telefoneMkComercial + '\n' + '\n' + refMkComercial + '\n';
+    textoLocal = localMkComercial;
+
+    textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + telefone.toUpperCase() + textoLocal.toUpperCase();
+  }
 
   //CABEAMENTO
   if (problema === 'cabeamento') {
 
-    const cienteMk = document.getElementById("ciente").checked 
-    ? document.getElementById("ciente").value 
-    : "";
+    const cienteMk = document.getElementById("ciente").checked
+      ? document.getElementById("ciente").value
+      : "";
 
     textoIntro = regiaoMk7 + " - CABEAMENTO" + '\n' + "(" + horarioMk7 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk7 + '\n' + '\n';
     textoLocal = localMk7;
@@ -571,9 +622,9 @@ function gerarTexto() {
     }
 
     if (cienteMk) {
-      texto += '\n' + cienteMk + " - COBRAR 2,50 O METRO DO CABO  + 50,00 A HORA TÉCNICA. " +'\n';
+      texto += '\n' + cienteMk + " - COBRAR 2,50 O METRO DO CABO  + 50,00 A HORA TÉCNICA. " + '\n';
     }
-    
+
 
     if (pagamentoMk) {
       texto += '\n' + pagamentoMk + '.' + '\n';
@@ -587,7 +638,19 @@ function gerarTexto() {
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
   }
 
-  const textoLimitado = limitarTexto(textoGerado, 47);
+  function obterValorElemento(elementoId) {
+    var elemento = document.getElementById(elementoId);
+
+    // Verifique se o elemento existe
+    if (elemento) {
+      return elemento.value; // Só tenta acessar o valor se o elemento for encontrado
+    } else {
+      console.error('Elemento com id ' + elementoId + ' não encontrado.');
+      return ''; // Retorna um valor padrão ou vazio se o elemento não for encontrado
+    }
+  }
+
+  const textoLimitado = limitarTexto(textoGerado, 55);
 
   // Atualiza o elemento de texto com o resultado
   document.getElementById('textoGerado').textContent = textoLimitado;
@@ -612,6 +675,8 @@ function adicionarEventoProblema() {
     esconderElemento(opcoesInternetCaindo);
     esconderElemento(opcoesSinalAlto);
     esconderElemento(opcoesTvTacDefeito);
+    esconderElemento(opcoesInstalacao);
+    esconderElemento(opcoesCabeamento);
 
     // Verifica o problema selecionado e mostra as opções correspondentes
     if (problemaSelect.value === 'semInternet') {
@@ -713,6 +778,30 @@ function adicionarEventoProblema() {
       mostrarElemento(telefoneMk7);
       mostrarElemento(refMk7);
       mostrarElemento(localMk7);
+
+    } else if (problemaSelect.value === 'instalacao') {
+      mostrarElemento(opcoesInstalacao);
+      mostrarElemento(regiaoComercial);
+      mostrarElemento(horarioComercial);
+      mostrarElemento(solicitanteComercial)
+      mostrarElemento(extraInstalacaoFibra);
+      mostrarElemento(nomeAtendente);
+      mostrarElemento(planoCliente);
+      mostrarElemento(cobrancaInstalacao);
+      mostrarElemento(tipoRoteador);
+      mostrarElemento(appsCortesia);
+      mostrarElemento(metragemCabos);
+      mostrarElemento(vencimentoFatura);
+      mostrarElemento(fiacao);
+      // Aqui, encontramos todos os checkboxes e mostramos cada um deles individualmente
+      let checkboxes = document.querySelectorAll('.clienteCiente');
+      checkboxes.forEach(function (checkbox) {
+        mostrarElemento(checkbox); // Agora, mostramos o próprio elemento checkbox
+      });
+      mostrarElemento(contrato);
+      mostrarElemento(telefoneComercial);
+      mostrarElemento(refComercial);
+      mostrarElemento(localComercial);
     }
   });
 }
