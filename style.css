@@ -13,7 +13,7 @@ h1 {
 }
 
 .destaque {
-  font-size: 0.8em; 
+  font-size: 0.8em;
   font-style: italic;
   color: #45a049;
 }
@@ -113,9 +113,12 @@ footer {
 }
 
 #opcoesSemInternet {
-  padding: 5px; /* Reduz o preenchimento interno */
-  margin: 5px 0; /* Reduz a margem superior e inferior */
-  font-size: 12px; /* Fonte menor */
+  padding: 5px;
+  /* Reduz o preenchimento interno */
+  margin: 5px 0;
+  /* Reduz a margem superior e inferior */
+  font-size: 12px;
+  /* Fonte menor */
 }
 
 #opcoesSemInternet select,
@@ -129,6 +132,7 @@ footer {
   font-weight: normal;
   margin-bottom: 3px;
 }
+
 #extraInstalacaoFibra label {
   font-weight: bold;
   margin-bottom: 5px;
@@ -151,13 +155,6 @@ footer {
   font-weight: normal;
   margin: 0;
 }
-
-
-
-
-
-
-
 
 /* Estilos para os elementos dentro da div de opções 'opcoesCabeamento' */
 #opcoesCabeamento select {

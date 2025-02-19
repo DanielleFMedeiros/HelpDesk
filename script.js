@@ -587,7 +587,7 @@ function gerarTexto() {
   if (problema === 'instalacao') {
     textoIntro = regiaoMkComercial + " - INSTALAÇÃO FIBRA" + '\n' + "(" + horarioMkComercial + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMkComercial + '\n' + '\n';
 
-    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n"+ appsCortesia + " + " + metragemCabos + '\n'
+    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " + metragemCabos + '\n'
       + "VENC:" + vencimentoFatura + '\n' + "FIAÇÃO:" + fiacao + "\n" + "\n";
 
     let checkboxesMarcados = obterCheckBoxesMarcados();
