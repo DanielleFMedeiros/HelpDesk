@@ -112,6 +112,52 @@ footer {
   display: none;
 }
 
+#opcoesSemInternet {
+  padding: 5px; /* Reduz o preenchimento interno */
+  margin: 5px 0; /* Reduz a margem superior e inferior */
+  font-size: 12px; /* Fonte menor */
+}
+
+#opcoesSemInternet select,
+#opcoesSemInternet input {
+  padding: 5px;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+#opcoesSemInternet label {
+  font-weight: normal;
+  margin-bottom: 3px;
+}
+#extraInstalacaoFibra label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+#extraInstalacaoFibra div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+#extraInstalacaoFibra input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+#extraInstalacaoFibra div label {
+  font-weight: normal;
+  margin: 0;
+}
+
+
+
+
+
+
+
 
 /* Estilos para os elementos dentro da div de opções 'opcoesCabeamento' */
 #opcoesCabeamento select {
@@ -214,4 +260,3 @@ footer {
   margin: 10px 0;
   /* Adiciona um pequeno espaçamento para melhorar a aparência */
 }
-

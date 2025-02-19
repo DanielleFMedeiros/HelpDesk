@@ -676,6 +676,7 @@ function adicionarEventoProblema() {
     esconderElemento(opcoesSinalAlto);
     esconderElemento(opcoesTvTacDefeito);
     esconderElemento(opcoesInstalacao);
+    esconderElemento(extraInstalacaoFibra);
     esconderElemento(opcoesCabeamento);
 
     // Verifica o problema selecionado e mostra as opções correspondentes
