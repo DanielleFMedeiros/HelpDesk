@@ -354,7 +354,7 @@ function gerarTexto() {
   const nomeAtendente = obterValorElemento('nomeAtendente');
   const planoCliente = obterValorElemento('planoCliente');
   const cobrancaInstalacao = obterValorElemento('cobrancaInstalacao');
-  const tipoRoteador = obterValorElemento('roteador');
+  const tipoRoteador = obterValorElemento('tipoRoteador');
   const appsCortesia = obterValorElemento('appsCortesia');
   const metragemCabos = obterValorElemento('metragemCabos');
   const vencimentoFatura = obterValorElemento('vencimentoFatura');
