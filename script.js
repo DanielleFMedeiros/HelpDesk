@@ -265,7 +265,6 @@ function gerarTexto() {
   const procedimentoCompleto = obterValorElemento('procedimentoCompleto');
   const tipoCliente = obterValorElemento('tipoCliente');
   const cabosConectados = obterValorElemento('cabosConectados');
-  const tempoOffline = obterValorElemento('tempo');
   const extras = obterValorElemento('extras');
   const telefoneMk = obterValorElemento('telefone');
   const refMk = obterValorElemento('ref');
@@ -392,15 +391,7 @@ function gerarTexto() {
       texto += "CABOS ESTAVAM MAL CONECTADOS. ";
     }
 
-    if (tempoOffline) {
-      if (tipoCliente) {
-        texto += ` CLIENTE É ${tipoCliente.toUpperCase()}. `;
-      } else if (tipoCliente) {
-        texto += ` CLIENTE É ${tipoCliente.toUpperCase()}. `;
-      }
-      texto += "ESTÁ OFFLINE NO SISTEMA DESDE: " + tempoOffline + ". " + extras + ". ";
-    }
-
+    texto+= extras + ". ";
     telefone = '\n' + telefoneMk + '\n' + refMk;
     textoLocal = localMk;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
@@ -672,7 +663,6 @@ function adicionarEventoProblema() {
     esconderElemento(opcoesLedVermelhoSim);
     esconderElemento(opcoesProcedimentoSim);
     esconderElemento(opcoesLedVermelhoNao);
-    esconderElemento(tempoMk);
     esconderElemento(extrasc);
     esconderElemento(opcoesInternetLenta);
     esconderElemento(opcoesInternetCaindo);
@@ -692,7 +682,6 @@ function adicionarEventoProblema() {
       mostrarElemento(opcoesLedVermelhoSim);
       mostrarElemento(opcoesProcedimentoSim);
       mostrarElemento(opcoesLedVermelhoNao);
-      mostrarElemento(tempoMk);
       mostrarElemento(extrasc);
       mostrarElemento(telefoneMk);
       mostrarElemento(refMk);
