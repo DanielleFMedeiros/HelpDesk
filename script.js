@@ -39,6 +39,11 @@ function abrirLink() {
   window.open(link, "_blank");
 }
 
+function abrirLink1() {
+  var link = "https://faq.tactelecom.com.br/bibliotecas/comercial/";
+  window.open(link, "_blank");
+}
+
 function copiarParaAreaTransferencia(texto) {
   const tempInput = document.createElement("textarea");
   tempInput.value = texto;
@@ -348,8 +353,6 @@ function gerarTexto() {
 
   /* instalacao */
   const regiaoMkComercial = obterValorElemento('regiaoComercial');
-  const horarioMkComercial = obterValorElemento('horarioComercial');
-  const solicitanteMkComercial = obterValorElemento('solicitanteComercial');
   const extraInstalacaoFibra = obterValorElemento('extraInstalacaoFibra');
   const nomeAtendente = obterValorElemento('nomeAtendente');
   const planoCliente = obterValorElemento('planoCliente');
@@ -585,7 +588,7 @@ function gerarTexto() {
   }
 
   if (problema === 'instalacao') {
-    textoIntro = regiaoMkComercial + " - INSTALAÇÃO FIBRA" + '\n' + "(" + horarioMkComercial + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMkComercial + '\n' + '\n';
+    textoIntro = regiaoMkComercial + " - INSTALAÇÃO FIBRA" + '\n' + '\n';
 
     texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " + "Metragem de Cabeamento Disponível: "+ metragemCabos + '\n'
       + "VENC:" + vencimentoFatura + '\n' + "FIAÇÃO:" + fiacao + "\n" + "\n";
@@ -783,8 +786,6 @@ function adicionarEventoProblema() {
     } else if (problemaSelect.value === 'instalacao') {
       mostrarElemento(opcoesInstalacao);
       mostrarElemento(regiaoComercial);
-      mostrarElemento(horarioComercial);
-      mostrarElemento(solicitanteComercial)
       mostrarElemento(extraInstalacaoFibra);
       mostrarElemento(nomeAtendente);
       mostrarElemento(planoCliente);

@@ -17,8 +17,11 @@
     <div class="containers-row">
       <div class="container">
         <h1 class="">TAC helpdesk</h1>
-        <button class="" onclick="abrirLink()">DRIVE SUPORTE!!!</button>
+        <button class="" onclick="abrirLink()">DRIVE SUPORTE</button>
+        <button class="" onclick="abrirLink1()">FAQ COMERCIAL</button>
       </div>
+
+
 
       <div class="container">
         <h2>Formatador de CPF</h2>
@@ -75,7 +78,7 @@
               <option value="internetCaindo">INTERNET CAINDO</option>
               <option value="sinalAlto">SINAL ALTO</option>
               <option value="tvTac">TV TAC COM DEFEITO</option>
-              <option value="instalacao">INSTALAÇÃO</option>
+              <option value="instalacao">INST. FIBRA - PEDIDO</option>
               <option value="cabeamento">CABEAMENTO</option>
 
             </select>
@@ -578,18 +581,6 @@
               <input type="text" id="regiaoComercial" name="regiaoComercial" placeholder="Ex: Jaguaruna, centro">
             </div>
 
-            <div>
-              <label for="horarioComercial">Restrição de horário:</label>
-              <input type="text" id="horarioComercial" name="horarioComercial"
-                placeholder="Ex: segunda-feira período da manhã">
-            </div>
-
-            <div>
-              <label for="solicitanteComercial">Solicitante:</label>
-              <input type="text" id="solicitanteComercial" name="solicitanteComercial"
-                placeholder="Nome de quem solicitou a o.s">
-            </div>
-
             <div id="extraInstalacaoFibra">
               <label for="nomeAtendente">Nome da Atendente:</label>
               <input type="text" id="nomeAtendente" name="nomeAtendente" placeholder="Nome da atendente">
@@ -598,7 +589,8 @@
               <input type="text" id="planoCliente" name="planoCliente" placeholder="Ex: 1000MB 199,90">
 
               <label for="cobrancaInstalacao">Cobrança de Instalação:</label>
-              <input type="text" id="cobrancaInstalacao" name="cobrancaInstalacao" placeholder="Gratuita ou Valor">
+              <p class="insta">Instalação grátis ou paga, com informação da forma de cobrança e valor.</p>
+              <input type="text" id="cobrancaInstalacao" name="cobrancaInstalacao" placeholder="Gratuita ou Valor + forma de pagamento">
 
               <label for="tipoRoteador">Roteador:</label>
               <select id="tipoRoteador" name="roteador">
@@ -613,12 +605,17 @@
               <input type="text" id="metragemCabos" name="metragemCabos" placeholder="Ex: 2 cabos de até 15m">
 
               <label for="vencimentoFatura">Dia de Vencimento da Fatura:</label>
-              <input type="text" id="vencimentoFatura" name="vencimentoFatura" placeholder="Ex: 30">
-
+              <select id="vencimentoFatura" name="vencimentoFatura">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+              </select>
+              </br>
               <label for="fiacao">Fiação:</label>
               <select id="fiacao" name="fiacao">
                 <option value="aerea">Aérea</option>
                 <option value="subterranea">Subterrânea</option>
+                <option value="mista">Mista</option>
               </select>
               </br>
               <label>Cliente está ciente sobre:</label>
@@ -633,6 +630,11 @@
                 <label for="filtroLinha">Filtro de Linha</label>
               </div>
               <div>
+                <input type="checkbox" id="tomada" name="clienteCiente" class="clienteCiente"
+                  value="Ciente sobre tomadas separadas">
+                <label for="tomada">Tomadas Separadas</label>
+              </div>
+              <div>
                 <input type="checkbox" id="caboExcedente" name="clienteCiente" class="clienteCiente"
                   value="Ciente sobre o cabo excedente">
                 <label for="caboExcedente">Cabo Excedente</label>
@@ -642,6 +644,13 @@
                   value="Não sabe se já tem fibra passada">
                 <label for="fibraPassada">Não sabe se tem fibra passada</label>
               </div>
+
+              <div>
+                <input type="checkbox" id="jafibraPassada" name="clienteCiente" class="clienteCiente"
+                  value="Já tem fibra passada">
+                <label for="jafibraPassada">Tem fibra passada</label>
+              </div>
+
 
               <label for="contrato">Contrato:</label>
               <select id="contrato" name="contrato">

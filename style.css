@@ -126,6 +126,11 @@ footer {
   margin-bottom: 5px;
 }
 
+.insta{
+  font-size: 10px;
+  margin-top: 1px;
+}
+
 /* Estilos para os elementos dentro da div de opções 'opcoesInstalacao' */
 #opcoesInstalacao select {
   width: 50%;
