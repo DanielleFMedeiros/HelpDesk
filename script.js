@@ -351,7 +351,6 @@ function gerarTexto() {
   const localMk7 = obterValorElemento('local7');
 
   /* instalacao */
-  const regiaoMkComercial = obterValorElemento('regiaoComercial');
   const extraInstalacaoFibra = obterValorElemento('extraInstalacaoFibra');
   const nomeAtendente = obterValorElemento('nomeAtendente');
   const planoCliente = obterValorElemento('planoCliente');
@@ -579,7 +578,6 @@ function gerarTexto() {
   }
 
   if (problema === 'instalacao') {
-    textoIntro = regiaoMkComercial + " - INSTALAÇÃO FIBRA" + '\n' + '\n';
 
     texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " + "Metragem de Cabeamento Disponível: "+ metragemCabos + '\n'
       + "VENC:" + vencimentoFatura + '\n' + "FIAÇÃO:" + fiacao + "\n" + "\n";
@@ -594,7 +592,7 @@ function gerarTexto() {
     telefone = '\n' + "CONTATO: " + telefoneMkComercial + '\n' + '\n' + refMkComercial + '\n';
     textoLocal = localMkComercial;
 
-    textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + telefone.toUpperCase() + textoLocal.toUpperCase();
+    textoGerado =  texto.toUpperCase() + telefone.toUpperCase() + textoLocal.toUpperCase();
   }
 
   //CABEAMENTO
@@ -774,7 +772,6 @@ function adicionarEventoProblema() {
 
     } else if (problemaSelect.value === 'instalacao') {
       mostrarElemento(opcoesInstalacao);
-      mostrarElemento(regiaoComercial);
       mostrarElemento(extraInstalacaoFibra);
       mostrarElemento(nomeAtendente);
       mostrarElemento(planoCliente);
