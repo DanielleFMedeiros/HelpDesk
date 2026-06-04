@@ -263,7 +263,6 @@ function gerarTexto() {
   const solicitanteMk = obterValorElemento('solicitante');
   const ledVermelho = obterValorElemento('ledVermelho');
   const procedimentoCompleto = obterValorElemento('procedimentoCompleto');
-  const tipoCliente = obterValorElemento('tipoCliente');
   const cabosConectados = obterValorElemento('cabosConectados');
   const extras = obterValorElemento('extras');
   const telefoneMk = obterValorElemento('telefone');
@@ -302,7 +301,6 @@ function gerarTexto() {
   const procedimentoCompletoCaindo = obterValorElemento('procedimentoCompletoCaindo');
   const quedas = obterValorElemento('quedas');
   const tipo = obterValorElemento('tipo');
-  const tipoCliente1 = obterValorElemento('tipoCliente1');
   const cabosConectadosDiv1 = obterValorElemento('cabosConectadosDiv1');
   const dispositivosDiv1 = obterValorElemento('dispositivos1');
   const sinalDiv1 = obterValorElemento('sinal1');
@@ -317,7 +315,6 @@ function gerarTexto() {
   const solicitanteMk5 = obterValorElemento('solicitante5');
   const quedas5 = obterValorElemento('quedas5');
   const tipo5 = obterValorElemento('tipo5');
-  const tipoCliente5 = obterValorElemento('tipoCliente5');
   const sinalDiv5 = obterValorElemento('sinal5');
   const extras5 = obterValorElemento('extras5');
   const telefoneMk5 = obterValorElemento('telefone5');
@@ -467,12 +464,6 @@ function gerarTexto() {
       texto += "NÃO APRESENTAM QUEDAS NO SISTEMA. ";
     }
 
-    if (tipoCliente1 === 'epon') {
-      texto += ` CLIENTE É ${tipoCliente1.toUpperCase()}. `;
-    } else if (tipoCliente1 === 'gpon') {
-      texto += ` CLIENTE É ${tipoCliente1.toUpperCase()}. `;
-    }
-
     texto += "Há QUEDAS EM: " + dispositivosDiv1 + ". ";
 
     textoLocal = localMk3;
@@ -492,12 +483,6 @@ function gerarTexto() {
       texto += "APRESENTAM QUEDAS SIGNIFICATIVAS NO SISTEMA. ";
     } else if (quedas5 === 'nao') {
       texto += "NÃO APRESENTAM QUEDAS NO SISTEMA. ";
-    }
-
-    if (tipoCliente5 === 'epon') {
-      texto += ` CLIENTE É ${tipoCliente5.toUpperCase()}. `;
-    } else if (tipoCliente5 === 'gpon') {
-      texto += ` CLIENTE É ${tipoCliente5.toUpperCase()}. `;
     }
 
     textoLocal = localMk5;
@@ -719,7 +704,6 @@ function adicionarEventoProblema() {
       mostrarElemento(procedimentoCompletoCaindo);
       mostrarElemento(conectadoCabo1);
       mostrarElemento(tipo);
-      mostrarElemento(tipoCliente1);
       mostrarElemento(quedas);
       mostrarElemento(dispositivosDiv1);
       mostrarElemento(sinalDiv1);
@@ -734,7 +718,6 @@ function adicionarEventoProblema() {
       mostrarElemento(horarioMk5);
       mostrarElemento(solicitanteMk5)
       mostrarElemento(tipo5);
-      mostrarElemento(tipoCliente5);
       mostrarElemento(quedas5);
       mostrarElemento(sinalDiv5);
       mostrarElemento(extrasc5);
