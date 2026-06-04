@@ -638,7 +638,6 @@ function adicionarEventoProblema() {
     esconderElemento(opcoesPersonalizavel);
     esconderElemento(opcoesLedVermelhoSim);
     esconderElemento(opcoesLedVermelhoNao);
-    esconderElemento(opcoesProcedimentoSim);
     esconderElemento(extrasc);
     esconderElemento(opcoesInternetLenta);
     esconderElemento(opcoesInternetCaindo);
