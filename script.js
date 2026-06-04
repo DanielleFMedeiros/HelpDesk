@@ -832,7 +832,7 @@ function gerarA() {
 
   if (problema2 === 'personalizationA') {
     const textoComeco = "Tratado com: " + cliente + '.' + '\n' + "Telefone: " + contato + '.' + '\n' + "Plano, roteador e sinal: " + plano + '.' + '\n';
-    const textomeio = "Relato: " + relato + '\n' + "Alterações realizadas: " + alteracoes + '.' + '\n';
+    const textomeio = "Relato: " + relato + '\n' + '\n' + "Alterações realizadas: " + alteracoes + '.' + '\n'; 
     const textoadd = extrasate ? "Informações importantes: " + extrasate + '.' : "";
 
     textoGerado2 = textoComeco + '\n' + textomeio + '\n' + textoadd;
