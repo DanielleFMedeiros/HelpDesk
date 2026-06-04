@@ -222,11 +222,6 @@ function obterValorElemento(id) {
   return document.getElementById(id).value;
 }
 
-function obterElementosSelecionados(tipo) {
-  const checkboxes = document.querySelectorAll(`input[name=${tipo}]:checked`);
-  return Array.from(checkboxes).map(checkbox => checkbox.value);
-}
-
 function limitarTextoComQuebras(texto, limite) {
   return texto
     .split('\n') // Divide o texto mantendo as quebras de linha originais
@@ -300,7 +295,6 @@ function gerarTexto() {
   const solicitanteMk3 = obterValorElemento('solicitante3');
   const procedimentoCompletoCaindo = obterValorElemento('procedimentoCompletoCaindo');
   const quedas = obterValorElemento('quedas');
-  const tipo = obterValorElemento('tipo');
   const cabosConectadosDiv1 = obterValorElemento('cabosConectadosDiv1');
   const dispositivosDiv1 = obterValorElemento('dispositivos1');
   const sinalDiv1 = obterValorElemento('sinal1');
@@ -314,7 +308,6 @@ function gerarTexto() {
   const horarioMk5 = obterValorElemento('horario5');
   const solicitanteMk5 = obterValorElemento('solicitante5');
   const quedas5 = obterValorElemento('quedas5');
-  const tipo5 = obterValorElemento('tipo5');
   const sinalDiv5 = obterValorElemento('sinal5');
   const extras5 = obterValorElemento('extras5');
   const telefoneMk5 = obterValorElemento('telefone5');
@@ -703,7 +696,6 @@ function adicionarEventoProblema() {
       mostrarElemento(solicitanteMk3)
       mostrarElemento(procedimentoCompletoCaindo);
       mostrarElemento(conectadoCabo1);
-      mostrarElemento(tipo);
       mostrarElemento(quedas);
       mostrarElemento(dispositivosDiv1);
       mostrarElemento(sinalDiv1);
@@ -717,7 +709,6 @@ function adicionarEventoProblema() {
       mostrarElemento(regiaoMk5);
       mostrarElemento(horarioMk5);
       mostrarElemento(solicitanteMk5)
-      mostrarElemento(tipo5);
       mostrarElemento(quedas5);
       mostrarElemento(sinalDiv5);
       mostrarElemento(extrasc5);
