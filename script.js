@@ -637,7 +637,6 @@ function adicionarEventoProblema() {
     esconderElemento(opcoesSemInternet);
     esconderElemento(opcoesPersonalizavel);
     esconderElemento(opcoesLedVermelhoSim);
-    esconderElemento(opcoesProcedimentoSim);
     esconderElemento(opcoesLedVermelhoNao);
     esconderElemento(extrasc);
     esconderElemento(opcoesInternetLenta);
@@ -656,7 +655,6 @@ function adicionarEventoProblema() {
       mostrarElemento(solicitanteMk)
       mostrarElemento(ledVermelho1)
       mostrarElemento(opcoesLedVermelhoSim);
-      mostrarElemento(opcoesProcedimentoSim);
       mostrarElemento(opcoesLedVermelhoNao);
       mostrarElemento(extrasc);
       mostrarElemento(telefoneMk);
