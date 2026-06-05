@@ -320,7 +320,6 @@ function gerarTexto() {
   const procedimentoCompletoTv4 = obterValorElemento('procedimentoCompletoTv4');
   const cabosConectadosDiv4 = obterValorElemento('cabosConectadosDiv4');
   const minimiza = obterValorElemento('minimiza4');
-  const tvCabeadaDiv4 = obterValorElemento('tvCabeadaDiv4');
   const extras4 = obterValorElemento('extras4');
   const telefoneMk4 = obterValorElemento('telefone4');
   const refMk4 = obterValorElemento('ref4');
@@ -500,12 +499,6 @@ function gerarTexto() {
       texto += "TV ESTÁ MINIMIZANDO A TELA. ";
     } else if (minimiza === 'nao') {
       texto += "TV NÃO ESTÁ MINIMIZANDO A TELA. ";
-    }
-
-    if (tvCabeadaDiv4 === 'sim') {
-      texto += "TV É CABEADA. ";
-    } else if (tvCabeadaDiv4 === 'nao') {
-      texto += "TV NÃO É CABEADA. ";
     }
 
     //CABEAMENTO
@@ -714,7 +707,6 @@ function adicionarEventoProblema() {
       mostrarElemento(procedimentoCompletoTv4);
       mostrarElemento(conectadoCabo4);
       mostrarElemento(minimiza);
-      mostrarElemento(tvCabeada4);
       mostrarElemento(extrasc4);
       mostrarElemento(telefoneMk4);
       mostrarElemento(refMk4);
