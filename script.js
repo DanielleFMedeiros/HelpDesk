@@ -834,7 +834,7 @@ function gerarA() {
     const textomeio = "Relato: " + relato + '\n' + '\n' + "Alterações realizadas: " + alteracoes + '.' + '\n'; 
     const textoadd = extrasate ? "Informações importantes: " + extrasate + '.' : "";
 
-    textoGerado2 = textoComeco + '\n' + textomeio + '\n' + textoadd;
+    textoGerado2 = (textoComeco + '\n' + textomeio + '\n' + textoadd).toUpperCase();
   }
 
   const botaoCopiarTexto = document.getElementById('copiarA');
