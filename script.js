@@ -280,7 +280,6 @@ function gerarTexto() {
   const horarioMk2 = obterValorElemento('horario2');
   const solicitanteMk2 = obterValorElemento('solicitante2');
   const procedimentoCompletoLento = obterValorElemento('procedimentoCompletoLento');
-  const cabosConectadosDiv = obterValorElemento('cabosConectadosDiv');
   const dispositivosDiv = obterValorElemento('dispositivos');
   const tvCabeadaDiv = obterValorElemento('tvCabeadaDiv');
   const sinalDiv = obterValorElemento('sinal');
@@ -410,12 +409,6 @@ function gerarTexto() {
       texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR ROTEADOR. ";
     } else if (procedimentoCompletoLento === 'sim') {
       texto += "REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR ROTEADOR. ";
-    }
-
-    if (cabosConectadosDiv === 'sim') {
-      texto += "CABOS ESTÃO BEM CONECTADOS. ";
-    } else if (cabosConectadosDiv === 'nao') {
-      texto += "CABOS ESTÃO MAL CONECTADOS. ";
     }
 
     texto += "APRESENTA LENTIDÃO EM: " + dispositivosDiv + ". ";
@@ -678,7 +671,6 @@ function adicionarEventoProblema() {
       mostrarElemento(horarioMk2);
       mostrarElemento(solicitanteMk2)
       mostrarElemento(procedimentoCompletoLento);
-      mostrarElemento(conectadoCabo);
       mostrarElemento(dispositivosDiv);
       mostrarElemento(tvCabeada);
       mostrarElemento(sinalDiv);
