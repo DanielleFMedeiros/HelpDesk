@@ -54,7 +54,7 @@ function copiarParaAreaTransferencia(texto) {
   alert("Texto copiado para a área de transferência: " + texto);
 }
 
-//DMVIEW
+/*//DMVIEW
 function formatar_nome() {
   var nomeOriginal = document.getElementById("macInput").value;
   if (nomeOriginal.trim() === "") {
@@ -69,7 +69,7 @@ function copiarResultadoNome() {
   let resultadoNome = document.getElementById("nomeResultado").textContent;
   copiarParaAreaTransferencia(resultadoNome);
 }
-
+*/
 //MAC
 function verificarMac() {
   // Obter o valor do input
