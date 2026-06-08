@@ -679,13 +679,15 @@
               <label for="celular">Telefone: </label> 
               <input type="text" id="celular" name="celular" placeholder="Ex: (48) 3660-0800"> 
             </div> 
-              <label for="origem">Origem do contato:</label> 
-            <select id="divorigem" name="origem"> 
-              <option value="Whatsapp">Whatsapp</option> 
-              <option value="Presencial">Presencial</option> 
-              <option value="Telefônico">Telefônico</option> 
-              <option value="Redes sociais">Redes sociais</option> 
-            </select> 
+              <div id="divorigem" class="opcoes hidden">
+                <label for="origem">Origem do contato:</label>
+                <select id="origem" name="origem">
+                  <option value="Whatsapp">Whatsapp</option>
+                  <option value="Presencial">Presencial</option>
+                  <option value="Telefônico">Telefônico</option>
+                  <option value="Redes sociais">Redes sociais</option>
+                </select>
+              </div>
             <label>Motivo:</label> 
             <div> 
               <input type="checkbox" id="duasos" name="motivompc" class="motivompc" value="Mais de 2 O.S abertas no mês pelo mesmo motivo ou mais."> 
