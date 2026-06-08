@@ -635,6 +635,8 @@
             <select id="problemaSelect2" name="problemaSelect2">
               <option value="">-- Selecione --</option>
               <option value="personalizationA">PERSONALIZAVEL</option>
+  <option value="mpc">MPC</option>
+
             </select>
           </div>
           <!-- PERSONALIZAVEL -->
@@ -669,8 +671,101 @@
           <button type="button" onclick="gerarA()">Gerar atendimento</button>
           <p id="atendimento"></p>
           <button type="button" id="copiarA" class="hidden">Copiar Texto</button>
-        </form>
-      </div>
+      
+
+<button type="button" id="copiarA" class="hidden">Copiar Texto</button>
+
+<!-- MPC -->
+<div id="opcoesmpc" class="opcoes hidden">
+
+    <div id="cadastros" class="opcoes hidden">
+        <label for="cadastro">Nome do cadastro:</label>
+        <input type="text" id="cadastro" name="cadastro" placeholder="JOSE DA SILVA">
+    </div>
+
+    <div id="divcelular" class="opcoes hidden">
+        <label for="celular">Telefone:</label>
+        <input type="text" id="celular" name="celular" placeholder="Ex: (48) 3660-0800">
+    </div>
+
+    <div id="divorigem" class="opcoes hidden">
+        <label for="origem">Origem do contato:</label>
+        <select id="origem" name="origem">
+            <option value="Whatsapp">Whatsapp</option>
+            <option value="Presencial">Presencial</option>
+            <option value="Telefônico">Telefônico</option>
+            <option value="Redes sociais">Redes sociais</option>
+        </select>
+    </div>
+
+    <label>Motivo:</label>
+
+    <div>
+        <input type="checkbox" id="duasos" name="motivompc" class="motivompc"
+            value="Mais de 2 O.S abertas no mês pelo mesmo motivo ou mais.">
+        <label for="duasos">Mais de 2 O.S abertas no mês pelo mesmo motivo ou mais</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="redessociais" name="motivompc" class="motivompc"
+            value="Reclamação via rede social.">
+        <label for="redessociais">Reclamações via redes sociais, Google, Reclame Aqui, YouTube, LinkedIn, TikTok, etc.</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="duranteatendimento" name="motivompc" class="motivompc"
+            value="Reclamação/insatisfação durante o atendimento.">
+        <label for="duranteatendimento">Reclamação/insatisfação durante o atendimento ou pessoas terceiras</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="cancelamento" name="motivompc" class="motivompc"
+            value="Citou cancelamento.">
+        <label for="cancelamento">Citou cancelamento</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="fidelidade" name="motivompc" class="motivompc"
+            value="Cliente questionou a data de término da fidelidade.">
+        <label for="fidelidade">Cliente questionou a data de término da fidelidade</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="quatroatendimentos" name="motivompc" class="motivompc"
+            value="4 atendimentos abertos em 1 ano (referente a reclamações/manutenções).">
+        <label for="quatroatendimentos">4 atendimentos abertos em 1 ano (referente a reclamações/manutenções)</label>
+    </div>
+
+    <div id="divinfocadastro" class="opcoes hidden">
+        <label for="infocadastro">Plano, roteador e sinal RX / sinal TX:</label>
+        <input type="text" id="infocadastro" name="infocadastro"
+            placeholder="Ex: 650MB, HUAWEI AX3S, RX -25, TX 2.78">
+    </div>
+
+    <div id="divrelatocliente" class="opcoes hidden">
+        <label for="relatocliente">Relato:</label>
+        <input type="text" id="relatocliente" name="relatocliente"
+            placeholder="Relato do cliente">
+    </div>
+
+    <div id="divdesfecho" class="opcoes hidden">
+        <label for="desfecho">Desfecho:</label>
+        <input type="text" id="desfecho" name="desfecho"
+            placeholder="Ex: Foi feito alterações, aberto O.S., cliente está testando, etc.">
+    </div>
+
+    <div id="divplus" class="opcoes hidden">
+        <label for="plus">Adicione mais informações:</label>
+        <input type="text" id="plus" name="plus"
+            placeholder="Adicione mais informações">
+    </div>
+
+    <button type="button" onclick="gerarMpc()">Gerar texto</button>
+    <p id="atendimentompc"></p>
+    <button type="button" id="copiarMpc" class="hidden">Copiar Texto</button>
+
+</form>
+</div>
 
     </div>
 
@@ -724,3 +819,4 @@
 </body>
 
 </html>
+
