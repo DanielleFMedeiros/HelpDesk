@@ -640,6 +640,7 @@
               <option value="">-- Selecione --</option>
               <option value="personalizationA">PERSONALIZAVEL</option>
               <option value="mpc">MPC</option>
+              <!--<option value="poschamado">PÓS-CHAMADO</option> REMOVER--> 
             </select>
           </div>
           <!-- PERSONALIZAVEL -->
@@ -741,7 +742,8 @@
             <div id="divrelatocliente" class="opcoes hidden"> 
               <label for="relatocliente">Relato:</label> 
               <input type="text" id="relatocliente" name="relatocliente" placeholder="Relato do cliente"> 
-            </div> <div id="divdesfecho" class="opcoes hidden"> 
+            </div> 
+            <div id="divdesfecho" class="opcoes hidden"> 
               <label for="desfecho">Desfecho:</label> 
               <input type="text" id="desfecho" name="desfecho" placeholder="Ex: Foi feito x alterações, foi aberto o.s, cliente esta testando, etc "> 
             </div> 
@@ -750,6 +752,70 @@
               <input type="text" id="plus" name="plus" placeholder="Adicione mais informações"> 
             </div> 
           </div> 
+
+<!-- PÓS-CHAMADO 
+          
+           <div id="opcoespos" class="opcoes hidden"> 
+            <div id="cadastros2" class="opcoes hidden"> 
+              <label for="cadastro2">Nome do cadastro: </label> 
+              <input type="text" id="cadastro2" name="cadastro2" placeholder="JOSE DA SILVA"> 
+            </div> 
+            <div id="divcelular2" class="opcoes hidden"> 
+              <label for="celular2">Telefone do cliente: </label> 
+              <input type="text" id="celular2" name="celular2" placeholder="Ex: (48) 3660-0800"> 
+            </div> 
+            <div id="divorigem3" class="opcoes hidden">
+                <label for="origem3">Origem do contato:</label>
+                <select id="origem3" name="origem3">
+                  <option value="">-- Selecione --</option>
+                  <option value="Whatsapp">Whatsapp</option>
+                  <option value="Presencial">Presencial</option>
+                  <option value="Telefônico">Telefônico</option>
+                  <option value="Redes sociais">Redes sociais</option>
+                </select>
+              </div>
+           <div id="divdataultimavisita" class="opcoes hidden"> 
+              <label for="dataultimavisita">Telefone do cliente: </label> 
+              <input type="text" id="dataultimavisita" name="dataultimavisita" placeholder="Dia/Mês/Ano"> 
+            </div> 
+          <div id="divmotivodavisita" class="opcoes hidden">
+            <label for="motivodavisita">Motivo da abertura da O.S.: </label>
+            <input type:"text" id="motivodavisita" name="dataultimavisita" placeholder="Descreva o problema que gerou a visita técnica">
+          </div>
+          <div id="divtecnico" class="opcoes hidden">
+            <label for="tecnico">Nome do técnico que realizou o atendimento: </label>
+            <input type:"text" id="tecnico" name="tecnico" placeholder="Alisson">
+          </div>
+          <div id="divsituacao" class="opcoes hidden">
+            <label for="situacao">Situação: </label>
+            <input type:"text" id="situacao" name="situacao" placeholder="Alisson">
+          </div>
+          <div id="divsituacao" class="opcoes hidden">
+                <label for="situacao">Situação:</label>
+                <p>
+                  Recorrente: Retornou com o mesmo problema da O.S anterior.</br>
+                  Reincidente: Retornou com outro problema diferente da O.S anterior.
+                </p>
+                
+                <select id="situacao" name="situacao">
+                  <option value="">-- Selecione --</option>
+                  <option value="Whatsapp">Recorrente </option>
+                  <option value="Presencial">Reincidente </option>
+                </select>
+              </div>
+          <div id="divrelatocliente2" class="opcoes hidden"> 
+              <label for="relatocliente2">Relato:</label> 
+              <input type="text" id="relatocliente2" name="relatocliente2" placeholder= "Exemplo: Cliente relata que após a visita técnica, a internet continua caindo. Mesmo problema da O.S. anterior."> 
+          </div> 
+           <div id="divplus2" class="opcoes hidden"> 
+              <label for="plus2">Adicione mais informações:</label> 
+              <input type="text" id="plus" name="plus2" placeholder="Adicione mais informações"> 
+            </div> 
+          
+        </div>
+          -->
+          
+          
           <button type="button" onclick="gerarA()">Gerar atendimento</button>
           <p id="atendimento"></p>
           <button type="button" id="copiarA" class="hidden">Copiar Texto</button> 
