@@ -823,7 +823,7 @@ function gerarA() {
 
     const textoComeco =
       "Tratado com: " + cliente + '.' + '\n' +
-      "Telefone: " + contato + '- ' +origem2+"."+ '\n\n' +
+      "Telefone: " + contato + ' - ' +origem2+"."+ '\n\n' +
       "Plano, roteador e sinal: " + plano + '.' + '\n';
 
     const textomeio =
