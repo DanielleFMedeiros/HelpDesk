@@ -826,7 +826,7 @@ function gerarA() {
       "Plano, roteador e sinal: " + plano + '.' + '\n';
 
     const textomeio =
-      "Relato: " + relato + '\n\n' +
+      "Relato: " + relato + '\n' +
       "Alterações realizadas: " + alteracoes + '.' + '\n';
 
     const textoadd =
