@@ -869,8 +869,8 @@ function gerarA() {
       "Motivo: " + motivos.join(' ') + '\n\n';
 
     const textoMeio =
-      "Plano, roteador e sinal: " + infocadastro + '.' + '\n' +
-      "Relato: " + relatocliente + '.' + '\n\n';
+      "Plano, roteador e sinal: " + infocadastro + '.' + '\n\n' +
+      "Relato: " + relatocliente + '.' + '\n';
 
     const textoFim =
       "Desfecho: " + desfecho + '.';
