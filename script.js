@@ -799,9 +799,9 @@ function esconderElemento2(elemento2) {
 }
 
 function obterValorElemento2(id) {
-  return document.getElementById(id).value;
+    const elemento = document.getElementById(id);
+    return elemento ? elemento.value : '';
 }
-
 // PERSONALIZAVEL
 
 function gerarA() {
@@ -893,4 +893,34 @@ function gerarA() {
   document.getElementById('atendimento').textContent = textoGerado2;
 }
 
+problemaSelect2.addEventListener('change', function () {
 
+    const problema = this.value;
+
+    // Esconde tudo primeiro
+    document.querySelectorAll('#formulario1 .opcoes').forEach(el => {
+        el.classList.add('hidden');
+    });
+
+    if (problema === 'personalizationA') {
+
+        document.getElementById('opcoesPersonalizavel1').classList.remove('hidden');
+        document.getElementById('clientes').classList.remove('hidden');
+        document.getElementById('contato').classList.remove('hidden');
+        document.getElementById('plano').classList.remove('hidden');
+        document.getElementById('relato').classList.remove('hidden');
+        document.getElementById('alteracoes').classList.remove('hidden');
+        document.getElementById('extrasate').classList.remove('hidden');
+
+    } else if (problema === 'mpc') {
+
+        document.getElementById('opcoesmpc').classList.remove('hidden');
+        document.getElementById('cadastros').classList.remove('hidden');
+        document.getElementById('divcelular').classList.remove('hidden');
+        document.getElementById('divorigem').classList.remove('hidden');
+        document.getElementById('divinfocadastro').classList.remove('hidden');
+        document.getElementById('divrelatocliente').classList.remove('hidden');
+        document.getElementById('divdesfecho').classList.remove('hidden');
+        document.getElementById('divplus').classList.remove('hidden');
+    }
+});
