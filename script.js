@@ -822,11 +822,11 @@ function gerarA() {
 
     const textoComeco =
       "Tratado com: " + cliente + '.' + '\n' +
-      "Telefone: " + contato + '.' + '\n' +
+      "Telefone: " + contato + '.' + '\n\n' +
       "Plano, roteador e sinal: " + plano + '.' + '\n';
 
     const textomeio =
-      "Relato: " + relato + '\n' +
+      "Relato: " + relato + '\n\n' +
       "Alterações realizadas: " + alteracoes + '.' + '\n';
 
     const textoadd =
