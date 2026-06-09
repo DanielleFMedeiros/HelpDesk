@@ -578,7 +578,7 @@ function gerarTexto() {
     }
 
     if (cienteMk) {
-      texto += '\n' + cienteMk + " - COBRAR 2,50 O METRO DO CABO  + 50,00 A HORA TÉCNICA. " + '\n';
+      texto += '\n' + cienteMk + " - COBRAR 3,00 O METRO DO CABO  + 50,00 A HORA TÉCNICA. " + '\n';
     }
 
 
