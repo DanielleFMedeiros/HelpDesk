@@ -870,7 +870,7 @@ function gerarA() {
 
     const textoMeio =
       "Plano, roteador e sinal: " + infocadastro + '.' + '\n\n' +
-      "Relato: " + relatocliente + '.';
+      "Relato: " + relatocliente + '.' + '\n';
 
     const textoFim =
       "Desfecho: " + desfecho + '.';
