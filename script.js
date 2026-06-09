@@ -904,7 +904,7 @@ function gerarA() {
         const textoComeco =
           "Nome do cadastro: " + cadastro2 + '.' + '\n' +
           "Telefone do cliente: " + celular2 + ' - ' +origem3+"."+ '\n\n' +
-          "Data da última visita:  " + dataultimavisita + '.' + '\n' +
+          "Data da última visita:  " + dataFormatada + '.' + '\n' +
           "Motivo da abertura da O.S.: " +motivodavisita + '.' +'\n';
     
         const textomeio =
@@ -936,6 +936,13 @@ problemaSelect2.addEventListener('change', function () {
     document.querySelectorAll('#formulario1 .opcoes').forEach(el => {
         el.classList.add('hidden');
     });
+
+  //data da ultima visita formatação dia/mes/ano
+  const data = document.getElementById('dataultimavisita').value;
+
+  const dataFormatada = data
+      ? data.split('-').reverse().join('-')
+      : '';
 
     if (problema === 'personalizationA') {
 
