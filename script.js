@@ -886,9 +886,8 @@ function gerarA() {
       textoMeio +
       '\n' +
       textoFim +
-      textoAdd
-    );
-  };
+      textoAdd);
+  }
   // PÓS - CHAMADO
   else if (problema2 === 'poschamado') {
 
