@@ -908,7 +908,7 @@ function gerarA() {
           "Motivo da abertura da O.S.: " +motivodavisita + '.' +'\n';
     
         const textomeio =
-          "Técnico responsável na visita:: " + tecnico + '.' + '\n\n' +
+          "Técnico responsável na visita: " + tecnico + '.' + '\n\n' +
           "Situação: " + situacao + '.' + '\n' +
           "Relato: " + relatocliente2  + '.' + '\n';
     
