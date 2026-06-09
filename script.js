@@ -556,7 +556,7 @@ function gerarTexto() {
     telefone = '\n' + "CONTATO: " + telefoneMkComercial + '\n' + '\n' + refMkComercial + '\n';
     textoLocal = localMkComercial;
 
-    textoGerado =  texto.toUpperCase() + telefone.toUpperCase() + textoLocal.toUpperCase();
+    textoGerado =  texto.toUpperCase() + telefone.toUpperCase() + textoLocal;
   }
 
   //CABEAMENTO
