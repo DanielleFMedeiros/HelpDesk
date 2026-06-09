@@ -842,7 +842,7 @@ function gerarA() {
   }
 
   // MPC
-  else if (problema2 === 'mpc') {
+  else if (problema2 === 'opcoesmpc') {
 
     const cadastro = obterValorElemento2('cadastro');
     const celular = obterValorElemento2('celular');
