@@ -924,3 +924,15 @@ problemaSelect2.addEventListener('change', function () {
         document.getElementById('divplus').classList.remove('hidden');
     }
 });
+
+document.getElementById('copiarA').addEventListener('click', function() {
+    const texto = document.getElementById('atendimento').textContent;
+
+    navigator.clipboard.writeText(texto)
+        .then(() => {
+            alert('Texto copiado!');
+        })
+        .catch(err => {
+            console.error('Erro ao copiar:', err);
+        });
+});
