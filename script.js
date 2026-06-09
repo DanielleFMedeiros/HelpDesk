@@ -900,7 +900,14 @@ function gerarA() {
     const situacao = obterValorElemento2('situacao');
     const relatocliente2 = obterValorElemento2('relatocliente2');
     const plus2 = obterValorElemento2('plus2');
-    
+
+        //data da ultima visita formatação dia/mes/ano
+    const data = document.getElementById('dataultimavisita').value;
+  
+    const dataFormatada = data
+        ? data.split('-').reverse().join('-')
+        : '';
+
         const textoComeco =
           "Nome do cadastro: " + cadastro2 + '.' + '\n' +
           "Telefone do cliente: " + celular2 + ' - ' +origem3+"."+ '\n\n' +
@@ -936,13 +943,6 @@ problemaSelect2.addEventListener('change', function () {
     document.querySelectorAll('#formulario1 .opcoes').forEach(el => {
         el.classList.add('hidden');
     });
-
-  //data da ultima visita formatação dia/mes/ano
-  const data = document.getElementById('dataultimavisita').value;
-
-  const dataFormatada = data
-      ? data.split('-').reverse().join('-')
-      : '';
 
     if (problema === 'personalizationA') {
 
