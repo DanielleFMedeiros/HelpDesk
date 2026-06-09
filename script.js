@@ -824,7 +824,7 @@ function gerarA() {
     const textoComeco =
       "Tratado com: " + cliente + '.' + '\n' +
       "Telefone: " + contato + ' - ' +origem2+"."+ '\n\n' +
-      "Plano, roteador e sinal: " + plano + '.' + '\n';
+      "Plano, roteador, MAC e sinal: " + plano + '.' + '\n';
 
     const textomeio =
       "Relato: " + relato + '.' + '\n\n' +
@@ -870,7 +870,7 @@ function gerarA() {
       "Motivo: *" + motivos.join(' ') + "*" +'\n\n';
 
     const textoMeio =
-      "Plano, roteador e sinal: " + infocadastro + '.' + '\n\n' +
+      "Plano, roteador, MAC e sinal: " + infocadastro + '.' + '\n\n' +
       "Relato: " + relatocliente + '.' + '\n';
 
     const textoFim =
@@ -887,8 +887,43 @@ function gerarA() {
       '\n' +
       textoFim +
       textoAdd
-    ).toUpperCase();
-  }
+    );
+  };
+  // PÓS - CHAMADO
+  else if (problema2 === 'poschamado') {
+
+    const cadastro2 = obterValorElemento2('cadastro2');
+    const celular2 = obterValorElemento2('celular2');
+    const origem3 = obterValorElemento2('origem3');
+    const dataultimavisita = obterValorElemento2('dataultimavisita');
+    const motivodavisita = obterValorElemento2('motivodavisita');
+    const tecnico = obterValorElemento2('tecnico');
+    const situacao = obterValorElemento2('situacao');
+    const relatocliente2 = obterValorElemento2('relatocliente2');
+    const plus2 = obterValorElemento2('plus2');
+    
+        const textoComeco =
+          "Nome do cadastro: " + cadastro2 + '.' + '\n' +
+          "Telefone do cliente: " + celular2 + ' - ' +origem3+"."+ '\n\n' +
+          "Data da última visita:  " + dataultimavisita + '.' + '\n' +
+          "Motivo da abertura da O.S.: " +motivodavisita + '.' +'\n';
+    
+        const textomeio =
+          "Técnico responsável na visita:: " + tecnico + '.' + '\n\n' +
+          "Situação: " + situacao + '.' + '\n' +
+          "Relato: " + relatocliente2  + '.' + '\n';
+    
+        const textoadd =
+          plus2 ? "Informações extras: " + plus2 + '.' : "";
+    
+        textoGerado2 = (
+          textoComeco +
+          '\n' +
+          textomeio +
+          '\n' +
+          textoadd
+        );
+      };
 
   document.getElementById('copiarA').classList.remove('hidden');
   document.getElementById('atendimento').textContent = textoGerado2;
@@ -924,6 +959,19 @@ problemaSelect2.addEventListener('change', function () {
         document.getElementById('divrelatocliente').classList.remove('hidden');
         document.getElementById('divdesfecho').classList.remove('hidden');
         document.getElementById('divplus').classList.remove('hidden');
+      
+    }  else if (problema === 'poschamado') {
+
+        document.getElementById('opcoespos').classList.remove('hidden');
+        document.getElementById('cadastros2').classList.remove('hidden');
+        document.getElementById('divcelular2').classList.remove('hidden');
+        document.getElementById('divorigem3').classList.remove('hidden');
+        document.getElementById('divdataultimavisita').classList.remove('hidden');
+        document.getElementById('divmotivodavisita').classList.remove('hidden');
+        document.getElementById('divtecnico').classList.remove('hidden');
+        document.getElementById('divsituacao').classList.remove('hidden');
+        document.getElementById('divrelatocliente2').classList.remove('hidden');
+        document.getElementById('divplus2').classList.remove('hidden'); 
     }
 });
 
