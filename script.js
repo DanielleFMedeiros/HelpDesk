@@ -815,6 +815,7 @@ function gerarA() {
 
     const cliente = obterValorElemento2('cliente');
     const contato = obterValorElemento2('contatos');
+    const origem2 = obterValorElemento2('origem2');
     const relato = obterValorElemento2('relatos');
     const plano = obterValorElemento2('planos');
     const alteracoes = obterValorElemento2('alteracoesr');
@@ -822,7 +823,7 @@ function gerarA() {
 
     const textoComeco =
       "Tratado com: " + cliente + '.' + '\n' +
-      "Telefone: " + contato + '.' + '\n\n' +
+      "Telefone: " + contato + '- ' +origem2+"."+ '\n\n' +
       "Plano, roteador e sinal: " + plano + '.' + '\n';
 
     const textomeio =
