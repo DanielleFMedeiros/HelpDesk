@@ -907,6 +907,7 @@ problemaSelect2.addEventListener('change', function () {
         document.getElementById('opcoesPersonalizavel1').classList.remove('hidden');
         document.getElementById('clientes').classList.remove('hidden');
         document.getElementById('contato').classList.remove('hidden');
+        document.getElementById('divorigem2').classList.remove('hidden');
         document.getElementById('plano').classList.remove('hidden');
         document.getElementById('relato').classList.remove('hidden');
         document.getElementById('alteracoes').classList.remove('hidden');
