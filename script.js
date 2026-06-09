@@ -866,7 +866,7 @@ function gerarA() {
       "Origem do contato: " + origem + '.' + '\n';
 
     const textoMotivo =
-      "Motivo: *" + motivos.join(' ') + "*" +\n\n';
+      "Motivo: *" + motivos.join(' ') + "*" +'\n\n';
 
     const textoMeio =
       "Plano, roteador e sinal: " + infocadastro + '.' + '\n\n' +
