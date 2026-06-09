@@ -53,13 +53,12 @@ footer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.container input,
-.container2 input,
-.container button,
-.container2 button,
+.container input:not([type="checkbox"]),
+.container2 input:not([type="checkbox"]),
 .container textarea,
-/* Adicionei estilos para a área de texto */
-.container2 textarea {
+.container2 textarea,
+.container button,
+.container2 button {
   width: calc(100% - 20px);
   margin-bottom: 10px;
   padding: 10px;
