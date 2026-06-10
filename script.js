@@ -358,7 +358,7 @@ function gerarTexto() {
   let texto = "";
   let telefone = "";
 
-   // Função para pegar os valores dos checkboxes marcados
+   // Função para pegar os valores dos checkbox marcados
   function obterCheckBoxMarcados() {
     let checkbox = document.querySelectorAll('.leds');
     let valorMarcado = [];
@@ -625,10 +625,16 @@ function adicionarEventoProblema() {
     // Oculta todas as opções
     esconderElemento(opcoesSemInternet);
     esconderElemento(opcoesPersonalizavel);
-    // Aqui, ESCONDEMOS todos os checkbox e mostramos cada um deles individualmente
+    // Esconde os leds
     let checkbox = document.querySelectorAll('.leds');
     checkbox.forEach(function (checkbox) {
-      esconderElemento(checkbox); // Agora, mostramos o próprio elemento checkbox
+        esconderElemento(checkbox);
+    });
+
+    // Esconde os checkboxes da instalação
+    let checkboxes = document.querySelectorAll('.clienteCiente');
+    checkboxes.forEach(function (checkbox) {
+        esconderElemento(checkbox);
     });
     esconderElemento(extrasc);
     esconderElemento(opcoesInternetLenta);
