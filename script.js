@@ -256,6 +256,11 @@ function gerarTexto() {
   const regiaoMk = obterValorElemento('regiao');
   const horarioMk = obterValorElemento('horario');
   const solicitanteMk = obterValorElemento('solicitante');
+  const divplano = obterValorElemento('plano1');
+  const divroteador = obterValorElemento('roteador1');
+  const divmac = obterValorElemento('mac1');
+  const divsinal = obterValorElemento('sinal1');
+  const divsinaltx = obterValorElemento('sinaltx');
   const leds = obterValorElemento('leds');
   const extras = obterValorElemento('extras');
   const telefoneMk = obterValorElemento('telefone');
@@ -376,7 +381,13 @@ function gerarTexto() {
   if (problema === 'semInternet') {
 
     textoIntro = regiaoMk + " - SEM INTERNET" + '\n' + "(" + horarioMk + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
-    texto = "CLIENTE ESTÁ SEM INTERNET. " + " ";
+
+    const infos = [divplano, divroteador, divmac, `${divsinal} | ${divsinaltx}`]
+      .filter(Boolean)
+      .join(', ');
+
+    texto = `Plano, roteador, MAC e sinal: ${infos}. CLIENTE ESTÁ SEM INTERNET. `;
+
     let checkboxMarcado = obterCheckBoxMarcados();
 
     texto+= extras + ". ";
@@ -650,7 +661,12 @@ function adicionarEventoProblema() {
       mostrarElemento(opcoesSemInternet);
       mostrarElemento(regiaoMk);
       mostrarElemento(horarioMk);
-      mostrarElemento(solicitanteMk)
+      mostrarElemento(solicitanteMk);
+      mostrarElemento(divplano);
+      mostrarElemento(divroteador);
+      mostrarElemento(divmac);
+      mostrarElemento(divsinal);
+      mostrarElemento(divsinaltx);
       // Aqui, encontramos todos os checkbox e mostramos cada um deles individualmente
       let checkbox = document.querySelectorAll('.leds');
       checkbox.forEach(function (checkbox) {
