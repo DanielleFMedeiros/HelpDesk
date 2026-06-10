@@ -264,7 +264,7 @@ function gerarTexto() {
   const leds = obterValorElemento('leds');
   const extras = obterValorElemento('extras');
   const telefoneMk = obterValorElemento('telefone');
-  const divmodocontato = obterValorElemento('modocontato');
+  const modocontato = obterValorElemento('modocontato');
   const refMk = obterValorElemento('ref');
   const localMk = obterValorElemento('local');
 
@@ -695,16 +695,16 @@ function adicionarEventoProblema() {
       mostrarElemento(divsinal);
       mostrarElemento(divsinaltx);
       // Aqui, encontramos todos os checkbox e mostramos cada um deles individualmente
-      let checkbox = document.querySelectorAll('.leds');
-      checkbox.forEach(function (checkbox) {
-        mostrarElemento(checkbox); // Agora, mostramos o próprio elemento checkbox
-      });
+      document.querySelectorAll('.leds').forEach(mostrarElemento);
+
       mostrarElemento(extrasc);
       mostrarElemento(telefoneMk);
-      mostrarElemento(divmodocontato);
+
+      document.querySelectorAll('.modocontato').forEach(mostrarElemento);
+
       mostrarElemento(refMk);
       mostrarElemento(localMk);
-
+      
     } else if (problemaSelect.value === 'personalization') {
       mostrarElemento(opcoesPersonalizavel);
       mostrarElemento(regiaoMk6);
