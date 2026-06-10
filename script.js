@@ -933,8 +933,7 @@ function gerarA() {
 
     const textoComeco =
       "Cadastro: " + cadastro + '.' + '\n' +
-      "Telefone: " + celular + '.' + '\n' +
-      "Origem do contato: " + origem + '.' + '\n';
+      "Telefone: " + celular + '.' + origem + '.' + '\n';
 
     const textoMotivo =
       "Motivo: *" + motivos.join(' ') + "*" + '\n\n';
