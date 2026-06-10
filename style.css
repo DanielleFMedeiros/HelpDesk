@@ -262,3 +262,7 @@ footer {
   width: 100%;     /* Faz o textarea ocupar 100% do contêiner, sem passar dos limites */
   resize: vertical; /* Permite redimensionar apenas verticalmente */
 }
+
+strong{
+  color: green;
+}
