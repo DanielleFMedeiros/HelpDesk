@@ -382,15 +382,22 @@ function gerarTexto() {
 
     textoIntro = regiaoMk + " - SEM INTERNET" + '\n' + "(" + horarioMk + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
 
-    const infos = [divplano, divroteador, divmac, `${divsinal} | ${divsinaltx}`]
+    const infos = [
+      divplano,
+      divroteador,
+      divmac,
+      (divsinal || divsinaltx) ? `RX: ${divsinal} | TX: ${divsinaltx}` : null
+    ]
       .filter(Boolean)
       .join(', ');
 
-    texto = `Plano, roteador, MAC e sinal: ${infos}. CLIENTE ESTÁ SEM INTERNET. `;
+    texto = `Plano, roteador, MAC e sinal: ${infos}. CLIENTE ESTÁ SEM INTERNET.`;
 
     let checkboxMarcado = obterCheckBoxMarcados();
 
-    texto+= extras + ". ";
+    texto += checkboxMarcado ? " " + checkboxMarcado + "." : "";
+    texto += extras ? " " + extras + "." : "";
+    
     telefone = '\n' + telefoneMk + '\n' + refMk;
     textoLocal = localMk;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
