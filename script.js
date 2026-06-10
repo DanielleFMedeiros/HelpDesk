@@ -256,9 +256,7 @@ function gerarTexto() {
   const regiaoMk = obterValorElemento('regiao');
   const horarioMk = obterValorElemento('horario');
   const solicitanteMk = obterValorElemento('solicitante');
-  const ledVermelho = obterValorElemento('ledVermelho');
-  const procedimentoCompleto = obterValorElemento('procedimentoCompleto');
-  const cabosConectados = obterValorElemento('cabosConectados');
+  const leds = obterValorElemento('leds');
   const extras = obterValorElemento('extras');
   const telefoneMk = obterValorElemento('telefone');
   const refMk = obterValorElemento('ref');
@@ -360,23 +358,26 @@ function gerarTexto() {
   let texto = "";
   let telefone = "";
 
+   // Função para pegar os valores dos checkboxes marcados
+  function obterCheckBoxMarcados() {
+    let checkbox = document.querySelectorAll('.leds');
+    let valorMarcado = [];
+
+    checkbox.forEach(function (checkbox) {
+      if (checkbox.checked) {
+        valorMarcado.push(checkbox.value); // Adiciona o valor ao array
+      }
+    });
+
+    return valorMarcado;
+  }
+
   //SEM INTERNET
   if (problema === 'semInternet') {
 
     textoIntro = regiaoMk + " - SEM INTERNET" + '\n' + "(" + horarioMk + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
-    texto = "CLIENTE ESTÁ SEM INTERNET. " + ledVermelho + " ";
-
-    if (procedimentoCompleto === 'sim') {
-      texto += "CLIENTE JÁ REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR O ROTEADOR. ";
-    } else if (procedimentoCompleto === 'nao') {
-      texto += "CLIENTE NÃO REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR O ROTEADOR. ";
-    }
-
-    if (cabosConectados === 'sim') {
-      texto += "CABOS ESTÃO BEM CONECTADOS. ";
-    } else if (cabosConectados === 'nao') {
-      texto += "CABOS ESTAVAM MAL CONECTADOS. ";
-    }
+    texto = "CLIENTE ESTÁ SEM INTERNET. " + " ";
+    let checkboxMarcado = obterCheckBoxMarcados();
 
     texto+= extras + ". ";
     telefone = '\n' + telefoneMk + '\n' + refMk;
@@ -543,7 +544,9 @@ function gerarTexto() {
 
   if (problema === 'instalacao') {
 
-    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " + "Metragem de Cabeamento Disponível: "+ metragemCabos + '\n'
+    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + 
+      cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " + 
+      "Metragem de Cabeamento Disponível: "+ metragemCabos + '\n'
       + "VENC:" + vencimentoFatura + '\n' + "FIAÇÃO:" + fiacao + "\n" + "\n";
 
     let checkboxesMarcados = obterCheckBoxesMarcados();
@@ -622,8 +625,11 @@ function adicionarEventoProblema() {
     // Oculta todas as opções
     esconderElemento(opcoesSemInternet);
     esconderElemento(opcoesPersonalizavel);
-    esconderElemento(opcoesLedVermelhoSim);
-    esconderElemento(opcoesLedVermelhoNao);
+    // Aqui, ESCONDEMOS todos os checkboxes e mostramos cada um deles individualmente
+    let checkbox = document.querySelectorAll('.leds');
+    checkboxes.forEach(function (checkbox) {
+      esconderElemento(checkbox); // Agora, mostramos o próprio elemento checkbox
+    });
     esconderElemento(extrasc);
     esconderElemento(opcoesInternetLenta);
     esconderElemento(opcoesInternetCaindo);
@@ -639,9 +645,11 @@ function adicionarEventoProblema() {
       mostrarElemento(regiaoMk);
       mostrarElemento(horarioMk);
       mostrarElemento(solicitanteMk)
-      mostrarElemento(ledVermelho1)
-      mostrarElemento(opcoesLedVermelhoSim);
-      mostrarElemento(opcoesLedVermelhoNao);
+      // Aqui, encontramos todos os checkboxes e mostramos cada um deles individualmente
+      let checkbox = document.querySelectorAll('.leds');
+      checkbox.forEach(function (checkbox) {
+        mostrarElemento(checkbox); // Agora, mostramos o próprio elemento checkbox
+      });
       mostrarElemento(extrasc);
       mostrarElemento(telefoneMk);
       mostrarElemento(refMk);

@@ -83,8 +83,6 @@
             </select>
           </div>
 
-
-
           <!-- SEM INTERNET -->
           <div id="opcoesSemInternet" class="opcoes hidden">
 
@@ -102,8 +100,8 @@
               <label for="solicitante">Solicitante:</label>
               <input type="text" id="solicitante" name="solicitante" placeholder="Nome de quem solicitou a o.s">
             </div>
-
-            <!-- 
+ 
+            <!-- informações que devem constar na o.s -->
             <div id="divplano" class="opcoes hidden">
               <label for="plano1">Plano: </label>
               <input type="text" id="plano1" name="plano1" placeholder="650MB-99,90">
@@ -128,11 +126,73 @@
               <label for="sinaltx">Sinal TX: </label>
               <input type="text" id="sinaltx" name="sinaltx" placeholder="Ex: 2.78">
             </div>
-            
-            
-            -->
 
-            <div id="ledVermelho1" class="opcoes hidden">
+            <!-- informações referentes a cor dos leds -->
+
+            <label>Sobre os equipamentos:</label>
+            <div>
+              <input type="checkbox" id="ledVermelhoroteador" name="leds" class="leds"
+                value="Há led vermelho no roteador.">
+              <label for="ledVermelhoroteador">Há led vermelho no roteador</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="ledvermelhoonu" name="leds" class="leds"
+                value="Há led vermelho na onu.">
+              <label for="ledvermelhoonu">Há led vermelho na ONU</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="ledpon" name="leds" class="leds"
+                value="Há led pon piscando na onu.">
+              <label for="ledpon">Há led pon piscando na ONU</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="ledsapagados" name="leds" class="leds"
+                value="LED dos equipamentos estão apagados.">
+              <label for="ledsapagados">LED dos equipamentos estão apagados</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="ledonuapagada" name="leds" class="leds"
+                value="LEDs da ONU estão apagadas.">
+              <label for="ledonuapagada">LEDs da ONU estão apagadas</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="ledroteadorapagado" name="leds" class="leds"
+                value="LEDs do roteador estão apagadas.">
+              <label for="ledroteadorapagado">LEDs do roteador estão apagadas</label>
+            </div>
+
+             <div>
+              <input type="checkbox" id="procedimentocompleto" name="leds" class="leds"
+                value="Já realizou procedimento completo.">
+              <label for="procedimentocompleto">Já realizou procedimento completo</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="cabosConectados" name="leds" class="leds"
+                value="Cabos estão bem conectados.">
+              <label for="cabosConectados">Cabos estão bem conectados</label>
+            </div>
+
+             <div>
+              <input type="checkbox" id="semsinal" name="leds" class="leds"
+                value="Não retornou sinal após procedimentos.">
+              <label for="semsinal">Não retornou sinal após procedimentos</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="resetou" name="leds" class="leds"
+                value="O roteador resetou.">
+              <label for="resetou">O roteador resetou</label>
+            </div>
+
+             
+
+            <!--<div id="ledVermelho1" class="opcoes hidden">
               <label for="ledVermelho">Há LED vermelho nos equipamentos? *</label>
               <input type="text" id="ledVermelho" name="ledVermelho"
                 placeholder="Led vermelho no conversor, led vermelho no roteador">
@@ -155,6 +215,7 @@
                 <option value="nao">Não</option>
               </select>
             </div>
+          -->
 
             <div id="extrasc" class="opcoes hidden">
               <label for="extras">Adicione informações extras</label>
