@@ -391,7 +391,7 @@ function gerarTexto() {
       .filter(Boolean)
       .join(', ');
 
-    texto = `Plano, roteador, MAC e sinal: ${infos}. CLIENTE ESTÁ SEM INTERNET.`;
+    texto = `Plano, roteador, MAC e sinal: ${infos}.` + '\n' + '\n' + `CLIENTE ESTÁ SEM INTERNET.`;
 
     let checkboxMarcado = obterCheckBoxMarcados();
 
