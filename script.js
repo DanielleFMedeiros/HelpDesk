@@ -378,10 +378,24 @@ function gerarTexto() {
     return valorMarcado;
   }
 
+  function obterModoContato() {
+    let checkboxes = document.querySelectorAll('.modocontato');
+    let modos = [];
+
+    checkboxes.forEach(function (checkbox) {
+      if (checkbox.checked) {
+        modos.push(checkbox.value);
+      }
+    });
+
+    return modos.join(', ');
+  }
+
   //SEM INTERNET
   if (problema === 'semInternet') {
 
     textoIntro = regiaoMk + " - SEM INTERNET" + '\n' + "(" + horarioMk + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
+
 
     const infos = [
       divplano,
@@ -394,12 +408,17 @@ function gerarTexto() {
 
     texto = `Plano, roteador, MAC e sinal: ${infos}.` + '\n' + '\n' + `CLIENTE ESTÁ SEM INTERNET.`;
 
+    //checkbox
+
     let checkboxMarcado = obterCheckBoxMarcados();
 
     texto += checkboxMarcado ? " " + checkboxMarcado + "." : "";
     texto += extras ? " " + extras + "." : "";
 
-    telefone = '\n' + telefoneMk + ' - ' + divmodocontato +'\n' + refMk;
+    let divmodocontato = obterModoContato();
+    telefone = '\n' + telefoneMk +
+      (divmodocontato ? ' - ' + divmodocontato : '') +
+      '\n' + refMk;
     textoLocal = localMk;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
   }
