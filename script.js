@@ -391,10 +391,22 @@ function gerarTexto() {
     return modos.join(', ');
   }
 
+  function obterMorador() {
+    const selecionado = document.querySelector('input[name="morador"]:checked');
+    return selecionado ? selecionado.value : '';
+  }
+
   //SEM INTERNET
   if (problema === 'semInternet') {
 
-    textoIntro = regiaoMk + " - SEM INTERNET" + '\n' + "(" + horarioMk + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
+    let morador = obterMorador();
+
+    textoIntro = regiaoMk + " - SEM INTERNET " +
+             (morador ? "- " + morador + " " : "") +
+             '\n' + "(" + horarioMk + ")" + '\n' + '\n' +
+             "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
+    
+    "(" + horarioMk + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
 
 
     const infos = [
