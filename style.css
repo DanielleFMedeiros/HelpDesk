@@ -270,3 +270,20 @@ footer {
 strong {
   color: green;
 }
+
+.grupo-radio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.grupo-radio input {
+  transform: scale(0.9); /* deixa menorzinho */
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+}
