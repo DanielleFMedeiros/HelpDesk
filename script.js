@@ -625,9 +625,9 @@ function adicionarEventoProblema() {
     // Oculta todas as opções
     esconderElemento(opcoesSemInternet);
     esconderElemento(opcoesPersonalizavel);
-    // Aqui, ESCONDEMOS todos os checkboxes e mostramos cada um deles individualmente
+    // Aqui, ESCONDEMOS todos os checkbox e mostramos cada um deles individualmente
     let checkbox = document.querySelectorAll('.leds');
-    checkboxes.forEach(function (checkbox) {
+    checkbox.forEach(function (checkbox) {
       esconderElemento(checkbox); // Agora, mostramos o próprio elemento checkbox
     });
     esconderElemento(extrasc);
@@ -645,7 +645,7 @@ function adicionarEventoProblema() {
       mostrarElemento(regiaoMk);
       mostrarElemento(horarioMk);
       mostrarElemento(solicitanteMk)
-      // Aqui, encontramos todos os checkboxes e mostramos cada um deles individualmente
+      // Aqui, encontramos todos os checkbox e mostramos cada um deles individualmente
       let checkbox = document.querySelectorAll('.leds');
       checkbox.forEach(function (checkbox) {
         mostrarElemento(checkbox); // Agora, mostramos o próprio elemento checkbox
