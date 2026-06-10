@@ -909,18 +909,18 @@ function gerarA() {
         : '';
 
         const textoComeco =
-          "Nome do cadastro: " + cadastro2 + '.' + '\n' +
-          "Telefone do cliente: " + celular2 + ' - ' +origem3+"."+ '\n\n' +
-          "Data da última visita:  " + dataFormatada + '.' + '\n' +
-          "Motivo da abertura da O.S.: " +motivodavisita + '.' +'\n';
+          "*Nome do cadastro:* " + cadastro2 + '.' + '\n' +
+          "*Telefone do cliente:* " + celular2 + ' - ' +origem3+"."+ '\n\n' +
+          "*Data da última visita:*  " + dataFormatada + '.' + '\n' +
+          "*Motivo da abertura da O.S.:* " +motivodavisita + '.' +'\n';
     
         const textomeio =
-          "Técnico responsável na visita: " + tecnico + '.' + '\n\n' +
-          "Situação: " + situacao + '.' + '\n' +
-          "Relato: " + relatocliente2  + '.' + '\n';
+          "*Técnico responsável na visita:* " + tecnico + '.' + '\n\n' +
+          "*Situação:* " + situacao + '.' + '\n' +
+          "*Relato:* " + relatocliente2  + '.' + '\n';
     
         const textoadd =
-          plus2 ? "Informações extras: " + plus2 + '.' : "";
+          plus2 ? "*Informações extras:* " + plus2 + '.' : "";
     
         textoGerado2 = (
           textoComeco +
