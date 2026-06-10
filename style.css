@@ -53,8 +53,8 @@ footer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.container input:not([type="checkbox"]),
-.container2 input:not([type="checkbox"]),
+.container input:not([type="checkbox"]):not([type="radio"]),
+.container2 input:not([type="checkbox"]):not([type="radio"]),
 .container textarea,
 .container2 textarea,
 .container button,
@@ -289,13 +289,14 @@ strong {
 .grupo-radio {
   display: flex;
   align-items: center;
-  margin: 4px 0;
-  font-size: 13px;
+  gap: 6px;
+  margin: 6px 0;
 }
 
-.grupo-radio input {
+.grupo-radio input[type="radio"] {
+  width: auto;
+  margin: 0;
   transform: scale(0.95);
-  margin-right: 6px;
   cursor: pointer;
 }
 
