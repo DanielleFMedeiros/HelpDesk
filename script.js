@@ -264,6 +264,7 @@ function gerarTexto() {
   const leds = obterValorElemento('leds');
   const extras = obterValorElemento('extras');
   const telefoneMk = obterValorElemento('telefone');
+  const divmodocontato = obterValorElemento('modocontato');
   const refMk = obterValorElemento('ref');
   const localMk = obterValorElemento('local');
 
@@ -363,7 +364,7 @@ function gerarTexto() {
   let texto = "";
   let telefone = "";
 
-   // Função para pegar os valores dos checkbox marcados
+  // Função para pegar os valores dos checkbox marcados
   function obterCheckBoxMarcados() {
     let checkbox = document.querySelectorAll('.leds');
     let valorMarcado = [];
@@ -397,8 +398,8 @@ function gerarTexto() {
 
     texto += checkboxMarcado ? " " + checkboxMarcado + "." : "";
     texto += extras ? " " + extras + "." : "";
-    
-    telefone = '\n' + telefoneMk + '\n' + refMk;
+
+    telefone = '\n' + telefoneMk + ' - ' + divmodocontato +'\n' + refMk;
     textoLocal = localMk;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
   }
@@ -562,9 +563,9 @@ function gerarTexto() {
 
   if (problema === 'instalacao') {
 
-    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " + 
-      cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " + 
-      "Metragem de Cabeamento Disponível: "+ metragemCabos + '\n'
+    texto = nomeAtendente + " - FIBRA " + planoCliente + " - " + "INSTA " +
+      cobrancaInstalacao + " + " + tipoRoteador + " + " + "\n" + appsCortesia + " + " +
+      "Metragem de Cabeamento Disponível: " + metragemCabos + '\n'
       + "VENC:" + vencimentoFatura + '\n' + "FIAÇÃO:" + fiacao + "\n" + "\n";
 
     let checkboxesMarcados = obterCheckBoxesMarcados();
@@ -577,7 +578,7 @@ function gerarTexto() {
     telefone = '\n' + "CONTATO: " + telefoneMkComercial + '\n' + '\n' + refMkComercial + '\n';
     textoLocal = localMkComercial;
 
-    textoGerado =  texto.toUpperCase() + telefone.toUpperCase() + textoLocal;
+    textoGerado = texto.toUpperCase() + telefone.toUpperCase() + textoLocal;
   }
 
   //CABEAMENTO
@@ -646,13 +647,13 @@ function adicionarEventoProblema() {
     // Esconde os leds
     let checkbox = document.querySelectorAll('.leds');
     checkbox.forEach(function (checkbox) {
-        esconderElemento(checkbox);
+      esconderElemento(checkbox);
     });
 
     // Esconde os checkboxes da instalação
     let checkboxes = document.querySelectorAll('.clienteCiente');
     checkboxes.forEach(function (checkbox) {
-        esconderElemento(checkbox);
+      esconderElemento(checkbox);
     });
     esconderElemento(extrasc);
     esconderElemento(opcoesInternetLenta);
@@ -681,6 +682,7 @@ function adicionarEventoProblema() {
       });
       mostrarElemento(extrasc);
       mostrarElemento(telefoneMk);
+      mostrarElemento(divmodocontato);
       mostrarElemento(refMk);
       mostrarElemento(localMk);
 
@@ -836,8 +838,8 @@ function esconderElemento2(elemento2) {
 }
 
 function obterValorElemento2(id) {
-    const elemento = document.getElementById(id);
-    return elemento ? elemento.value : '';
+  const elemento = document.getElementById(id);
+  return elemento ? elemento.value : '';
 }
 // PERSONALIZAVEL
 
@@ -860,7 +862,7 @@ function gerarA() {
 
     const textoComeco =
       "Tratado com: " + cliente + '.' + '\n' +
-      "Telefone: " + contato + ' - ' +origem2+"."+ '\n\n' +
+      "Telefone: " + contato + ' - ' + origem2 + "." + '\n\n' +
       "Plano, roteador, MAC e sinal: " + plano + '.' + '\n';
 
     const textomeio =
@@ -904,7 +906,7 @@ function gerarA() {
       "Origem do contato: " + origem + '.' + '\n';
 
     const textoMotivo =
-      "Motivo: *" + motivos.join(' ') + "*" +'\n\n';
+      "Motivo: *" + motivos.join(' ') + "*" + '\n\n';
 
     const textoMeio =
       "Plano, roteador, MAC e sinal: " + infocadastro + '.' + '\n\n' +
@@ -938,35 +940,35 @@ function gerarA() {
     const relatocliente2 = obterValorElemento2('relatocliente2');
     const plus2 = obterValorElemento2('plus2');
 
-        //data da ultima visita formatação dia/mes/ano
+    //data da ultima visita formatação dia/mes/ano
     const data = document.getElementById('dataultimavisita').value;
-  
-    const dataFormatada = data
-        ? data.split('-').reverse().join('-')
-        : '';
 
-        const textoComeco =
-          "*Nome do cadastro:* " + cadastro2 + '.' + '\n' +
-          "*Telefone do cliente:* " + celular2 + ' - ' +origem3+"."+ '\n\n' +
-          "*Data da última visita:*  " + dataFormatada + '.' + '\n' +
-          "*Motivo da abertura da O.S.:* " +motivodavisita + '.' +'\n';
-    
-        const textomeio =
-          "*Técnico responsável na visita:* " + tecnico + '.' + '\n\n' +
-          "*Situação:* " + situacao + '.' + '\n' +
-          "*Relato:* " + relatocliente2  + '.' + '\n';
-    
-        const textoadd =
-          plus2 ? "*Informações extras:* " + plus2 + '.' : "";
-    
-        textoGerado2 = (
-          textoComeco +
-          '\n' +
-          textomeio +
-          '\n' +
-          textoadd
-        );
-      };
+    const dataFormatada = data
+      ? data.split('-').reverse().join('-')
+      : '';
+
+    const textoComeco =
+      "*Nome do cadastro:* " + cadastro2 + '.' + '\n' +
+      "*Telefone do cliente:* " + celular2 + ' - ' + origem3 + "." + '\n\n' +
+      "*Data da última visita:*  " + dataFormatada + '.' + '\n' +
+      "*Motivo da abertura da O.S.:* " + motivodavisita + '.' + '\n';
+
+    const textomeio =
+      "*Técnico responsável na visita:* " + tecnico + '.' + '\n\n' +
+      "*Situação:* " + situacao + '.' + '\n' +
+      "*Relato:* " + relatocliente2 + '.' + '\n';
+
+    const textoadd =
+      plus2 ? "*Informações extras:* " + plus2 + '.' : "";
+
+    textoGerado2 = (
+      textoComeco +
+      '\n' +
+      textomeio +
+      '\n' +
+      textoadd
+    );
+  };
 
   document.getElementById('copiarA').classList.remove('hidden');
   document.getElementById('atendimento').textContent = textoGerado2;
@@ -974,58 +976,58 @@ function gerarA() {
 
 problemaSelect2.addEventListener('change', function () {
 
-    const problema = this.value;
+  const problema = this.value;
 
-    // Esconde tudo primeiro
-    document.querySelectorAll('#formulario1 .opcoes').forEach(el => {
-        el.classList.add('hidden');
-    });
+  // Esconde tudo primeiro
+  document.querySelectorAll('#formulario1 .opcoes').forEach(el => {
+    el.classList.add('hidden');
+  });
 
-    if (problema === 'personalizationA') {
+  if (problema === 'personalizationA') {
 
-        document.getElementById('opcoesPersonalizavel1').classList.remove('hidden');
-        document.getElementById('clientes').classList.remove('hidden');
-        document.getElementById('contato').classList.remove('hidden');
-        document.getElementById('divorigem2').classList.remove('hidden');
-        document.getElementById('plano').classList.remove('hidden');
-        document.getElementById('relato').classList.remove('hidden');
-        document.getElementById('alteracoes').classList.remove('hidden');
-        document.getElementById('extrasate').classList.remove('hidden');
+    document.getElementById('opcoesPersonalizavel1').classList.remove('hidden');
+    document.getElementById('clientes').classList.remove('hidden');
+    document.getElementById('contato').classList.remove('hidden');
+    document.getElementById('divorigem2').classList.remove('hidden');
+    document.getElementById('plano').classList.remove('hidden');
+    document.getElementById('relato').classList.remove('hidden');
+    document.getElementById('alteracoes').classList.remove('hidden');
+    document.getElementById('extrasate').classList.remove('hidden');
 
-    } else if (problema === 'mpc') {
+  } else if (problema === 'mpc') {
 
-        document.getElementById('opcoesmpc').classList.remove('hidden');
-        document.getElementById('cadastros').classList.remove('hidden');
-        document.getElementById('divcelular').classList.remove('hidden');
-        document.getElementById('divorigem').classList.remove('hidden');
-        document.getElementById('divinfocadastro').classList.remove('hidden');
-        document.getElementById('divrelatocliente').classList.remove('hidden');
-        document.getElementById('divdesfecho').classList.remove('hidden');
-        document.getElementById('divplus').classList.remove('hidden');
-      
-    }  else if (problema === 'poschamado') {
+    document.getElementById('opcoesmpc').classList.remove('hidden');
+    document.getElementById('cadastros').classList.remove('hidden');
+    document.getElementById('divcelular').classList.remove('hidden');
+    document.getElementById('divorigem').classList.remove('hidden');
+    document.getElementById('divinfocadastro').classList.remove('hidden');
+    document.getElementById('divrelatocliente').classList.remove('hidden');
+    document.getElementById('divdesfecho').classList.remove('hidden');
+    document.getElementById('divplus').classList.remove('hidden');
 
-        document.getElementById('opcoespos').classList.remove('hidden');
-        document.getElementById('cadastros2').classList.remove('hidden');
-        document.getElementById('divcelular2').classList.remove('hidden');
-        document.getElementById('divorigem3').classList.remove('hidden');
-        document.getElementById('divdataultimavisita').classList.remove('hidden');
-        document.getElementById('divmotivodavisita').classList.remove('hidden');
-        document.getElementById('divtecnico').classList.remove('hidden');
-        document.getElementById('divsituacao').classList.remove('hidden');
-        document.getElementById('divrelatocliente2').classList.remove('hidden');
-        document.getElementById('divplus2').classList.remove('hidden'); 
-    }
+  } else if (problema === 'poschamado') {
+
+    document.getElementById('opcoespos').classList.remove('hidden');
+    document.getElementById('cadastros2').classList.remove('hidden');
+    document.getElementById('divcelular2').classList.remove('hidden');
+    document.getElementById('divorigem3').classList.remove('hidden');
+    document.getElementById('divdataultimavisita').classList.remove('hidden');
+    document.getElementById('divmotivodavisita').classList.remove('hidden');
+    document.getElementById('divtecnico').classList.remove('hidden');
+    document.getElementById('divsituacao').classList.remove('hidden');
+    document.getElementById('divrelatocliente2').classList.remove('hidden');
+    document.getElementById('divplus2').classList.remove('hidden');
+  }
 });
 
-document.getElementById('copiarA').addEventListener('click', function() {
-    const texto = document.getElementById('atendimento').textContent;
+document.getElementById('copiarA').addEventListener('click', function () {
+  const texto = document.getElementById('atendimento').textContent;
 
-    navigator.clipboard.writeText(texto)
-        .then(() => {
-            alert('Texto copiado!');
-        })
-        .catch(err => {
-            console.error('Erro ao copiar:', err);
-        });
+  navigator.clipboard.writeText(texto)
+    .then(() => {
+      alert('Texto copiado!');
+    })
+    .catch(err => {
+      console.error('Erro ao copiar:', err);
+    });
 });

@@ -93,14 +93,15 @@
 
             <div id="horarioMk" class="opcoes hidden">
               <label for="horario">Restrição de horário:</label>
-              <input type="text" id="horario" name="horario" placeholder="Ex: (terça 09/06 período da tarde e quarta 10/06 até 12h)">
+              <input type="text" id="horario" name="horario"
+                placeholder="Ex: (terça 09/06 período da tarde e quarta 10/06 até 12h)">
             </div>
 
             <div id="solicitanteMk" class="opcoes hidden">
               <label for="solicitante">Solicitante:</label>
               <input type="text" id="solicitante" name="solicitante" placeholder="Nome de quem solicitou a o.s">
             </div>
- 
+
             <!-- informações que devem constar na o.s -->
             <div id="divplano" class="opcoes hidden">
               <label for="plano1">Plano: </label>
@@ -130,7 +131,7 @@
             <!-- informações referentes a cor dos leds -->
 
             <label>Sobre os equipamentos:</label>
-          
+
             <div>
               </br>
               <input type="checkbox" id="ledVermelhoroteador" name="leds" class="leds"
@@ -139,14 +140,12 @@
             </div>
 
             <div>
-              <input type="checkbox" id="ledvermelhoonu" name="leds" class="leds"
-                value="Há led vermelho na onu">
+              <input type="checkbox" id="ledvermelhoonu" name="leds" class="leds" value="Há led vermelho na onu">
               <label for="ledvermelhoonu">Há led vermelho na ONU</label>
             </div>
 
             <div>
-              <input type="checkbox" id="ledpon" name="leds" class="leds"
-                value="Há led pon piscando na onu">
+              <input type="checkbox" id="ledpon" name="leds" class="leds" value="Há led pon piscando na onu">
               <label for="ledpon">Há led pon piscando na ONU</label>
             </div>
 
@@ -157,8 +156,7 @@
             </div>
 
             <div>
-              <input type="checkbox" id="ledonuapagada" name="leds" class="leds"
-                value="LEDs da ONU estão apagadas">
+              <input type="checkbox" id="ledonuapagada" name="leds" class="leds" value="LEDs da ONU estão apagadas">
               <label for="ledonuapagada">LEDs da ONU estão apagadas</label>
             </div>
 
@@ -168,56 +166,28 @@
               <label for="ledroteadorapagado">LEDs do roteador estão apagadas</label>
             </div>
 
-             <div>
+            <div>
               <input type="checkbox" id="procedimentocompleto" name="leds" class="leds"
                 value="Já realizou procedimento completo">
               <label for="procedimentocompleto">Já realizou procedimento completo</label>
             </div>
 
             <div>
-              <input type="checkbox" id="cabosConectados" name="leds" class="leds"
-                value="Cabos estão bem conectados">
+              <input type="checkbox" id="cabosConectados" name="leds" class="leds" value="Cabos estão bem conectados">
               <label for="cabosConectados">Cabos estão bem conectados</label>
             </div>
 
-             <div>
+            <div>
               <input type="checkbox" id="semsinal" name="leds" class="leds"
                 value="Não retornou sinal após procedimentos">
               <label for="semsinal">Não retornou sinal após procedimentos</label>
             </div>
 
             <div>
-              <input type="checkbox" id="resetou" name="leds" class="leds"
-                value="O roteador resetou">
+              <input type="checkbox" id="resetou" name="leds" class="leds" value="O roteador resetou">
               <label for="resetou">O roteador resetou</label>
             </div>
-          </br>
-             
-
-            <!--<div id="ledVermelho1" class="opcoes hidden">
-              <label for="ledVermelho">Há LED vermelho nos equipamentos? *</label>
-              <input type="text" id="ledVermelho" name="ledVermelho"
-                placeholder="Led vermelho no conversor, led vermelho no roteador">
-            </div>
-
-            <div id="opcoesLedVermelhoSim" class="opcoes hidden">
-              <label for="ledVermelho">Realizou procedimento completo? *</label>
-              <select id="procedimentoCompleto" name="procedimentoCompleto">
-                <option value="">-- Selecione --</option>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-              </select>
-            </div>
-
-            <div id="opcoesLedVermelhoNao" class="opcoes hidden">
-              <label for="ledVermelhoNao">Cabos estão bem conectados? *</label>
-              <select id="cabosConectados" name="cabosConectados">
-                <option value="">-- Selecione --</option>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-              </select>
-            </div>
-          -->
+            </br>
 
             <div id="extrasc" class="opcoes hidden">
               <label for="extras">Adicione informações extras</label>
@@ -228,6 +198,15 @@
               <label for="telefone">Telefone para contato: </label>
               <input type="text" id="telefone" name="telefone" placeholder="Ex: 4836600800">
             </div>
+
+            <div id="divmodocontato" class="opcoes hidden">
+                <label for="modocontato">Chamar como:</label>
+                <select id="modocontato" name="modocontato">
+                  <option value="">-- Selecione --</option>
+                  <option value="Whatsapp">Whatsapp</option>
+                  <option value="ligacao ">Ligação</option>
+                </select>
+              </div>
 
             <div id="refMk" class="opcoes hidden">
               <label for="ref">Referência do local: </label>
@@ -251,7 +230,8 @@
 
             <div id="horarioMk6" class="opcoes hidden">
               <label for="horario6">Restrição de horário:</label>
-              <input type="text" id="horario6" name="horario6" placeholder="Ex: (terça 09/06 período da tarde e quarta 10/06 até 12h)">
+              <input type="text" id="horario6" name="horario6"
+                placeholder="Ex: (terça 09/06 período da tarde e quarta 10/06 até 12h)">
             </div>
 
             <div id="solicitanteMk6" class="opcoes hidden">
@@ -363,7 +343,8 @@
 
             <div id="horarioMk3" class="opcoes hidden">
               <label for="horario3">Restrição de horário:</label>
-              <input type="text" id="horario3" name="horario3" placeholder="Ex: (terça 09/06 período da tarde e quarta 10/06 até 12h)">
+              <input type="text" id="horario3" name="horario3"
+                placeholder="Ex: (terça 09/06 período da tarde e quarta 10/06 até 12h)">
             </div>
 
             <div id="solicitanteMk3" class="opcoes hidden">
@@ -555,7 +536,8 @@
 
             <div id="horarioMk7" class="opcoes hidden">
               <label for="horario7">Restrição de horário:</label>
-              <input type="text" id="horario7" name="horario7" placeholder="Ex: (terça 09/06 período da tarde e quarta 10/06 até 12h)">
+              <input type="text" id="horario7" name="horario7"
+                placeholder="Ex: (terça 09/06 período da tarde e quarta 10/06 até 12h)">
             </div>
 
             <div id="solicitanteMk7" class="opcoes hidden">
@@ -578,7 +560,7 @@
               <input type="checkbox" id="ciente" name="ciente" value="Cliente está ciente dos valores">
               <label for="ciente">Cliente está ciente dos valores? (se aplicável): </label>
             </div>
-          </br>
+            </br>
 
             <div id="pagamentoMk" class="opcoes hidden">
               <label for="pagamento">Pagamento: </label>
@@ -627,7 +609,8 @@
 
               <label for="cobrancaInstalacao">Cobrança de Instalação:</label>
               <p class="insta">Instalação grátis ou paga, com informação da forma de cobrança e valor.</p>
-              <input type="text" id="cobrancaInstalacao" name="cobrancaInstalacao" placeholder="Gratuita ou Valor + forma de pagamento">
+              <input type="text" id="cobrancaInstalacao" name="cobrancaInstalacao"
+                placeholder="Gratuita ou Valor + forma de pagamento">
 
               <label for="tipoRoteador">Roteador:</label>
               <select id="tipoRoteador" name="roteador">
@@ -732,7 +715,7 @@
               <option value="">-- Selecione --</option>
               <option value="personalizationA">PERSONALIZAVEL</option>
               <option value="mpc">MPC</option>
-              <option value="poschamado">PÓS-CHAMADO</option> 
+              <option value="poschamado">PÓS-CHAMADO</option>
             </select>
           </div>
           <!-- PERSONALIZAVEL -->
@@ -747,16 +730,16 @@
             </div>
 
             <div id="divorigem2" class="opcoes hidden">
-                <label for="origem2">Origem do contato:</label>
-                <select id="origem2" name="origem2">
-                  <option value="">-- Selecione --</option>
-                  <option value="Whatsapp">Whatsapp</option>
-                  <option value="Presencial">Presencial</option>
-                  <option value="Telefônico">Telefônico</option>
-                  <option value="Redes sociais">Redes sociais</option>
-                </select>
-              </div>
-          </br>
+              <label for="origem2">Origem do contato:</label>
+              <select id="origem2" name="origem2">
+                <option value="">-- Selecione --</option>
+                <option value="Whatsapp">Whatsapp</option>
+                <option value="Presencial">Presencial</option>
+                <option value="Telefônico">Telefônico</option>
+                <option value="Redes sociais">Redes sociais</option>
+              </select>
+            </div>
+            </br>
             <div id="plano" class="opcoes hidden">
               <label for="planos">Plano, roteador, MAC e sinal RX / sinal TX: </label>
               <input type="text" id="planos" name="planos" placeholder="Ex: 650MB, HUAWEI AX3S, RX -25, TX 2.78">
@@ -776,143 +759,156 @@
                 placeholder="Adicione mais informações">
             </div>
           </div>
-                    <!-- MPC -->
-          <div id="opcoesmpc" class="opcoes hidden"> 
-            <div id="cadastros" class="opcoes hidden"> 
-              <label for="cadastro">Nome do cadastro: </label> 
-              <input type="text" id="cadastro" name="cadastro" placeholder="JOSE DA SILVA"> 
-            </div> 
-            <div id="divcelular" class="opcoes hidden"> 
-              <label for="celular">Telefone: </label> 
-              <input type="text" id="celular" name="celular" placeholder="Ex: (48) 3660-0800"> 
-            </div> 
-              <div id="divorigem" class="opcoes hidden">
-                <label for="origem">Origem do contato:</label>
-                <select id="origem" name="origem">
-                  <option value="">-- Selecione --</option>
-                  <option value="Whatsapp">Whatsapp</option>
-                  <option value="Presencial">Presencial</option>
-                  <option value="Telefônico">Telefônico</option>
-                  <option value="Redes sociais">Redes sociais</option>
-                </select>
-              </div>
-            <div>
-              <p for="">Motivo:</p> 
-              <div> 
-                <input type="checkbox" id="duasos" name="motivompc" class="motivompc" value="Mais de 2 O.S abertas no mês pelo mesmo motivo ou mais."> 
-                <label for="duasos">Mais de 2 O.S abertas no mês pelo mesmo motivo ou mais</label> 
-              </div> 
-              <div> 
-                <input type="checkbox" id="redessociais" name="motivompc" class="motivompc" value="Reclamação via rede social."> 
-                <label for="redessociais">Reclamações via redes sociais, google, reclame aqui, youtube, linkedin, tiktok, etc
-                </label> 
-              </div> 
-              <div> 
-                <input type="checkbox" id="duranteatendimento" name="motivompc" class="motivompc" value="Reclamação/insatisfação durante o atendimento."> 
-                <label for="duranteatendimento">Reclamação/insatisfação durante o atendimento ou pessoas terceiras</label> 
-              </div> 
-              <div> 
-                <input type="checkbox" id="cancelamento" name="motivompc" class="motivompc" value="Citou cancelamento."> 
-                <label for="cancelamento">Citou cancelamento</label> 
-              </div> 
-              <div> 
-                <input type="checkbox" id="trocardeprovedora" name="motivompc" class="motivompc" value="Mencionou trocar de provedora."> 
-                <label for="trocardeprovedora">Mencionou trocar de provedora</label> 
-              </div> 
-              <div> 
-                <input type="checkbox" id="fidelidade" name="motivompc" class="motivompc" value="Cliente questionou a data de término da fidelidade."> 
-                <label for="fidelidade">Cliente questionou a data de término da fidelidade</label> 
-              </div> 
-              <div> 
-                <input type="checkbox" id="quatroatendimentos" name="motivompc" class="motivompc" value="4 atendimentos abertos em 1 ano (referente a reclamações/manutenções)."> 
-                <label for="quatroatendimentos">4 atendimentos abertos em 1 ano (referente a reclamações/manutenções)</label> 
-              </div> 
-            </br>
+          <!-- MPC -->
+          <div id="opcoesmpc" class="opcoes hidden">
+            <div id="cadastros" class="opcoes hidden">
+              <label for="cadastro">Nome do cadastro: </label>
+              <input type="text" id="cadastro" name="cadastro" placeholder="JOSE DA SILVA">
             </div>
-            
-            <div id="divinfocadastro" class="opcoes hidden"> 
-              <label for="infocadastro">Plano, roteador, MAC e sinal RX / sinal TX: 
-              </label> 
-              <input type="text" id="infocadastro" name="infocadastro" placeholder="Ex: 650MB, HUAWEI AX3S, RX -25, TX 2.78"> 
-            </div> 
-            <div id="divrelatocliente" class="opcoes hidden"> 
-              <label for="relatocliente">Relato:</label> 
-              <input type="text" id="relatocliente" name="relatocliente" placeholder="Relato do cliente"> 
-            </div> 
-            <div id="divdesfecho" class="opcoes hidden"> 
-              <label for="desfecho">Desfecho:</label> 
-              <input type="text" id="desfecho" name="desfecho" placeholder="Ex: Foi feito x alterações, foi aberto o.s, cliente esta testando, etc "> 
-            </div> 
-            <div id="divplus" class="opcoes hidden"> 
-              <label for="plus">Adicione mais informações: (se houver)</label> 
-              <input type="text" id="plus" name="plus" placeholder="Adicione mais informações"> 
-            </div> 
-          </div> 
+            <div id="divcelular" class="opcoes hidden">
+              <label for="celular">Telefone: </label>
+              <input type="text" id="celular" name="celular" placeholder="Ex: (48) 3660-0800">
+            </div>
+            <div id="divorigem" class="opcoes hidden">
+              <label for="origem">Origem do contato:</label>
+              <select id="origem" name="origem">
+                <option value="">-- Selecione --</option>
+                <option value="Whatsapp">Whatsapp</option>
+                <option value="Presencial">Presencial</option>
+                <option value="Telefônico">Telefônico</option>
+                <option value="Redes sociais">Redes sociais</option>
+              </select>
+            </div>
+            <div>
+              <p for="">Motivo:</p>
+              <div>
+                <input type="checkbox" id="duasos" name="motivompc" class="motivompc"
+                  value="Mais de 2 O.S abertas no mês pelo mesmo motivo ou mais.">
+                <label for="duasos">Mais de 2 O.S abertas no mês pelo mesmo motivo ou mais</label>
+              </div>
+              <div>
+                <input type="checkbox" id="redessociais" name="motivompc" class="motivompc"
+                  value="Reclamação via rede social.">
+                <label for="redessociais">Reclamações via redes sociais, google, reclame aqui, youtube, linkedin,
+                  tiktok, etc
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="duranteatendimento" name="motivompc" class="motivompc"
+                  value="Reclamação/insatisfação durante o atendimento.">
+                <label for="duranteatendimento">Reclamação/insatisfação durante o atendimento ou pessoas
+                  terceiras</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cancelamento" name="motivompc" class="motivompc" value="Citou cancelamento.">
+                <label for="cancelamento">Citou cancelamento</label>
+              </div>
+              <div>
+                <input type="checkbox" id="trocardeprovedora" name="motivompc" class="motivompc"
+                  value="Mencionou trocar de provedora.">
+                <label for="trocardeprovedora">Mencionou trocar de provedora</label>
+              </div>
+              <div>
+                <input type="checkbox" id="fidelidade" name="motivompc" class="motivompc"
+                  value="Cliente questionou a data de término da fidelidade.">
+                <label for="fidelidade">Cliente questionou a data de término da fidelidade</label>
+              </div>
+              <div>
+                <input type="checkbox" id="quatroatendimentos" name="motivompc" class="motivompc"
+                  value="4 atendimentos abertos em 1 ano (referente a reclamações/manutenções).">
+                <label for="quatroatendimentos">4 atendimentos abertos em 1 ano (referente a
+                  reclamações/manutenções)</label>
+              </div>
+              </br>
+            </div>
 
-<!-- PÓS-CHAMADO -->
-          
-           <div id="opcoespos" class="opcoes hidden"> 
-            <div id="cadastros2" class="opcoes hidden"> 
-              <label for="cadastro2">Nome do cadastro: </label> 
-              <input type="text" id="cadastro2" name="cadastro2" placeholder="JOSE DA SILVA"> 
-            </div> 
-            <div id="divcelular2" class="opcoes hidden"> 
-              <label for="celular2">Telefone do cliente: </label> 
-              <input type="text" id="celular2" name="celular2" placeholder="Ex: (48) 3660-0800"> 
-            </div> 
+            <div id="divinfocadastro" class="opcoes hidden">
+              <label for="infocadastro">Plano, roteador, MAC e sinal RX / sinal TX:
+              </label>
+              <input type="text" id="infocadastro" name="infocadastro"
+                placeholder="Ex: 650MB, HUAWEI AX3S, RX -25, TX 2.78">
+            </div>
+            <div id="divrelatocliente" class="opcoes hidden">
+              <label for="relatocliente">Relato:</label>
+              <input type="text" id="relatocliente" name="relatocliente" placeholder="Relato do cliente">
+            </div>
+            <div id="divdesfecho" class="opcoes hidden">
+              <label for="desfecho">Desfecho:</label>
+              <input type="text" id="desfecho" name="desfecho"
+                placeholder="Ex: Foi feito x alterações, foi aberto o.s, cliente esta testando, etc ">
+            </div>
+            <div id="divplus" class="opcoes hidden">
+              <label for="plus">Adicione mais informações: (se houver)</label>
+              <input type="text" id="plus" name="plus" placeholder="Adicione mais informações">
+            </div>
+          </div>
+
+          <!-- PÓS-CHAMADO -->
+
+          <div id="opcoespos" class="opcoes hidden">
+            <div id="cadastros2" class="opcoes hidden">
+              <label for="cadastro2">Nome do cadastro: </label>
+              <input type="text" id="cadastro2" name="cadastro2" placeholder="JOSE DA SILVA">
+            </div>
+            <div id="divcelular2" class="opcoes hidden">
+              <label for="celular2">Telefone do cliente: </label>
+              <input type="text" id="celular2" name="celular2" placeholder="Ex: (48) 3660-0800">
+            </div>
             <div id="divorigem3" class="opcoes hidden">
-                <label for="origem3">Origem do contato:</label>
-                <select id="origem3" name="origem3">
-                  <option value="">-- Selecione --</option>
-                  <option value="Whatsapp">Whatsapp</option>
-                  <option value="Presencial">Presencial</option>
-                  <option value="Telefônico">Telefônico</option>
-                  <option value="Redes sociais">Redes sociais</option>
-                </select>
-              </div>
-           </br>
-           <div id="divdataultimavisita" class="opcoes hidden"> 
-              <label for="dataultimavisita">Data da última visita: </label> 
-              <input type="date" id="dataultimavisita" name="dataultimavisita"> 
-            </div> 
-          <div id="divmotivodavisita" class="opcoes hidden">
-            <label for="motivodavisita">Motivo da abertura da O.S.: </label>
-            <input type:"text" id="motivodavisita" name="dataultimavisita" placeholder="Descreva o problema que gerou a visita técnica">
+              <label for="origem3">Origem do contato:</label>
+              <select id="origem3" name="origem3">
+                <option value="">-- Selecione --</option>
+                <option value="Whatsapp">Whatsapp</option>
+                <option value="Presencial">Presencial</option>
+                <option value="Telefônico">Telefônico</option>
+                <option value="Redes sociais">Redes sociais</option>
+              </select>
+            </div>
+            </br>
+            <div id="divdataultimavisita" class="opcoes hidden">
+              <label for="dataultimavisita">Data da última visita: </label>
+              <input type="date" id="dataultimavisita" name="dataultimavisita">
+            </div>
+            <div id="divmotivodavisita" class="opcoes hidden">
+              <label for="motivodavisita">Motivo da abertura da O.S.: </label>
+              <input type:"text" id="motivodavisita" name="dataultimavisita"
+                placeholder="Descreva o problema que gerou a visita técnica">
+            </div>
+            <div id="divtecnico" class="opcoes hidden">
+              <label for="tecnico">Nome do técnico que realizou o atendimento: </label>
+              <input type:"text" id="tecnico" name="tecnico" placeholder="Alisson">
+            </div>
+            <div id="divsituacao" class="opcoes hidden">
+              <label for="situacao">Situação:</label>
+              <p>
+                <strong>Recorrente:</strong> Retornou com o mesmo problema da O.S anterior.</br>
+                <strong>Reincidente:</strong> Retornou com outro problema diferente da O.S anterior.
+              </p>
+
+              <select id="situacao" name="situacao">
+                <option value="">-- Selecione --</option>
+                <option value="*(X) Recorrente* ( ) Reincidente">Recorrente </option>
+                <option value="( ) Recorrente *(X) Reincidente*">Reincidente </option>
+              </select>
+            </div>
+            </br>
+            <div id="divrelatocliente2" class="opcoes hidden">
+              <label for="relatocliente2">Relato:</label>
+              <input type="text" id="relatocliente2" name="relatocliente2"
+                placeholder="Exemplo: Cliente relata que após a visita técnica, a internet continua caindo. Mesmo problema da O.S. anterior.">
+            </div>
+            <div id="divplus2" class="opcoes hidden">
+              <label for="plus2">Adicione mais informações: (se houver)</label>
+              <input type="text" id="plus2" name="plus2" placeholder="Adicione mais informações">
+            </div>
+
           </div>
-          <div id="divtecnico" class="opcoes hidden">
-            <label for="tecnico">Nome do técnico que realizou o atendimento: </label>
-            <input type:"text" id="tecnico" name="tecnico" placeholder="Alisson">
-          </div>
-          <div id="divsituacao" class="opcoes hidden">
-                <label for="situacao">Situação:</label>
-                <p>
-                  <strong>Recorrente:</strong> Retornou com o mesmo problema da O.S anterior.</br>
-                  <strong>Reincidente:</strong> Retornou com outro problema diferente da O.S anterior.
-                </p>
-                
-                <select id="situacao" name="situacao">
-                  <option value="">-- Selecione --</option>
-                  <option value="*(X) Recorrente* ( ) Reincidente">Recorrente </option>
-                  <option value="( ) Recorrente *(X) Reincidente*">Reincidente </option>
-                </select>
-              </div>
-           </br>
-          <div id="divrelatocliente2" class="opcoes hidden"> 
-              <label for="relatocliente2">Relato:</label> 
-              <input type="text" id="relatocliente2" name="relatocliente2" placeholder= "Exemplo: Cliente relata que após a visita técnica, a internet continua caindo. Mesmo problema da O.S. anterior."> 
-          </div> 
-           <div id="divplus2" class="opcoes hidden"> 
-              <label for="plus2">Adicione mais informações: (se houver)</label> 
-              <input type="text" id="plus2" name="plus2" placeholder="Adicione mais informações"> 
-            </div> 
-          
-        </div>
-          
-          
-          
+
+
+
           <button type="button" onclick="gerarA()">Gerar atendimento</button>
           <p id="atendimento"></p>
-          <button type="button" id="copiarA" class="hidden">Copiar Texto</button> 
+          <button type="button" id="copiarA" class="hidden">Copiar Texto</button>
         </form>
       </div>
     </div>
@@ -937,7 +933,7 @@
 
 
 
-       <!-- <div class="container">
+      <!-- <div class="container">
         <h2>Formatador de Nome <span class="destaque">dmview</span></h2>
         <input type="text" id="macInput" placeholder="Digite o nome">
         <button onclick="formatar_nome()">Formatar Nome</button>
@@ -967,5 +963,3 @@
 </body>
 
 </html>
-
-
