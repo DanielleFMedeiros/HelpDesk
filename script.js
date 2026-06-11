@@ -273,6 +273,11 @@ function gerarTexto() {
   const regiaoMk6 = obterValorElemento('regiao6');
   const horarioMk6 = obterValorElemento('horario6');
   const solicitanteMk6 = obterValorElemento('solicitante6');
+  const divplano2 = obterValorElemento('plano2');
+  const divroteador2 = obterValorElemento('roteador2');
+  const divmac2 = obterValorElemento('mac2');
+  const divsinal2 = obterValorElemento('sinal2');
+  const divsinaltx2 = obterValorElemento('sinaltx2');
   const extras6 = obterValorElemento('extras6');
   const osanterior = obterValorElemento('osanterior');
   const telefoneMk6 = obterValorElemento('telefone6');
@@ -438,7 +443,16 @@ function gerarTexto() {
   //PERSONALIZAVEL
   if (problema === 'personalization') {
     textoIntro = regiaoMk6 + '\n' + "(" + horarioMk6 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk6 + '\n' + '\n';
-    textoLocal = localMk6;
+     const infos2 = [
+      divplano2,
+      divroteador2,
+      divmac2,
+      (divsinal2 || divsinaltx2) ? `RX: ${divsinal2} | TX: ${divsinaltx2}` : null
+    ]
+      .filter(Boolean)
+      .join(', ');
+
+    texto = `Plano, roteador, MAC e sinal: ${infos}.` + '\n' + '\n';
     texto += extras6;
 
     if (osanterior) {
@@ -447,6 +461,7 @@ function gerarTexto() {
 
 
     telefone = '\n' + telefoneMk6 + '\n' + '\n' + refMk6 + '\n';
+    textoLocal = localMk6;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
   }
 
@@ -722,6 +737,11 @@ function adicionarEventoProblema() {
       mostrarElemento(regiaoMk6);
       mostrarElemento(horarioMk6);
       mostrarElemento(solicitanteMk6)
+      mostrarElemento(divplano2);
+      mostrarElemento(divroteador2);
+      mostrarElemento(divmac2);
+      mostrarElemento(divsinal2);
+      mostrarElemento(divsinaltx2);
       mostrarElemento(extrasc6);
       mostrarElemento(osanteriores);
       mostrarElemento(telefoneMk6);
