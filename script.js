@@ -452,7 +452,7 @@ function gerarTexto() {
       .filter(Boolean)
       .join(', ');
 
-    texto = `Plano, roteador, MAC e sinal: ${infos}.` + '\n' + '\n';
+    texto = `Plano, roteador, MAC e sinal: ${infos2}.` + '\n' + '\n';
     texto += extras6;
 
     if (osanterior) {
