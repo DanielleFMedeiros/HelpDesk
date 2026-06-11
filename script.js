@@ -305,7 +305,7 @@ function gerarTexto() {
   const quedas = obterValorElemento('quedas');
   const cabosConectadosDiv1 = obterValorElemento('cabosConectadosDiv1');
   const dispositivosDiv1 = obterValorElemento('dispositivos1');
-  const sinalDiv1 = obterValorElemento('sinal1');
+  const sinalDiv1 = obterValorElemento('sinalcaindo');
   const extras3 = obterValorElemento('extras3');
   const telefoneMk3 = obterValorElemento('telefone3');
   const refMk3 = obterValorElemento('ref3');
