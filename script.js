@@ -409,9 +409,9 @@ function gerarTexto() {
     textoIntro = regiaoMk + " - SEM INTERNET " +
              (morador ? "- " + morador + " " : "") +
              '\n' + "(" + horarioMk + ")" + '\n' + '\n' +
-             "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
+             "TRATADO COM: " + solicitanteMk + '\n' + '\n';
     
-    "(" + horarioMk + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk + '\n' + '\n';
+    "(" + horarioMk + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk + '\n' + '\n';
 
 
     const infos = [
@@ -442,7 +442,7 @@ function gerarTexto() {
 
   //PERSONALIZAVEL
   if (problema === 'personalization') {
-    textoIntro = regiaoMk6 + '\n' + "(" + horarioMk6 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk6 + '\n' + '\n';
+    textoIntro = regiaoMk6 + '\n' + "(" + horarioMk6 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk6 + '\n' + '\n';
      const infos2 = [
       divplano2,
       divroteador2,
@@ -467,7 +467,7 @@ function gerarTexto() {
 
   //INTERNET LENTA
   if (problema === 'internetLenta') {
-    textoIntro = regiaoMk2 + " - INTERNET LENTA" + '\n' + "(" + horarioMk2 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk2 + '\n' + '\n';
+    textoIntro = regiaoMk2 + " - INTERNET LENTA" + '\n' + "(" + horarioMk2 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk2 + '\n' + '\n';
     texto = "CLIENTE ESTÁ COM INTERNET LENTA. ";
 
     if (procedimentoCompletoLento === 'nao') {
@@ -494,7 +494,7 @@ function gerarTexto() {
 
   //INTERNET CAINDO
   if (problema === 'internetCaindo') {
-    textoIntro = regiaoMk3 + " - INTERNET CAINDO" + '\n' + "(" + horarioMk3 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk3 + '\n' + '\n';
+    textoIntro = regiaoMk3 + " - INTERNET CAINDO" + '\n' + "(" + horarioMk3 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk3 + '\n' + '\n';
     texto = "CLIENTE ESTÁ COM INTERNET CAINDO. ";
 
     if (procedimentoCompletoCaindo === 'nao') {
@@ -527,7 +527,7 @@ function gerarTexto() {
 
   //SINAL ALTO
   if (problema === 'sinalAlto') {
-    textoIntro = regiaoMk5 + " - SINAL ALTO" + '\n' + "(" + horarioMk5 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk5 + '\n' + '\n';
+    textoIntro = regiaoMk5 + " - SINAL ALTO" + '\n' + "(" + horarioMk5 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk5 + '\n' + '\n';
     texto = "CLIENTE ESTÁ COM SINAL ALTO. ";
 
     if (quedas5 === 'sim') {
@@ -546,7 +546,7 @@ function gerarTexto() {
 
   //TV TAC COM DEFEITO
   if (problema === 'tvTac') {
-    textoIntro = regiaoMk4 + " - TV TAC COM DEFEITO" + '\n' + "(" + horarioMk4 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk4 + '\n' + '\n';
+    textoIntro = regiaoMk4 + " - TV TAC COM DEFEITO" + '\n' + "(" + horarioMk4 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk4 + '\n' + '\n';
     texto = "CLIENTE ESTÁ COM PROBLEMAS NA TV TAC. ";
 
     if (procedimentoCompletoTv4 === 'nao') {
@@ -569,7 +569,7 @@ function gerarTexto() {
 
     //CABEAMENTO
     if (problema === 'cabeamento') {
-      textoIntro = regiaoMk7 + " - CABEAMENTO" + '\n' + "(" + horarioMk7 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk7 + '\n' + '\n';
+      textoIntro = regiaoMk7 + " - CABEAMENTO" + '\n' + "(" + horarioMk7 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk7 + '\n' + '\n';
       textoLocal = localMk7;
 
       if (metragemMk) {
@@ -634,7 +634,7 @@ function gerarTexto() {
       ? document.getElementById("ciente").value
       : "";
 
-    textoIntro = regiaoMk7 + " - CABEAMENTO" + '\n' + "(" + horarioMk7 + ")" + '\n' + '\n' + "SOLICITANTE: " + solicitanteMk7 + '\n' + '\n';
+    textoIntro = regiaoMk7 + " - CABEAMENTO" + '\n' + "(" + horarioMk7 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk7 + '\n' + '\n';
     textoLocal = localMk7;
 
     if (cabearOq) {
