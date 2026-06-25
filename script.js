@@ -529,7 +529,7 @@ function gerarTexto() {
   if (problema === 'sinalAlto') {
     textoIntro = regiaoMk5 + " - SINAL ALTO" + '\n' + "(" + horarioMk5 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk5 + '\n' + '\n';
 
-    texto=  "SINAL ESTÁ: " + sinalDiv5 + ". " +'\n\n';
+    texto=  "SINAL ESTÁ: " + sinalDiv5 + ". " +'\n';
 
     texto += "CLIENTE ESTÁ COM SINAL ALTO. ";
 
@@ -539,7 +539,7 @@ function gerarTexto() {
       texto += "NÃO APRESENTAM QUEDAS NO SISTEMA. ";
     }
 
-    texto+= '\n' + extras5 +'\n\n' + "VERIFICAR SINAL DE REDE, DROPP DA FIBRA, FUSÕES, ATUALIZAR A CONFIGURAÇÃO DE EQUIPAMENTO, VELOCIDADE, INSTALAÇÃO E POSICIONAMENTO "+
+    texto+= '\n' + extras5 + ". " +'\n\n' + "VERIFICAR SINAL DE REDE, DROPP DA FIBRA, FUSÕES, ATUALIZAR A CONFIGURAÇÃO DE EQUIPAMENTO, VELOCIDADE, INSTALAÇÃO E POSICIONAMENTO "+
     "DA ONU E DEIXAR PADRÃO TAC. AO ENTRAR EM CONTATO COM O CLIENTE INFORMAR MANUTENÇÃO PREVENTIVA. "+
     "PRECISA CONTER NO FECHAMENTO DA O.S: FOTO DO SINAL DO T.A, SINAL DA CASA E FOTO DA ONU.*";
 
