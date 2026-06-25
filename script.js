@@ -530,14 +530,19 @@ function gerarTexto() {
     textoIntro = regiaoMk5 + " - SINAL ALTO" + '\n' + "(" + horarioMk5 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk5 + '\n' + '\n';
     texto = "CLIENTE ESTÁ COM SINAL ALTO. ";
 
+    texto += "SINAL ESTÁ: " + sinalDiv5 + ". " + extras5;
+
     if (quedas5 === 'sim') {
       texto += "APRESENTAM QUEDAS SIGNIFICATIVAS NO SISTEMA. ";
     } else if (quedas5 === 'nao') {
       texto += "NÃO APRESENTAM QUEDAS NO SISTEMA. ";
     }
 
+    texto+= '\n\n' + "VERIFICAR SINAL DE REDE, DROPP DA FIBRA, FUSÕES, ATUALIZAR A CONFIGURAÇÃO DE EQUIPAMENTO, VELOCIDADE, INSTALAÇÃO E POSICIONAMENTO "+
+    "DA ONU E DEIXAR PADRÃO TAC. AO ENTRAR EM CONTATO COM O CLIENTE INFORMAR MANUTENÇÃO PREVENTIVA. "+
+    "PRECISA CONTER NO FECHAMENTO DA O.S: FOTO DO SINAL DO T.A, SINAL DA CASA E FOTO DA ONU.*";
+
     textoLocal = localMk5;
-    texto += "SINAL ESTÁ: " + sinalDiv5 + ". " + extras5;
 
     telefone = '\n' + telefoneMk5 + '\n' + refMk5 + '\n';
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
