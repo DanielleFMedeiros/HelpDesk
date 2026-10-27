@@ -96,7 +96,7 @@ function verificarMac() {
   document.getElementById("resultado").innerText = "Verificando...";
 }
 
-TELEFONE FORMATAR
+//TELEFONE FORMATAR
 function formatarTelefone(numero) {
   let telefoneFormatado = numero.replace(/\D/g, '');
   if (!telefoneFormatado.startsWith('55')) {
