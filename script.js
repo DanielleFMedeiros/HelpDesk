@@ -96,7 +96,7 @@ function verificarMac() {
   document.getElementById("resultado").innerText = "Verificando...";
 }
 
-//TELEFONE FORMATAR
+/*TELEFONE FORMATAR
 function formatarTelefone(numero) {
   let telefoneFormatado = numero.replace(/\D/g, '');
   if (!telefoneFormatado.startsWith('55')) {
@@ -121,7 +121,7 @@ function copiarTelefoneFormatado() {
   document.execCommand('copy');
   document.body.removeChild(tempInput);
   alert('Núm. formatado copiado: ' + telefoneFormatado);
-}
+}*/
 
 // LOCALIZAÇÃO
 function formatarLocalizacao() {
