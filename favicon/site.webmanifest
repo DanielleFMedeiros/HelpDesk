@@ -1,14 +1,14 @@
 {
-    "name": "TAC",
-    "short_name": "TAC",
+    "name": "HELPDESK",
+    "short_name": "HELPDESK",
     "icons": [
       {
-        "src": "tac-telecom.png",
+        "src": "helpdesk.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "tac-telecom.png",
+        "src": "helpdesk.png",
         "sizes": "512x512",
         "type": "image/png"
       }
