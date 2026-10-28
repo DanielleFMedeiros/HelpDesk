@@ -13,49 +13,52 @@
 <body>
 
   <div class="flex-container">
-
     <div class="containers-row">
       <div class="container">
-        <h1 class="">TAC helpdesk</h1>
-        <button class="" onclick="abrirLink()">DRIVE SUPORTE</button>
-        <button class="" onclick="abrirLink1()">FAQ COMERCIAL</button>
+          <div class="cabecalho-helpdesk">
+              <h1>TAC HelpDesk</h1>
+      
+              <button
+                  id="botaoTema"
+                  class="botao-tema"
+                  onclick="alternarTema()"
+                  aria-label="Alternar entre modo claro e escuro"
+              >
+                  🌙 Modo escuro
+              </button>
+          </div>
+  
+          <button onclick="abrirLink()">DRIVE SUPORTE</button>
+          <button onclick="abrirLink1()">FAQ COMERCIAL</button>
       </div>
-
-
-
+      
+<!--FORMATADOR DE CPF CNPJ-->
       <div class="container">
-        <h2>Formatador de CPF</h2>
-        <label for="cpfInput">Cole o CPF (11 dígitos):</label>
-        <input type="text" id="cpfInput">
-        <button onclick="formatarCpf()">Formatar CPF</button>
-        <p id="cpfResultado"></p>
-        <button id="botaoCopiarCPF" onclick="copiarResultadoCPF()">Copiar CPF</button>
+          <h2>Formatador de CPF e CNPJ</h2>
+      
+          <label for="docInput">Cole o CPF(11 dígitos) ou CNPJ(14 dígitos):</label>
+          <input
+              type="text"
+              id="docInput"
+              placeholder="Digite ou cole o CPF/CPNJ"
+          >
+      
+          <button onclick="formatadorDoc()">Formatar</button>
+      
+          <p id="docResultado"></p>
+      
+          <button
+              id="botaoCopiarDoc"
+              onclick="copiarDocumento()"
+              style="display: none;"
+          >
+              Copiar
+          </button>
       </div>
-      <div class="container">
-        <h2>Formatador de CNPJ</h2>
-        <label for="cnpjInput">Cole o CNPJ (14 dígitos):</label>
-        <input type="text" id="cnpjInput">
-        <button onclick="formatarCnpj()">Formatar CNPJ</button>
-        <p id="cnpjResultado"></p>
-        <button id="botaoCopiarCNPJ" onclick="copiarResultadoCnpj()">Copiar CNPJ</button>
-      </div>
-           
 
-    <div class="container">
-      <h2>Formatador de Telefone</h2>
-        <div>
-          <label for="telefoneInput">Digite o telefone:</label>
-          <input type="text" id="telefoneInput" placeholder="(48) 3660-0800">
-        </div>
-        <button type="button" onclick="formatarTelefoneInput()">Formatar Número</button>
-        <p id="telefoneFormatado"></p>
-        <button type="button" onclick="copiarTelefoneFormatado()">Copiar Número</button>
-      </div>
-    </div> 
+    </div> <!-- FECHA A PRIMEIRA containers-row -->
 
     <div class="containers-row">
-
-
       <div class="container">
         <h2>Conversor m para M</h2>
         <textarea id="inputTexto" placeholder="Digite seu texto"></textarea>
