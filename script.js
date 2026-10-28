@@ -1,39 +1,47 @@
-function formatarCpf() {
-  let cpfEntrada = document.getElementById("cpfInput").value;
-  let cpfApenasNumeros = cpfEntrada.replace(/\D/g, '');
+//FORMATADOR DE CPF/CNPJ
+function formatadorDoc() {
+    const docEntrada = document.getElementById("docInput").value;
+    const docNumeros = docEntrada.replace(/\D/g, "");
 
-  if (/^\d{11}$/.test(cpfApenasNumeros)) {
-    let cpfFormatado = cpfApenasNumeros.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-    document.getElementById("cpfResultado").textContent = cpfFormatado;
-    document.getElementById("botaoCopiarCPF").style.display = "inline-block";
-  } else {
-    document.getElementById("cpfResultado").textContent = "Por favor, digite um CPF válido com 11 dígitos.";
-    document.getElementById("botaoCopiarCPF").style.display = "none";
-  }
-}
-function copiarResultadoCPF() {
-  let resultadoCPF = document.getElementById("cpfResultado").textContent;
-  copiarParaAreaTransferencia(resultadoCPF);
-}
+    const resultado = document.getElementById("docResultado");
+    const botaoCopiar = document.getElementById("botaoCopiarDoc");
 
-function formatarCnpj() {
-  let cnpjEntrada = document.getElementById("cnpjInput").value;
-  let cnpjApenasNumeros = cnpjEntrada.replace(/\D/g, '');
+    if (docNumeros.length === 11) {
+        // Formata como CPF
+        resultado.textContent = docNumeros.replace(
+            /(\d{3})(\d{3})(\d{3})(\d{2})/,
+            "$1.$2.$3-$4"
+        );
 
-  if (/^\d{14}$/.test(cnpjApenasNumeros)) {
-    let cnpjFormatado = cnpjApenasNumeros.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
-    document.getElementById("cnpjResultado").textContent = cnpjFormatado;
-    document.getElementById("botaoCopiarCNPJ").style.display = "inline-block";
-  } else {
-    document.getElementById("cnpjResultado").textContent = "Por favor, digite um CNPJ válido com 14 dígitos.";
-    document.getElementById("botaoCopiarCNPJ").style.display = "none";
-  }
-}
-function copiarResultadoCnpj() {
-  let resultadoCNPJ = document.getElementById("cnpjResultado").textContent;
-  copiarParaAreaTransferencia(resultadoCNPJ);
+        botaoCopiar.style.display = "inline-block";
+
+    } else if (docNumeros.length === 14) {
+        // Formata como CNPJ
+        resultado.textContent = docNumeros.replace(
+            /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+            "$1.$2.$3/$4-$5"
+        );
+
+        botaoCopiar.style.display = "inline-block";
+
+    } else {
+        resultado.textContent =
+            "Digite um CPF com 11 dígitos ou um CNPJ com 14 dígitos.";
+
+        botaoCopiar.style.display = "none";
+    }
 }
 
+
+function copiarDocumento() {
+    const resultadoDoc = document.getElementById("docResultado").textContent;
+
+    if (resultadoDoc) {
+        copiarParaAreaTransferencia(resultadoDoc);
+    }
+}
+
+//GOOGLE MAPS
 function abrirLink() {
   var link = "https://drive.google.com/drive/folders/1Zjxqrsom2LXvtrx62O2bYz87Md8k72va?usp=sharing";
   window.open(link, "_blank");
@@ -94,33 +102,6 @@ function verificarMac() {
 
   // Exibir o valor construído no elemento com id "resultado"
   document.getElementById("resultado").innerText = "Verificando...";
-}
-
-//TELEFONE FORMATAR
-function formatarTelefone(numero) {
-  let telefoneFormatado = numero.replace(/\D/g, '');
-  if (!telefoneFormatado.startsWith('55')) {
-    telefoneFormatado = '55' + telefoneFormatado;
-  }
-  return telefoneFormatado;
-}
-
-function formatarTelefoneInput() {
-  const input = document.getElementById('telefoneInput');
-  const formatado = formatarTelefone(input.value);
-  document.getElementById('telefoneFormatado').textContent = formatado;
-}
-
-function copiarTelefoneFormatado() {
-  const telefoneFormatado = document.getElementById('telefoneFormatado').textContent;
-  const tempInput = document.createElement('input');
-  tempInput.value = telefoneFormatado;
-  document.body.appendChild(tempInput);
-  tempInput.select();
-  tempInput.setSelectionRange(0, 99999);
-  document.execCommand('copy');
-  document.body.removeChild(tempInput);
-  alert('Núm. formatado copiado: ' + telefoneFormatado);
 }
 
 // LOCALIZAÇÃO
@@ -958,7 +939,7 @@ function gerarA() {
     });
 
     const textoComeco =
-      "Cadastro: *" + cadastro + '*.' + '\n' +
+      "Cadastro: " + cadastro + '.' + '\n' +
       "Telefone: " + celular + '.' + origem + '.' + '\n';
 
     const textoMotivo =
@@ -1086,4 +1067,35 @@ document.getElementById('copiarA').addEventListener('click', function () {
     .catch(err => {
       console.error('Erro ao copiar:', err);
     });
+});
+
+
+function aplicarTema(modoEscuro) {
+    document.body.classList.toggle("modo-escuro", modoEscuro);
+
+    const botao = document.getElementById("botaoTema");
+
+    if (botao) {
+        botao.textContent = modoEscuro
+            ? "☀️ Modo claro"
+            : "🌙 Modo escuro";
+    }
+}
+
+function alternarTema() {
+    const modoEscuro =
+        !document.body.classList.contains("modo-escuro");
+
+    aplicarTema(modoEscuro);
+
+    localStorage.setItem(
+        "temaHelpDesk",
+        modoEscuro ? "escuro" : "claro"
+    );
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const temaSalvo = localStorage.getItem("temaHelpDesk");
+
+    aplicarTema(temaSalvo === "escuro");
 });
