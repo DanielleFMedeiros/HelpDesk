@@ -958,7 +958,7 @@ function gerarA() {
     });
 
     const textoComeco =
-      "Cadastro: " + cadastro + '.' + '\n' +
+      "Cadastro: " + "*" + cadastro + '*.' + '\n' +
       "Telefone: " + celular + '.' + origem + '.' + '\n';
 
     const textoMotivo =
