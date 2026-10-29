@@ -234,19 +234,9 @@ footer {
   margin-bottom: 5px;
 }
 
-/* Estilos para os elementos dentro da div de opções 'opcoesTvTacDefeito' */
-#opcoesTvTacDefeito select {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 10px;
-}
-
-#opcoesTvTacDefeito label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
+/* Estilos para as opções de defeito na TV */
+#opcoesTvDefeito select { width: 100%; margin-bottom: 10px; padding: 10px; font-size: 10px; }
+#opcoesTvDefeito label { font-weight: bold; margin-bottom: 5px; }
 
 #textoGerado {
   max-width: 600px;
@@ -385,4 +375,464 @@ body.modo-escuro .botao-tema:hover {
         padding: 8px 11px;
         font-size: 12px;
     }
+}
+
+
+/* ===== NOVO VISUAL HELPDESK: VERDE ELEGANTE, TRÊS COLUNAS ===== */
+:root {
+  --hd-page: #f1f7f4;
+  --hd-card: #ffffff;
+  --hd-field: #f8fbf9;
+  --hd-line: #d9e8e0;
+  --hd-text: #20352c;
+  --hd-muted: #6a8075;
+  --hd-green: #078454;
+  --hd-green-hover: #066b44;
+  --hd-shadow: 0 8px 24px rgba(15, 74, 48, .07);
+}
+html { min-height: 100%; }
+body {
+  display: block;
+  min-height: 100vh;
+  padding: 18px;
+  background: radial-gradient(ellipse at top left, #e5f5ed 0, transparent 48%), var(--hd-page);
+  color: var(--hd-text);
+  font: 13px/1.45 'DM Sans', 'Segoe UI', Arial, sans-serif;
+  transition: background .25s ease, color .25s ease;
+}
+.flex-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+  width: min(1600px, 100%);
+  margin: 0 auto;
+  padding: 0;
+}
+.containers-row { display: contents; }
+/* Organização das ferramentas em três colunas no desktop */
+.card-documento { grid-column: 3; grid-row: 2; }
+.card-conversor { grid-column: 1; grid-row: 2; }
+.card-os { grid-column: 2; grid-row: 2; }
+.card-atendimento { grid-column: 2; grid-row: 3; }
+.card-localizacao { grid-column: 1; grid-row: 3; }
+.card-mac { grid-column: 3; grid-row: 3; }
+
+.container, .container2 {
+  min-width: 0;
+  width: auto;
+  margin: 0;
+  padding: 17px;
+  border: 1px solid var(--hd-line);
+  border-radius: 15px;
+  background: var(--hd-card);
+  color: var(--hd-text);
+  box-shadow: var(--hd-shadow);
+  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .2s ease;
+}
+.container:hover { box-shadow: 0 10px 28px rgba(15, 74, 48, .10); }
+/* Cabeçalho ocupa a largura toda, sem criar uma coluna lateral */
+.flex-container > .containers-row:first-child > .container:first-child {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 20px;
+  background: linear-gradient(115deg, #ffffff, #f0faf5);
+}
+.cabecalho-helpdesk { margin: 0; gap: 14px; }
+.cabecalho-helpdesk h1 {
+  color: var(--hd-text);
+  font-family: 'Space Grotesk', 'Segoe UI', Arial, sans-serif;
+  font-size: clamp(23px, 2vw, 29px);
+  letter-spacing: -.8px;
+}
+.cabecalho-helpdesk h1::before { content: '◈'; color: var(--hd-green); margin-right: 9px; }
+h2 {
+  margin: 0 0 9px;
+  color: var(--hd-text);
+  font-family: 'Space Grotesk', 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.35;
+  letter-spacing: -.25px;
+}
+p { margin: 7px 0 10px; overflow-wrap: anywhere; color: var(--hd-muted); }
+label { display: block; margin: 10px 0 5px; color: var(--hd-muted); font-size: 12px; font-weight: 600; }
+.container input:not([type="checkbox"]):not([type="radio"]),
+.container2 input:not([type="checkbox"]):not([type="radio"]),
+.container textarea, .container2 textarea,
+.container select, .container2 select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 38px;
+  margin: 4px 0 9px;
+  padding: 9px 11px;
+  border: 1px solid var(--hd-line);
+  border-radius: 9px;
+  background: var(--hd-field);
+  color: var(--hd-text);
+  font: inherit;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.container textarea { min-height: 76px; resize: vertical; }
+.container input:focus, .container textarea:focus, .container select:focus {
+  border-color: var(--hd-green);
+  box-shadow: 0 0 0 3px rgba(7, 132, 84, .11);
+}
+.container button, .container2 button {
+  width: auto;
+  max-width: 100%;
+  margin: 4px 5px 4px 0;
+  padding: 9px 12px;
+  border: 1px solid var(--hd-line);
+  border-radius: 9px;
+  background: #edf7f1;
+  color: #176342;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.container button:hover, .container2 button:hover { transform: translateY(-1px); border-color: #8ac8aa; background: #e0f2e7; }
+.container button[onclick*="gerar"], .container button[onclick*="formatadorDoc"], .container button[onclick*="verificarMac"], .container button[onclick*="formatarLocalizacao"] {
+  background: var(--hd-green); color: white; border-color: var(--hd-green);
+}
+.container button[onclick*="gerar"]:hover, .container button[onclick*="formatadorDoc"]:hover, .container button[onclick*="verificarMac"]:hover, .container button[onclick*="formatarLocalizacao"]:hover { background: var(--hd-green-hover); }
+.botao-tema { margin: 0; border-radius: 999px; padding: 9px 14px; background: #e7f5ed; color: #176342; border-color: #d3e9dc; }
+.opcoes { margin: 10px 0; padding: 11px; border: 1px solid var(--hd-line); border-radius: 10px; background: rgba(238, 248, 242, .55); }
+.card { padding: 10px; margin: 10px 0; background: var(--hd-field); border: 1px solid var(--hd-line); border-radius: 10px; }
+.grupo-radio { margin: 5px 0; }
+.grupo-radio label { display: flex; align-items: center; gap: 8px; margin: 5px 0; color: var(--hd-text); }
+input[type="checkbox"], input[type="radio"] { accent-color: var(--hd-green); }
+#textoGerado, #atendimento, #textoConvertido, #docResultado, #localizacaoFormatada, #resultado {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 10px;
+  border-radius: 9px;
+  background: var(--hd-field);
+  color: var(--hd-text);
+}
+iframe { max-width: 100%; border-radius: 9px; }
+body.modo-escuro {
+  --hd-page: #0c1917;
+  --hd-card: #142622;
+  --hd-field: #1a332c;
+  --hd-line: #2b5144;
+  --hd-text: #e5f5ed;
+  --hd-muted: #a1c0b1;
+  --hd-green: #20bd7a;
+  --hd-green-hover: #16a969;
+  --hd-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  background: radial-gradient(ellipse at top left, #12372b 0, transparent 48%), var(--hd-page);
+  color: var(--hd-text);
+}
+body.modo-escuro .container, body.modo-escuro .container2 { background: var(--hd-card); color: var(--hd-text); border-color: var(--hd-line); }
+body.modo-escuro .flex-container > .containers-row:first-child > .container:first-child { background: linear-gradient(115deg, #142622, #17392d); }
+body.modo-escuro .cabecalho-helpdesk h1, body.modo-escuro h2 { color: var(--hd-text); }
+body.modo-escuro .container input:not([type="checkbox"]):not([type="radio"]), body.modo-escuro .container textarea, body.modo-escuro .container select { background: var(--hd-field); color: var(--hd-text); border-color: var(--hd-line); }
+body.modo-escuro .container button, body.modo-escuro .container2 button { background: #203e33; color: #dff8e9; border-color: var(--hd-line); }
+body.modo-escuro .container button[onclick*="gerar"], body.modo-escuro .container button[onclick*="formatadorDoc"], body.modo-escuro .container button[onclick*="verificarMac"], body.modo-escuro .container button[onclick*="formatarLocalizacao"] { background: var(--hd-green); color: #062719; border-color: var(--hd-green); }
+body.modo-escuro .botao-tema { background: #203e33; color: #e5f5ed; border-color: var(--hd-line); }
+body.modo-escuro .opcoes, body.modo-escuro .card { background: #172e28; border-color: var(--hd-line); }
+body.modo-escuro #textoGerado, body.modo-escuro #atendimento, body.modo-escuro #textoConvertido, body.modo-escuro #docResultado, body.modo-escuro #localizacaoFormatada, body.modo-escuro #resultado { background: var(--hd-field); color: var(--hd-text); }
+body.modo-escuro p, body.modo-escuro label { color: var(--hd-muted); }
+@media (max-width: 1100px) {
+  .flex-container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+  .card-documento, .card-conversor, .card-os, .card-atendimento, .card-localizacao, .card-mac { grid-column: auto; grid-row: auto; }
+  .flex-container > .containers-row:first-child > .container:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 680px) {
+  body { padding: 10px; }
+  .flex-container { grid-template-columns: minmax(0, 1fr); gap: 11px; }
+  .flex-container > .containers-row:first-child > .container:first-child { grid-column: 1; align-items: flex-start; padding: 14px; }
+  .container, .container2 { padding: 14px; border-radius: 12px; }
+  .cabecalho-helpdesk { align-items: flex-start; }
+  .cabecalho-helpdesk h1 { font-size: 24px; }
+  .container button { margin-right: 4px; }
+}
+
+/* Colunas independentes: o crescimento de um gerador não empurra os cartões vizinhos */
+.flex-container {
+  display: block;
+}
+.flex-container > .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 16px;
+  padding: 14px 20px;
+  background: linear-gradient(115deg, #ffffff, #f0faf5);
+}
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+}
+.dashboard-column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  min-width: 0;
+}
+.dashboard-column > .container {
+  width: 100%;
+  min-width: 0;
+}
+body.modo-escuro .flex-container > .container {
+  background: linear-gradient(115deg, #142622, #17392d);
+}
+@media (max-width: 1100px) {
+  .dashboard-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dashboard-column { gap: 13px; }
+}
+@media (max-width: 680px) {
+  .flex-container > .container { align-items: flex-start; padding: 14px; }
+  .dashboard-layout { grid-template-columns: minmax(0, 1fr); gap: 11px; }
+  .dashboard-column { gap: 11px; }
+}
+
+/* Visual simples e direto para os geradores */
+.card-os, .card-atendimento {
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: none;
+  border-color: var(--hd-line);
+}
+.card-os:hover, .card-atendimento:hover { box-shadow: none; }
+.card-os h2, .card-atendimento h2 { margin-bottom: 5px; font-size: 16px; letter-spacing: 0; }
+.card-os > p, .card-atendimento > p { margin: 4px 0 8px; }
+.card-os .opcoes, .card-atendimento .opcoes {
+  margin: 7px 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--hd-line);
+}
+.card-os .card, .card-atendimento .card {
+  margin: 7px 0;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: none;
+}
+.card-os label, .card-atendimento label { margin: 7px 0 3px; font-weight: 500; }
+.card-os input:not([type="checkbox"]):not([type="radio"]),
+.card-os textarea, .card-os select,
+.card-atendimento input:not([type="checkbox"]):not([type="radio"]),
+.card-atendimento textarea, .card-atendimento select {
+  min-height: 34px;
+  margin: 3px 0 7px;
+  padding: 7px 9px;
+  border-radius: 6px;
+}
+.card-os button, .card-atendimento button {
+  padding: 7px 10px;
+  border-radius: 6px;
+  box-shadow: none;
+  transform: none;
+}
+.card-os button:hover, .card-atendimento button:hover { transform: none; }
+#textoGerado, #atendimento { margin-top: 8px; border: 1px solid var(--hd-line); border-radius: 6px; }
+body.modo-escuro .card-os .opcoes, body.modo-escuro .card-atendimento .opcoes { background: transparent; }
+
+
+/* Cabeçalho principal restaurado */
+.cabecalho-principal {
+  width: 100%;
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+  box-shadow: none;
+}
+.cabecalho-principal .cabecalho-helpdesk { margin: 0; flex: 1 1 auto; }
+.atalhos-cabecalho { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.atalhos-cabecalho button { margin: 0; padding: 8px 12px; }
+@media (max-width: 650px) {
+  .cabecalho-principal { align-items: flex-start; }
+  .cabecalho-principal .cabecalho-helpdesk { width: 100%; }
+  .atalhos-cabecalho { width: 100%; }
+}
+
+/* Formulários O.S. e Atendimento: layout enxuto, sem caixas decorativas */
+.card-os,
+.card-atendimento {
+  padding: 12px;
+  margin: 6px;
+  border: 1px solid var(--hd-line);
+  border-radius: 6px;
+  box-shadow: none;
+}
+.card-os h2,
+.card-atendimento h2 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.card-os > p,
+.card-atendimento > p {
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+.card-os form,
+.card-atendimento form { margin: 0; }
+.card-os form > div,
+.card-atendimento form > div { margin-top: 4px; }
+.card-os label,
+.card-atendimento label {
+  display: block;
+  margin: 4px 0 2px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.card-os input:not([type="checkbox"]):not([type="radio"]),
+.card-os select,
+.card-os textarea,
+.card-atendimento input:not([type="checkbox"]):not([type="radio"]),
+.card-atendimento select,
+.card-atendimento textarea {
+  width: 100%;
+  min-height: 30px;
+  margin: 2px 0 5px;
+  padding: 5px 7px;
+  font-size: 12px;
+  line-height: 1.3;
+  border: 1px solid #d5d9d6;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.card-os textarea,
+.card-atendimento textarea { min-height: 54px; }
+.card-os .opcoes,
+.card-atendimento .opcoes {
+  margin: 4px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.card-os .card,
+.card-atendimento .card {
+  margin: 4px 0;
+  padding: 5px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.card-os .grupo-radio,
+.card-atendimento .grupo-radio { margin: 2px 0; }
+.card-os .grupo-radio label,
+.card-atendimento .grupo-radio label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 3px 0;
+}
+.card-os input[type="checkbox"],
+.card-os input[type="radio"],
+.card-atendimento input[type="checkbox"],
+.card-atendimento input[type="radio"] { margin: 0 4px 0 0; }
+.card-os button,
+.card-atendimento button {
+  width: auto;
+  min-height: 30px;
+  margin: 3px 4px 3px 0;
+  padding: 6px 9px;
+  border-radius: 4px;
+  box-shadow: none;
+  transition: background-color .15s ease;
+}
+.card-os button:hover,
+.card-atendimento button:hover { transform: none; box-shadow: none; }
+.card-os #textoGerado,
+.card-atendimento #atendimento {
+  margin-top: 5px;
+  padding: 7px;
+  border: 1px solid var(--hd-line);
+  border-radius: 4px;
+}
+body.modo-escuro .card-os .opcoes,
+body.modo-escuro .card-atendimento .opcoes,
+body.modo-escuro .card-os .card,
+body.modo-escuro .card-atendimento .card { background: transparent; }
+body.modo-escuro .card-os input:not([type="checkbox"]):not([type="radio"]),
+body.modo-escuro .card-os select,
+body.modo-escuro .card-os textarea,
+body.modo-escuro .card-atendimento input:not([type="checkbox"]):not([type="radio"]),
+body.modo-escuro .card-atendimento select,
+body.modo-escuro .card-atendimento textarea { border-color: var(--hd-line); }
+
+
+/* Ajuste fino: reduzir espaços verticais nos formulários */
+.card-os,
+.card-atendimento {
+  padding: 9px;
+  margin: 3px 0;
+}
+.card-os > p,
+.card-atendimento > p { margin-bottom: 4px; }
+.card-os form > div,
+.card-atendimento form > div { margin-top: 1px; margin-bottom: 0; }
+.card-os label,
+.card-atendimento label { margin: 2px 0 1px; line-height: 1.2; }
+.card-os input:not([type="checkbox"]):not([type="radio"]),
+.card-os select,
+.card-os textarea,
+.card-atendimento input:not([type="checkbox"]):not([type="radio"]),
+.card-atendimento select,
+.card-atendimento textarea {
+  min-height: 27px;
+  margin: 1px 0 3px;
+  padding: 4px 6px;
+}
+.card-os textarea,
+.card-atendimento textarea { min-height: 46px; }
+.card-os .opcoes,
+.card-atendimento .opcoes { margin: 2px 0; }
+.card-os .card,
+.card-atendimento .card { margin: 2px 0; padding: 3px 0; }
+.card-os .grupo-radio,
+.card-atendimento .grupo-radio { margin: 1px 0; }
+.card-os .grupo-radio label,
+.card-atendimento .grupo-radio label { margin: 1px 0; }
+.card-os button,
+.card-atendimento button { min-height: 27px; margin: 2px 3px 2px 0; padding: 5px 8px; }
+.card-os #textoGerado,
+.card-atendimento #atendimento { margin-top: 3px; padding: 6px; }
+
+
+/* Alinhamento dos checkboxes e seus textos nos formulários */
+.card-os div:has(> input[type="checkbox"]) ,
+.card-atendimento div:has(> input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 2px 0;
+}
+.card-os div:has(> input[type="checkbox"]) > input[type="checkbox"],
+.card-atendimento div:has(> input[type="checkbox"]) > input[type="checkbox"] {
+  flex: 0 0 auto;
+  margin: 0;
+  vertical-align: middle;
+}
+.card-os div:has(> input[type="checkbox"]) > label,
+.card-atendimento div:has(> input[type="checkbox"]) > label {
+  display: inline;
+  margin: 0;
+  line-height: 1.3;
+  cursor: pointer;
 }

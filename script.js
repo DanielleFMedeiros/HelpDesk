@@ -1,3 +1,13 @@
+
+// Atalhos do cabeçalho
+function abrirLink() {
+  window.open("https://drive.google.com/drive/folders/1Zjxqrsom2LXvtrx62O2bYz87Md8k72va?usp=sharing", "_blank");
+}
+
+function abrirLink1() {
+  window.open("https://faq.tactelecom.com.br/bibliotecas/comercial/", "_blank");
+}
+
 //FORMATADOR DE CPF/CNPJ
 function formatadorDoc() {
     const docEntrada = document.getElementById("docInput").value;
@@ -39,17 +49,6 @@ function copiarDocumento() {
     if (resultadoDoc) {
         copiarParaAreaTransferencia(resultadoDoc);
     }
-}
-
-//GOOGLE MAPS
-function abrirLink() {
-  var link = "https://drive.google.com/drive/folders/1Zjxqrsom2LXvtrx62O2bYz87Md8k72va?usp=sharing";
-  window.open(link, "_blank");
-}
-
-function abrirLink1() {
-  var link = "https://faq.tactelecom.com.br/bibliotecas/comercial/";
-  window.open(link, "_blank");
 }
 
 function copiarParaAreaTransferencia(texto) {
@@ -185,7 +184,7 @@ function copiarTextoConversor() {
 
 //o.s
 
-const problemaSelect = document.getElementById('problemaSelect');
+let problemaSelect = null;
 
 function mostrarElemento(elemento) {
   if (elemento) {
@@ -231,7 +230,7 @@ function limitarTexto(texto, limite) {
 
 function gerarTexto() {
 
-  var valorElemento = obterValorElemento('idDoElemento');
+  // Campo genérico removido: não existe no HTML e não é necessário.
 
   /* sem */
   const regiaoMk = obterValorElemento('regiao');
@@ -242,10 +241,8 @@ function gerarTexto() {
   const divmac = obterValorElemento('mac1');
   const divsinal = obterValorElemento('sinal1');
   const divsinaltx = obterValorElemento('sinaltx');
-  const leds = obterValorElemento('leds');
   const extras = obterValorElemento('extras');
   const telefoneMk = obterValorElemento('telefone');
-  const modocontato = obterValorElemento('modocontato');
   const refMk = obterValorElemento('ref');
   const localMk = obterValorElemento('local');
 
@@ -521,7 +518,7 @@ function gerarTexto() {
     }
 
     texto+= '\n' + extras5 + ". " +'\n\n' + "VERIFICAR SINAL DE REDE, DROPP DA FIBRA, FUSÕES, ATUALIZAR A CONFIGURAÇÃO DE EQUIPAMENTO, VELOCIDADE, INSTALAÇÃO E POSICIONAMENTO "+
-    "DA ONU E DEIXAR PADRÃO TAC. AO ENTRAR EM CONTATO COM O CLIENTE INFORMAR MANUTENÇÃO PREVENTIVA. "+
+    "DA ONU E DEIXAR PADRÃO DEFINIDO. AO ENTRAR EM CONTATO COM O CLIENTE INFORMAR MANUTENÇÃO PREVENTIVA. "+
     "PRECISA CONTER NO FECHAMENTO DA O.S: FOTO DO SINAL DO T.A, SINAL DA CASA E FOTO DA ONU.*";
 
     textoLocal = localMk5;
@@ -531,10 +528,10 @@ function gerarTexto() {
 
   }
 
-  //TV TAC COM DEFEITO
-  if (problema === 'tvTac') {
-    textoIntro = regiaoMk4 + " - TV TAC COM DEFEITO" + '\n' + "(" + horarioMk4 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk4 + '\n' + '\n';
-    texto = "CLIENTE ESTÁ COM PROBLEMAS NA TV TAC. ";
+  //TV COM DEFEITO
+  if (problema === 'tvDefeito') {
+    textoIntro = regiaoMk4 + " - TV COM DEFEITO" + '\n' + "(" + horarioMk4 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk4 + '\n' + '\n';
+    texto = "CLIENTE ESTÁ COM PROBLEMAS NA TV. ";
 
     if (procedimentoCompletoTv4 === 'nao') {
       texto += "NÃO REALIZOU O PROCEDIMENTO COMPLETO DE REINICIAR EQUIPAMENTOS. ";
@@ -673,6 +670,10 @@ function gerarTexto() {
 }
 
 function adicionarEventoProblema() {
+  if (!problemaSelect) {
+    console.error('Campo #problemaSelect não encontrado no HTML.');
+    return;
+  }
   problemaSelect.addEventListener('change', function () {
     // Oculta todas as opções
     esconderElemento(opcoesSemInternet);
@@ -692,7 +693,7 @@ function adicionarEventoProblema() {
     esconderElemento(opcoesInternetLenta);
     esconderElemento(opcoesInternetCaindo);
     esconderElemento(opcoesSinalAlto);
-    esconderElemento(opcoesTvTacDefeito);
+    esconderElemento(opcoesTvDefeito);
     esconderElemento(opcoesInstalacao);
     esconderElemento(extraInstalacaoFibra);
     esconderElemento(opcoesCabeamento);
@@ -776,8 +777,8 @@ function adicionarEventoProblema() {
       mostrarElemento(refMk5);
       mostrarElemento(localMk5);
 
-    } else if (problemaSelect.value === 'tvTac') {
-      mostrarElemento(opcoesTvTacDefeito);
+    } else if (problemaSelect.value === 'tvDefeito') {
+      mostrarElemento(opcoesTvDefeito);
       mostrarElemento(regiaoMk4);
       mostrarElemento(horarioMk4);
       mostrarElemento(solicitanteMk4)
@@ -828,11 +829,15 @@ function adicionarEventoProblema() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  problemaSelect = document.getElementById('problemaSelect');
+  problemaSelect2 = document.getElementById('problemaSelect2');
   adicionarEventoProblema();
+  configurarProblemaSelect2();
+  configurarCopiarAtendimento();
 
   // Adiciona o evento de clique para copiar o texto gerado
   const botaoCopiarTexto = document.getElementById('copiarTextoo');
-  botaoCopiarTexto.addEventListener('click', function () {
+  if (botaoCopiarTexto) botaoCopiarTexto.addEventListener('click', function () {
     // Obtém o texto gerado
     const textoGerado = document.getElementById('textoGerado').textContent;
 
@@ -861,7 +866,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // GERADOR DE ATENDIMENTO
 
-const problemaSelect2 = document.getElementById('problemaSelect2');
+let problemaSelect2 = null;
 
 function mostrarElemento2(elemento2) {
   if (elemento2) {
@@ -1007,11 +1012,18 @@ function gerarA() {
     );
   };
 
-  document.getElementById('copiarA').classList.remove('hidden');
-  document.getElementById('atendimento').textContent = textoGerado2;
+  const botaoCopiar = document.getElementById('copiarA');
+  if (botaoCopiar) botaoCopiar.classList.remove('hidden');
+  const campoAtendimento = document.getElementById('atendimento');
+  if (campoAtendimento) campoAtendimento.textContent = textoGerado2;
 }
 
-problemaSelect2.addEventListener('change', function () {
+function configurarProblemaSelect2() {
+  if (!problemaSelect2) {
+    console.error('Campo #problemaSelect2 não encontrado no HTML.');
+    return;
+  }
+  problemaSelect2.addEventListener('change', function () {
 
   const problema = this.value;
 
@@ -1055,9 +1067,16 @@ problemaSelect2.addEventListener('change', function () {
     document.getElementById('divrelatocliente2').classList.remove('hidden');
     document.getElementById('divplus2').classList.remove('hidden');
   }
-});
+  });
+}
 
-document.getElementById('copiarA').addEventListener('click', function () {
+function configurarCopiarAtendimento() {
+  const botaoCopiarAtendimento = document.getElementById('copiarA');
+  if (!botaoCopiarAtendimento) {
+    console.error('Botão #copiarA não encontrado no HTML.');
+    return;
+  }
+  botaoCopiarAtendimento.addEventListener('click', function () {
   const texto = document.getElementById('atendimento').textContent;
 
   navigator.clipboard.writeText(texto)
@@ -1067,7 +1086,8 @@ document.getElementById('copiarA').addEventListener('click', function () {
     .catch(err => {
       console.error('Erro ao copiar:', err);
     });
-});
+  });
+}
 
 
 function aplicarTema(modoEscuro) {
