@@ -8,40 +8,49 @@ function abrirLink1() {
   window.open("https://faq.tactelecom.com.br/bibliotecas/comercial/", "_blank");
 }
 
-//FORMATADOR DE CPF/CNPJ
+// FORMATADOR AUTOMÁTICO DE CPF/CNPJ
 function formatadorDoc() {
-    const docEntrada = document.getElementById("docInput").value;
-    const docNumeros = docEntrada.replace(/\D/g, "");
-
+    const campo = document.getElementById("docInput");
+    const docNumeros = campo.value.replace(/\D/g, "");
     const resultado = document.getElementById("docResultado");
     const botaoCopiar = document.getElementById("botaoCopiarDoc");
 
     if (docNumeros.length === 11) {
-        // Formata como CPF
         resultado.textContent = docNumeros.replace(
             /(\d{3})(\d{3})(\d{3})(\d{2})/,
             "$1.$2.$3-$4"
         );
-
         botaoCopiar.style.display = "inline-block";
-
     } else if (docNumeros.length === 14) {
-        // Formata como CNPJ
         resultado.textContent = docNumeros.replace(
             /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
             "$1.$2.$3/$4-$5"
         );
-
         botaoCopiar.style.display = "inline-block";
-
     } else {
-        resultado.textContent =
-            "Digite um CPF com 11 dígitos ou um CNPJ com 14 dígitos.";
-
+        resultado.textContent = "";
         botaoCopiar.style.display = "none";
     }
 }
 
+function configurarFormatadoresAutomaticos() {
+  const campoDoc = document.getElementById("docInput");
+  const campoLocalizacao = document.getElementById("localizacaoInput");
+  let temporizadorLocalizacao;
+
+  if (campoDoc) {
+    campoDoc.addEventListener("input", formatadorDoc);
+  }
+
+  if (campoLocalizacao) {
+    campoLocalizacao.addEventListener("input", () => {
+      clearTimeout(temporizadorLocalizacao);
+      temporizadorLocalizacao = setTimeout(() => {
+        formatarLocalizacao();
+      }, 450);
+    });
+  }
+}
 
 function copiarDocumento() {
     const resultadoDoc = document.getElementById("docResultado").textContent;
@@ -77,50 +86,76 @@ function copiarResultadoNome() {
   copiarParaAreaTransferencia(resultadoNome);
 }
 */
-//MAC
-function verificarMac() {
-  // Obter o valor do input
-  var macAddress = document.getElementById("macInputVerificar").value;
+// MAC — consulta automática ao completar os 12 caracteres hexadecimais
+let macConsultaTimer = null;
+let ultimoMacConsultado = "";
 
-  // Verificar se o valor está vazio
-  if (macAddress.trim() === "") {
-    // Limpar o iframe se o campo estiver vazio
-    document.getElementById("iframeResultado").src = "";
-    document.getElementById("resultado").innerText = "Endereço MAC vazio.";
+function normalizarMac(valor) {
+  return valor.replace(/[^a-fA-F0-9]/g, "").toUpperCase();
+}
+
+function verificarMac() {
+  const campo = document.getElementById("macInputVerificar");
+  const resultado = document.getElementById("resultado");
+  const iframe = document.getElementById("iframeResultado");
+  const macOriginal = campo.value.trim();
+  const macLimpo = normalizarMac(macOriginal);
+
+  if (macLimpo.length !== 12) {
+    resultado.innerText = "Digite um MAC completo com 12 caracteres hexadecimais.";
+    iframe.src = "about:blank";
+    ultimoMacConsultado = "";
     return;
   }
 
-  // Construir a URL da solicitação
-  var apiUrl = "https://api.macvendors.com/" + encodeURIComponent(macAddress);
+  if (macLimpo === ultimoMacConsultado) return;
+  ultimoMacConsultado = macLimpo;
 
-  // Realizar a pesquisa diretamente no iframe
-  document.getElementById("iframeResultado").src = apiUrl;
-
-  // Limpar o campo de entrada
-  document.getElementById("macInputVerificar").value = "";
-
-  // Exibir o valor construído no elemento com id "resultado"
-  document.getElementById("resultado").innerText = "Verificando...";
+  const macFormatado = macLimpo.match(/.{2}/g).join(":");
+  resultado.innerText = "Consultando fabricante...";
+  iframe.src = "https://api.macvendors.com/" + encodeURIComponent(macFormatado);
 }
 
-// LOCALIZAÇÃO
-function formatarLocalizacao() {
-  // Obtém o valor do input de localização
-  let localizacaoEntrada = document.getElementById("localizacaoInput").value;
+function configurarConsultaAutomaticaMac() {
+  const campo = document.getElementById("macInputVerificar");
+  if (!campo) return;
 
-  // Utiliza expressão regular para extrair números decimais
-  let numeros = localizacaoEntrada.match(/-?\d+\.\d+/g);
+  campo.addEventListener("input", () => {
+    clearTimeout(macConsultaTimer);
+    const macLimpo = normalizarMac(campo.value);
+    if (macLimpo.length < 12) {
+      ultimoMacConsultado = "";
+      document.getElementById("resultado").innerText = "";
+      document.getElementById("iframeResultado").src = "about:blank";
+      return;
+    }
+    if (macLimpo.length > 12) return;
+    macConsultaTimer = setTimeout(verificarMac, 450);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  configurarConsultaAutomaticaMac();
+  configurarFormatadoresAutomaticos();
+});
+
+// FORMATADOR AUTOMÁTICO DE LOCALIZAÇÃO
+function formatarLocalizacao() {
+  const campo = document.getElementById("localizacaoInput");
+  const saida = document.getElementById("localizacaoFormatada");
+  const botaoCopiar = document.getElementById("botaoCopiarLocalizacao");
+  const localizacaoEntrada = campo.value;
+  const numeros = localizacaoEntrada.match(/-?\d+\.\d+/g);
 
   if (numeros && numeros.length >= 2) {
-    // Gera a localização formatada
-    let localizacaoFormatada = "https://maps.google.com/?q=" + numeros.join(',');
-
-    // Atualiza o texto e o link no HTML
-    document.getElementById("localizacaoFormatada").textContent = localizacaoFormatada;
-    document.getElementById("localizacaoFormatada").setAttribute("data-link-mapa", localizacaoFormatada);
+    const localizacaoFormatada = "https://maps.google.com/?q=" + numeros.slice(0, 2).join(",");
+    saida.textContent = localizacaoFormatada;
+    saida.setAttribute("data-link-mapa", localizacaoFormatada);
+    if (botaoCopiar) botaoCopiar.style.display = "inline-block";
   } else {
-    // Exibe mensagem de localização inválida
-    document.getElementById("localizacaoFormatada").textContent = "Localização inválida.";
+    saida.textContent = "";
+    saida.removeAttribute("data-link-mapa");
+    if (botaoCopiar) botaoCopiar.style.display = "none";
   }
 }
 
@@ -128,6 +163,7 @@ function formatarLocalizacao() {
 function copiarResultado() {
   // Obtém o resultado formatado
   let resultado = document.getElementById("localizacaoFormatada").getAttribute("data-link-mapa");
+  if (!resultado) return;
 
   // Cria um elemento de texto temporário para a área de transferência
   const tempInput = document.createElement("textarea");
