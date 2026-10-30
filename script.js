@@ -604,7 +604,7 @@ function gerarTexto() {
     if (minimiza === 'sim') {
       texto += "TV ESTÁ MINIMIZANDO A TELA. ";
     } else if (minimiza === 'nao') {
-      texto += "TV NÃO ESTÁ MINIMIZANDO A TELA. ";
+      texto += "";
     }
 
     //CABEAMENTO
