@@ -228,6 +228,14 @@ function limitarTexto(texto, limite) {
   return linhas.join('\n');
 }
 
+function obterModoContato(id) {
+  const grupo = document.getElementById(id);
+  if (!grupo) return '';
+  return Array.from(grupo.querySelectorAll('input[type="checkbox"]:checked'))
+    .map(opcao => opcao.value)
+    .join(' e ');
+}
+
 function gerarTexto() {
 
   // Campo genérico removido: não existe no HTML e não é necessário.
@@ -243,6 +251,7 @@ function gerarTexto() {
   const divsinaltx = obterValorElemento('sinaltx');
   const extras = obterValorElemento('extras');
   const telefoneMk = obterValorElemento('telefone');
+  const modoContato = obterModoContato('modoContato');
   const refMk = obterValorElemento('ref');
   const localMk = obterValorElemento('local');
 
@@ -259,6 +268,7 @@ function gerarTexto() {
   const extras6 = obterValorElemento('extras6');
   const osanterior = obterValorElemento('osanterior');
   const telefoneMk6 = obterValorElemento('telefone6');
+  const modoContato6 = obterModoContato('modoContato6');
   const refMk6 = obterValorElemento('ref6');
   const localMk6 = obterValorElemento('local6');
 
@@ -269,9 +279,14 @@ function gerarTexto() {
   const procedimentoCompletoLento = obterValorElemento('procedimentoCompletoLento');
   const dispositivosDiv = obterValorElemento('dispositivos');
   const tvCabeadaDiv = obterValorElemento('tvCabeadaDiv');
-  const sinalDiv = obterValorElemento('sinal');
+  const planoLenta = obterValorElemento('planoLenta');
+  const roteadorLenta = obterValorElemento('roteadorLenta');
+  const macLenta = obterValorElemento('macLenta');
+  const sinalRXLenta = obterValorElemento('sinalRXLenta');
+  const sinalTXLenta = obterValorElemento('sinalTXLenta');
   const extras2 = obterValorElemento('extras2');
   const telefoneMk2 = obterValorElemento('telefone2');
+  const modoContato2 = obterModoContato('modoContato2');
   const refMk2 = obterValorElemento('ref2');
   const localMk2 = obterValorElemento('local2');
 
@@ -283,9 +298,14 @@ function gerarTexto() {
   const quedas = obterValorElemento('quedas');
   const cabosConectadosDiv1 = obterValorElemento('cabosConectadosDiv1');
   const dispositivosDiv1 = obterValorElemento('dispositivos1');
-  const sinalDiv1 = obterValorElemento('sinalcaindo');
+  const planoCaindo = obterValorElemento('planoCaindo');
+  const roteadorCaindo = obterValorElemento('roteadorCaindo');
+  const macCaindo = obterValorElemento('macCaindo');
+  const sinalRXCaindo = obterValorElemento('sinalRXCaindo');
+  const sinalTXCaindo = obterValorElemento('sinalTXCaindo');
   const extras3 = obterValorElemento('extras3');
   const telefoneMk3 = obterValorElemento('telefone3');
+  const modoContato3 = obterModoContato('modoContato3');
   const refMk3 = obterValorElemento('ref3');
   const localMk3 = obterValorElemento('local3');
 
@@ -294,9 +314,14 @@ function gerarTexto() {
   const horarioMk5 = obterValorElemento('horario5');
   const solicitanteMk5 = obterValorElemento('solicitante5');
   const quedas5 = obterValorElemento('quedas5');
-  const sinalDiv5 = obterValorElemento('sinal5');
+  const planoSinalAlto = obterValorElemento('planoSinalAlto');
+  const roteadorSinalAlto = obterValorElemento('roteadorSinalAlto');
+  const macSinalAlto = obterValorElemento('macSinalAlto');
+  const sinalRXSinalAlto = obterValorElemento('sinalRXSinalAlto');
+  const sinalTXSinalAlto = obterValorElemento('sinalTXSinalAlto');
   const extras5 = obterValorElemento('extras5');
   const telefoneMk5 = obterValorElemento('telefone5');
+  const modoContato5 = obterModoContato('modoContato5');
   const refMk5 = obterValorElemento('ref5');
   const localMk5 = obterValorElemento('local5');
 
@@ -304,11 +329,17 @@ function gerarTexto() {
   const regiaoMk4 = obterValorElemento('regiao4');
   const horarioMk4 = obterValorElemento('horario4');
   const solicitanteMk4 = obterValorElemento('solicitante4');
+  const planoTv = obterValorElemento('planoTv');
+  const roteadorTv = obterValorElemento('roteadorTv');
+  const macTv = obterValorElemento('macTv');
+  const sinalRXTv = obterValorElemento('sinalRXTv');
+  const sinalTXTv = obterValorElemento('sinalTXTv');
   const procedimentoCompletoTv4 = obterValorElemento('procedimentoCompletoTv4');
   const cabosConectadosDiv4 = obterValorElemento('cabosConectadosDiv4');
   const minimiza = obterValorElemento('minimiza4');
   const extras4 = obterValorElemento('extras4');
   const telefoneMk4 = obterValorElemento('telefone4');
+  const modoContato4 = obterModoContato('modoContato4');
   const refMk4 = obterValorElemento('ref4');
   const localMk4 = obterValorElemento('local4');
 
@@ -322,6 +353,7 @@ function gerarTexto() {
   const pagamentoMk = obterValorElemento('pagamento');
   const extras7 = obterValorElemento('extras7');
   const telefoneMk7 = obterValorElemento('telefone7');
+  const modoContato7 = obterModoContato('modoContato7');
   const refMk7 = obterValorElemento('ref7');
   const localMk7 = obterValorElemento('local7');
 
@@ -338,6 +370,7 @@ function gerarTexto() {
   const clienteCiente = obterValorElemento('clienteCiente');
   const contrato = obterValorElemento('contrato');
   const telefoneMkComercial = obterValorElemento('telefoneComercial');
+  const modoContatoComercial = obterModoContato('modoContatoComercial');
   const refMkComercial = obterValorElemento('refComercial');
   const localMkComercial = obterValorElemento('localComercial');
 
@@ -346,6 +379,7 @@ function gerarTexto() {
   let textoLocal = "";
   let texto = "";
   let telefone = "";
+  let textoComFormatacaoPropria = false;
 
   // Função para pegar os valores dos checkbox marcados
   function obterCheckBoxMarcados() {
@@ -361,17 +395,8 @@ function gerarTexto() {
     return valorMarcado;
   }
 
-  function obterModoContato() {
-    let checkboxes = document.querySelectorAll('.modocontato');
-    let modos = [];
-
-    checkboxes.forEach(function (checkbox) {
-      if (checkbox.checked) {
-        modos.push(checkbox.value);
-      }
-    });
-
-    return modos.join(', ');
+  function montarTelefoneContato(numero, modo) {
+    return numero + (modo ? ' - ' + modo : '');
   }
 
   function obterMorador() {
@@ -410,10 +435,7 @@ function gerarTexto() {
     texto += checkboxMarcado ? " " + checkboxMarcado + "." : "";
     texto += extras ? " " + extras + "." : "";
 
-    let divmodocontato = obterModoContato();
-    telefone = '\n' + telefoneMk +
-      (divmodocontato ? ' - ' + divmodocontato : '') +
-      '\n' + refMk;
+    telefone = '\n' + montarTelefoneContato(telefoneMk, modoContato) + '\n' + refMk;
     textoLocal = localMk;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
   }
@@ -438,14 +460,22 @@ function gerarTexto() {
     }
 
 
-    telefone = '\n' + telefoneMk6 + '\n' + '\n' + refMk6 + '\n';
+    telefone = '\n' + montarTelefoneContato(telefoneMk6, modoContato6) + '\n' + '\n' + refMk6 + '\n';
     textoLocal = localMk6;
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
   }
 
   //INTERNET LENTA
   if (problema === 'internetLenta') {
-    textoIntro = regiaoMk2 + " - INTERNET LENTA" + '\n' + "(" + horarioMk2 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk2 + '\n' + '\n';
+    const infosLenta = [
+      planoLenta ? `PLANO: ${planoLenta}` : null,
+      roteadorLenta ? `MODELO DO ROTEADOR: ${roteadorLenta}` : null,
+      macLenta ? `MAC DA ONU: ${macLenta}` : null,
+      (sinalRXLenta || sinalTXLenta) ? `SINAL RX: ${sinalRXLenta} | SINAL TX: ${sinalTXLenta}` : null
+    ].filter(Boolean).join('\n');
+    textoIntro = regiaoMk2 + " - INTERNET LENTA" + '\n' + "(" + horarioMk2 + ")" + '\n\n' +
+      "TRATADO COM: " + solicitanteMk2 + ',' + '\n' +
+      (infosLenta ? infosLenta + '\n' : '') + '\n';
     texto = "CLIENTE ESTÁ COM INTERNET LENTA. ";
 
     if (procedimentoCompletoLento === 'nao') {
@@ -463,16 +493,25 @@ function gerarTexto() {
     }
 
     textoLocal = localMk2;
-    texto += "SINAL ESTÁ: " + sinalDiv + ". " + extras2;
+    texto += extras2;
 
-    telefone = '\n' + telefoneMk2 + '\n' + refMk2 + '\n';
-    textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
+    telefone = '\n' + montarTelefoneContato(telefoneMk2, modoContato2) + '\n' + refMk2 + '\n';
+    textoComFormatacaoPropria = true;
+    textoGerado = textoIntro.toUpperCase() + limitarTexto(texto.toUpperCase(), 64) + '\n' + telefone.toUpperCase() + textoLocal;
 
   }
 
   //INTERNET CAINDO
   if (problema === 'internetCaindo') {
-    textoIntro = regiaoMk3 + " - INTERNET CAINDO" + '\n' + "(" + horarioMk3 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk3 + '\n' + '\n';
+    const infosCaindo = [
+      planoCaindo ? `PLANO: ${planoCaindo}` : null,
+      roteadorCaindo ? `MODELO DO ROTEADOR: ${roteadorCaindo}` : null,
+      macCaindo ? `MAC DA ONU: ${macCaindo}` : null,
+      (sinalRXCaindo || sinalTXCaindo) ? `SINAL RX: ${sinalRXCaindo} | SINAL TX: ${sinalTXCaindo}` : null
+    ].filter(Boolean).join('\n');
+    textoIntro = regiaoMk3 + " - INTERNET CAINDO" + '\n' + "(" + horarioMk3 + ")" + '\n\n' +
+      "TRATADO COM: " + solicitanteMk3 + ',' + '\n' +
+      (infosCaindo ? infosCaindo + '\n' : '') + '\n';
     texto = "CLIENTE ESTÁ COM INTERNET CAINDO. ";
 
     if (procedimentoCompletoCaindo === 'nao') {
@@ -496,20 +535,27 @@ function gerarTexto() {
     texto += "Há QUEDAS EM: " + dispositivosDiv1 + ". ";
 
     textoLocal = localMk3;
-    texto += "SINAL ESTÁ: " + sinalDiv1 + ". " + extras3;
+    texto += extras3;
 
-    telefone = '\n' + telefoneMk3 + '\n' + refMk3 + '\n';
-    textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
+    telefone = '\n' + montarTelefoneContato(telefoneMk3, modoContato3) + '\n' + refMk3 + '\n';
+    textoComFormatacaoPropria = true;
+    textoGerado = textoIntro.toUpperCase() + limitarTexto(texto.toUpperCase(), 64) + '\n' + telefone.toUpperCase() + textoLocal;
 
   }
 
   //SINAL ALTO
   if (problema === 'sinalAlto') {
-    textoIntro = regiaoMk5 + " - SINAL ALTO" + '\n' + "(" + horarioMk5 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk5 + '\n' + '\n';
+    const infosSinalAlto = [
+      planoSinalAlto ? `PLANO: ${planoSinalAlto}` : null,
+      roteadorSinalAlto ? `MODELO DO ROTEADOR: ${roteadorSinalAlto}` : null,
+      macSinalAlto ? `MAC DA ONU: ${macSinalAlto}` : null,
+      (sinalRXSinalAlto || sinalTXSinalAlto) ? `SINAL RX: ${sinalRXSinalAlto} | SINAL TX: ${sinalTXSinalAlto}` : null
+    ].filter(Boolean).join('\n');
 
-    texto=  "SINAL ESTÁ: " + sinalDiv5 + ". " +'\n';
-
-    texto += "CLIENTE ESTÁ COM SINAL ALTO. ";
+    textoIntro = regiaoMk5 + " - SINAL ALTO" + '\n' + "(" + horarioMk5 + ")" + '\n\n' +
+      "TRATADO COM: " + solicitanteMk5 + ',' + '\n' +
+      (infosSinalAlto ? infosSinalAlto + '\n' : '') + '\n';
+    texto = "CLIENTE ESTÁ COM SINAL ALTO. ";
 
     if (quedas5 === 'sim') {
       texto += "APRESENTAM QUEDAS SIGNIFICATIVAS NO SISTEMA. ";
@@ -523,14 +569,24 @@ function gerarTexto() {
 
     textoLocal = localMk5;
 
-    telefone = '\n' + telefoneMk5 + '\n' + refMk5 + '\n';
-    textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
+    telefone = '\n' + montarTelefoneContato(telefoneMk5, modoContato5) + '\n' + refMk5 + '\n';
+    textoComFormatacaoPropria = true;
+    textoGerado = textoIntro.toUpperCase() + limitarTexto(texto.toUpperCase(), 64) + '\n' + telefone.toUpperCase() + textoLocal;
 
   }
 
   //TV COM DEFEITO
   if (problema === 'tvDefeito') {
-    textoIntro = regiaoMk4 + " - TV COM DEFEITO" + '\n' + "(" + horarioMk4 + ")" + '\n' + '\n' + "TRATADO COM: " + solicitanteMk4 + '\n' + '\n';
+    const infosTv = [
+      planoTv ? `PLANO: ${planoTv}` : null,
+      roteadorTv ? `MODELO DO ROTEADOR: ${roteadorTv}` : null,
+      macTv ? `MAC DA ONU: ${macTv}` : null,
+      (sinalRXTv || sinalTXTv) ? `SINAL RX: ${sinalRXTv} | SINAL TX: ${sinalTXTv}` : null
+    ].filter(Boolean).join('\n');
+
+    textoIntro = regiaoMk4 + " - TV COM DEFEITO" + '\n' + "(" + horarioMk4 + ")" + '\n\n' +
+      "TRATADO COM: " + solicitanteMk4 + ',' + '\n' +
+      (infosTv ? infosTv + '\n' : '') + '\n';
     texto = "CLIENTE ESTÁ COM PROBLEMAS NA TV. ";
 
     if (procedimentoCompletoTv4 === 'nao') {
@@ -566,14 +622,15 @@ function gerarTexto() {
       texto += extras7;
 
 
-      telefone = '\n' + telefoneMk7 + '\n' + '\n' + refMk7 + '\n';
+      telefone = '\n' + montarTelefoneContato(telefoneMk7, modoContato7) + '\n' + '\n' + refMk7 + '\n';
       textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
     }
 
     texto += extras4;
-    telefone = '\n' + telefoneMk4 + '\n' + refMk4;
+    telefone = '\n' + montarTelefoneContato(telefoneMk4, modoContato4) + '\n' + refMk4;
     textoLocal = localMk4;
-    textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
+    textoComFormatacaoPropria = true;
+    textoGerado = textoIntro.toUpperCase() + limitarTexto(texto.toUpperCase(), 64) + '\n' + telefone.toUpperCase() + '\n' + textoLocal;
 
   }
   //INSTALACAO
@@ -605,7 +662,7 @@ function gerarTexto() {
 
     texto += "**CONTRATO " + contrato + "**" + '\n';
 
-    telefone = '\n' + "CONTATO: " + telefoneMkComercial + '\n' + '\n' + refMkComercial + '\n';
+    telefone = '\n' + "CONTATO: " + montarTelefoneContato(telefoneMkComercial, modoContatoComercial) + '\n' + '\n' + refMkComercial + '\n';
     textoLocal = localMkComercial;
 
     textoGerado = texto.toUpperCase() + telefone.toUpperCase() + textoLocal;
@@ -642,7 +699,7 @@ function gerarTexto() {
       texto += '\n' + ">> " + extras7 + '.';
     }
 
-    telefone = '\n' + telefoneMk7 + '\n' + '\n' + refMk7 + '\n';
+    telefone = '\n' + montarTelefoneContato(telefoneMk7, modoContato7) + '\n' + '\n' + refMk7 + '\n';
     textoGerado = textoIntro.toUpperCase() + texto.toUpperCase() + '\n' + telefone.toUpperCase() + textoLocal;
   }
 
@@ -658,10 +715,14 @@ function gerarTexto() {
     }
   }
 
-  const textoLimitado = limitarTexto(textoGerado, 55);
+  // Aplica o mesmo limite de 64 caracteres por linha a todos os modelos de O.S.,
+  // preservando as quebras de linha que já foram definidas em cada modelo.
+  const textoLimitado = limitarTextoComQuebras(textoGerado, 64);
 
   // Atualiza o elemento de texto com o resultado
   document.getElementById('textoGerado').textContent = textoLimitado;
+  const avisoConferencia = document.getElementById('avisoConferenciaOS');
+  if (avisoConferencia) avisoConferencia.classList.remove('hidden');
 
   // Mostra o botão de copiar texto
   const botaoCopiarTexto = document.getElementById('copiarTextoo');
@@ -715,7 +776,6 @@ function adicionarEventoProblema() {
       mostrarElemento(extrasc);
       mostrarElemento(telefoneMk);
 
-      document.querySelectorAll('.modocontato').forEach(mostrarElemento);
 
       mostrarElemento(refMk);
       mostrarElemento(localMk);
@@ -744,7 +804,11 @@ function adicionarEventoProblema() {
       mostrarElemento(procedimentoCompletoLento);
       mostrarElemento(dispositivosDiv);
       mostrarElemento(tvCabeada);
-      mostrarElemento(sinalDiv);
+      mostrarElemento(planoLentaDiv);
+      mostrarElemento(roteadorLentaDiv);
+      mostrarElemento(macLentaDiv);
+      mostrarElemento(sinalRXLentaDiv);
+      mostrarElemento(sinalTXLentaDiv);
       mostrarElemento(extrasc2);
       mostrarElemento(telefoneMk2);
       mostrarElemento(refMk2);
@@ -759,7 +823,11 @@ function adicionarEventoProblema() {
       mostrarElemento(conectadoCabo1);
       mostrarElemento(quedas);
       mostrarElemento(dispositivosDiv1);
-      mostrarElemento(sinalDiv1);
+      mostrarElemento(planoCaindoDiv);
+      mostrarElemento(roteadorCaindoDiv);
+      mostrarElemento(macCaindoDiv);
+      mostrarElemento(sinalRXCaindoDiv);
+      mostrarElemento(sinalTXCaindoDiv);
       mostrarElemento(extrasc3);
       mostrarElemento(telefoneMk3);
       mostrarElemento(refMk3);
@@ -771,7 +839,11 @@ function adicionarEventoProblema() {
       mostrarElemento(horarioMk5);
       mostrarElemento(solicitanteMk5)
       mostrarElemento(quedas5);
-      mostrarElemento(sinalDiv5);
+      mostrarElemento(planoSinalAltoDiv);
+      mostrarElemento(roteadorSinalAltoDiv);
+      mostrarElemento(macSinalAltoDiv);
+      mostrarElemento(sinalRXSinalAltoDiv);
+      mostrarElemento(sinalTXSinalAltoDiv);
       mostrarElemento(extrasc5);
       mostrarElemento(telefoneMk5);
       mostrarElemento(refMk5);
@@ -781,7 +853,12 @@ function adicionarEventoProblema() {
       mostrarElemento(opcoesTvDefeito);
       mostrarElemento(regiaoMk4);
       mostrarElemento(horarioMk4);
-      mostrarElemento(solicitanteMk4)
+      mostrarElemento(solicitanteMk4);
+      mostrarElemento(planoTvDiv);
+      mostrarElemento(roteadorTvDiv);
+      mostrarElemento(macTvDiv);
+      mostrarElemento(sinalRXTvDiv);
+      mostrarElemento(sinalTXTvDiv);
       mostrarElemento(procedimentoCompletoTv4);
       mostrarElemento(conectadoCabo4);
       mostrarElemento(minimiza);

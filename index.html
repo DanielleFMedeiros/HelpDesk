@@ -21,6 +21,7 @@
       <button onclick="abrirLink1()">FAQ COMERCIAL</button>
     </div>
   </div>
+
 <div class="dashboard-layout"><div class="dashboard-column coluna-esquerda"><div class="container card-conversor">
 <h2>🔠Conversor de texto</h2>
 <p>Converta entre maiúsculas e minúsculas.</p>
@@ -170,15 +171,11 @@
 <div class="opcoes hidden" id="telefoneMk">
 <label for="telefone">Telefone para contato: </label>
 <input id="telefone" name="telefone" placeholder="Ex: 4836600800" type="text"/>
+<label for="modoContato">Forma de contato:</label>
+<div class="forma-contato-checkboxes" id="modoContato" data-contato-group="modoContato">
+  <label><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+  <label><input type="checkbox" value="Ligação"> Ligação</label>
 </div>
-<p><strong>Chamar como:</strong></p>
-<div>
-<input class="modocontato" id="whatsapp" name="modocontato" type="checkbox" value="Whatsapp"/>
-<label for="whatsapp">Whatsapp</label>
-</div>
-<div>
-<input class="modocontato" id="ligacao" name="modocontato" type="checkbox" value="Ligação"/>
-<label for="ligacao">Ligação</label>
 </div>
 <br/>
 <div class="opcoes hidden" id="refMk">
@@ -237,6 +234,11 @@
 <div class="opcoes hidden" id="telefoneMk6">
 <label for="telefone6">Telefone para contato: </label>
 <input id="telefone6" name="telefone6" placeholder="Ex: 4836600800" type="text"/>
+<label for="modoContato6">Forma de contato:</label>
+<div class="forma-contato-checkboxes" id="modoContato6" data-contato-group="modoContato6">
+  <label><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+  <label><input type="checkbox" value="Ligação"> Ligação</label>
+</div>
 </div>
 <div class="opcoes hidden" id="refMk6">
 <label for="ref6">Referência do local: </label>
@@ -261,6 +263,26 @@
 <label for="solicitante2">Tratado com:</label>
 <input id="solicitante2" name="solicitante2" placeholder="Nome de quem solicitou a o.s" type="text"/>
 </div>
+<div class="opcoes hidden" id="planoLentaDiv">
+<label for="planoLenta">Plano:</label>
+<input id="planoLenta" name="planoLenta" placeholder="650MB-99,90" type="text"/>
+</div>
+<div class="opcoes hidden" id="roteadorLentaDiv">
+<label for="roteadorLenta">Modelo do Roteador:</label>
+<input id="roteadorLenta" name="roteadorLenta" placeholder="HUAWEI AX3S" type="text"/>
+</div>
+<div class="opcoes hidden" id="macLentaDiv">
+<label for="macLenta">Mac da ONU:</label>
+<input id="macLenta" name="macLenta" placeholder="DACMED123456" type="text"/>
+</div>
+<div class="opcoes hidden" id="sinalRXLentaDiv">
+<label for="sinalRXLenta">Sinal RX:</label>
+<input id="sinalRXLenta" name="sinalRXLenta" placeholder="Ex: -30" type="text"/>
+</div>
+<div class="opcoes hidden" id="sinalTXLentaDiv">
+<label for="sinalTXLenta">Sinal TX:</label>
+<input id="sinalTXLenta" name="sinalTXLenta" placeholder="Ex: 2.78" type="text"/>
+</div>
 <label for="procedimentoCompletoLento">Realizou procedimento completo? *</label>
 <select id="procedimentoCompletoLento" name="procedimentoCompletoLento">
 <option value="">-- Selecione --</option>
@@ -279,10 +301,7 @@
 <option value="nao">Não</option>
 </select>
 </div>
-<div class="opcoes hidden" id="sinalDiv">
-<label for="sinal">Qual o sinal que aparece no pedido? *</label>
-<input id="sinal" name="sinal" placeholder="Ex: RX -25.85 | TX 2.98" type="text"/>
-</div>
+
 <div class="opcoes hidden" id="extrasc2">
 <label for="extras2">Adicione informações extras</label>
 <input id="extras2" name="extras2" placeholder="Possível defeito, quedas no sistema?, conf. alteradas, modelo do equipamento, é reincidente? Obs da última manut." type="text"/>
@@ -290,6 +309,11 @@
 <div class="opcoes hidden" id="telefoneMk2">
 <label for="telefone2">Telefone para contato: </label>
 <input id="telefone2" name="telefone2" placeholder="Ex: 4836600800" type="text"/>
+<label for="modoContato2">Forma de contato:</label>
+<div class="forma-contato-checkboxes" id="modoContato2" data-contato-group="modoContato2">
+  <label><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+  <label><input type="checkbox" value="Ligação"> Ligação</label>
+</div>
 </div>
 <div class="opcoes hidden" id="refMk2">
 <label for="ref2">Referência do local: </label>
@@ -313,6 +337,26 @@
 <div class="opcoes hidden" id="solicitanteMk3">
 <label for="solicitante3">Tratado com:</label>
 <input id="solicitante3" name="solicitante3" placeholder="Nome de quem solicitou a o.s" type="text"/>
+</div>
+<div class="opcoes hidden" id="planoCaindoDiv">
+<label for="planoCaindo">Plano:</label>
+<input id="planoCaindo" name="planoCaindo" placeholder="Ex: 400 Mega" type="text"/>
+</div>
+<div class="opcoes hidden" id="roteadorCaindoDiv">
+<label for="roteadorCaindo">Modelo do Roteador:</label>
+<input id="roteadorCaindo" name="roteadorCaindo" placeholder="Ex: Huawei AX3S" type="text"/>
+</div>
+<div class="opcoes hidden" id="macCaindoDiv">
+<label for="macCaindo">Mac da ONU:</label>
+<input id="macCaindo" name="macCaindo" placeholder="Ex: DACMED49F3B6" type="text"/>
+</div>
+<div class="opcoes hidden" id="sinalRXCaindoDiv">
+<label for="sinalRXCaindo">Sinal RX:</label>
+<input id="sinalRXCaindo" name="sinalRXCaindo" placeholder="Ex: -25.85" type="text"/>
+</div>
+<div class="opcoes hidden" id="sinalTXCaindoDiv">
+<label for="sinalTXCaindo">Sinal TX:</label>
+<input id="sinalTXCaindo" name="sinalTXCaindo" placeholder="Ex: 2.98" type="text"/>
 </div>
 <label for="procedimentoCompletoCaindo">Realizou procedimento completo? *</label>
 <select id="procedimentoCompletoCaindo" name="procedimentoCompletoCaindo">
@@ -338,10 +382,7 @@
 <label for="dispositivos1">Está Caindo em: *</label>
 <input id="dispositivos1" name="dispositivosDiv1" placeholder="Digite em quais dispositivos estão apresentando quedas" type="text"/>
 </div>
-<div class="opcoes hidden" id="sinalDiv1">
-<label for="sinalcaindo">Qual o sinal que aparece no pedido? *</label>
-<input id="sinalcaindo" name="sinalcaindo" placeholder="Ex: RX -25.85 | TX 2.98" type="text"/>
-</div>
+
 <div class="opcoes hidden" id="extrasc3">
 <label for="extras3">Adicione informações extras</label>
 <input id="extras3" name="extras3" placeholder="Possível defeito, conf. alteradas, modelo do equipamento, é reincidente? Obs da última manut." type="text"/>
@@ -349,6 +390,11 @@
 <div class="opcoes hidden" id="telefoneMk3">
 <label for="telefone3">Telefone para contato: </label>
 <input id="telefone3" name="telefone3" placeholder="Ex: 4836600800" type="text"/>
+<label for="modoContato3">Forma de contato:</label>
+<div class="forma-contato-checkboxes" id="modoContato3" data-contato-group="modoContato3">
+  <label><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+  <label><input type="checkbox" value="Ligação"> Ligação</label>
+</div>
 </div>
 <div class="opcoes hidden" id="refMk3">
 <label for="ref3">Referência do local: </label>
@@ -373,10 +419,27 @@
 <label for="solicitante5">Tratado com:</label>
 <input id="solicitante5" name="solicitante5" placeholder="Nome de quem solicitou a o.s" type="text"/>
 </div>
-<div class="opcoes hidden" id="sinalDiv5">
-<label for="sinal5">Qual o sinal que aparece no pedido? *</label>
-<input id="sinal5" name="sinal5" placeholder="Ex: RX -25.85 | TX 2.98" type="text"/>
+<div class="opcoes hidden" id="planoSinalAltoDiv">
+<label for="planoSinalAlto">Plano:</label>
+<input id="planoSinalAlto" name="planoSinalAlto" placeholder="Ex: 400 Mega" type="text"/>
 </div>
+<div class="opcoes hidden" id="roteadorSinalAltoDiv">
+<label for="roteadorSinalAlto">Modelo do Roteador:</label>
+<input id="roteadorSinalAlto" name="roteadorSinalAlto" placeholder="Ex: Huawei AX3S" type="text"/>
+</div>
+<div class="opcoes hidden" id="macSinalAltoDiv">
+<label for="macSinalAlto">Mac da ONU:</label>
+<input id="macSinalAlto" name="macSinalAlto" placeholder="Ex: DACMED49F3B6" type="text"/>
+</div>
+<div class="opcoes hidden" id="sinalRXSinalAltoDiv">
+<label for="sinalRXSinalAlto">Sinal RX:</label>
+<input id="sinalRXSinalAlto" name="sinalRXSinalAlto" placeholder="Ex: -25.85" type="text"/>
+</div>
+<div class="opcoes hidden" id="sinalTXSinalAltoDiv">
+<label for="sinalTXSinalAlto">Sinal TX:</label>
+<input id="sinalTXSinalAlto" name="sinalTXSinalAlto" placeholder="Ex: 2.98" type="text"/>
+</div>
+
 <label for="quedas5">Há quedas no sistema? *</label>
 <select id="quedas5" name="quedas1">
 <option value="">-- Selecione --</option>
@@ -390,6 +453,11 @@
 <div class="opcoes hidden" id="telefoneMk5">
 <label for="telefone5">Telefone para contato: </label>
 <input id="telefone5" name="telefone5" placeholder="Ex: 4836600800" type="text"/>
+<label for="modoContato5">Forma de contato:</label>
+<div class="forma-contato-checkboxes" id="modoContato5" data-contato-group="modoContato5">
+  <label><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+  <label><input type="checkbox" value="Ligação"> Ligação</label>
+</div>
 </div>
 <div class="opcoes hidden" id="refMk5">
 <label for="ref5">Referência do local: </label>
@@ -414,6 +482,27 @@
 <label for="solicitante4">Tratado com:</label>
 <input id="solicitante4" name="solicitante4" placeholder="Nome de quem solicitou a o.s" type="text"/>
 </div>
+<div class="opcoes hidden" id="planoTvDiv">
+<label for="planoTv">Plano:</label>
+<input id="planoTv" name="planoTv" placeholder="Ex: 400 Mega" type="text"/>
+</div>
+<div class="opcoes hidden" id="roteadorTvDiv">
+<label for="roteadorTv">Modelo do Roteador:</label>
+<input id="roteadorTv" name="roteadorTv" placeholder="Ex: Huawei AX3S" type="text"/>
+</div>
+<div class="opcoes hidden" id="macTvDiv">
+<label for="macTv">Mac da ONU:</label>
+<input id="macTv" name="macTv" placeholder="Ex: DACMED49F3B6" type="text"/>
+</div>
+<div class="opcoes hidden" id="sinalRXTvDiv">
+<label for="sinalRXTv">Sinal RX:</label>
+<input id="sinalRXTv" name="sinalRXTv" placeholder="Ex: -25.85" type="text"/>
+</div>
+<div class="opcoes hidden" id="sinalTXTvDiv">
+<label for="sinalTXTv">Sinal TX:</label>
+<input id="sinalTXTv" name="sinalTXTv" placeholder="Ex: 2.98" type="text"/>
+</div>
+
 <label for="procedimentoCompletoTv4">Realizou procedimento completo? *</label>
 <select id="procedimentoCompletoTv4" name="procedimentoCompletoTv4">
 <option value="">-- Selecione --</option>
@@ -443,6 +532,11 @@
 <div class="opcoes hidden" id="telefoneMk4">
 <label for="telefone4">Telefone para contato: </label>
 <input id="telefone4" name="telefone4" placeholder="Ex: 4846600800" type="text"/>
+<label for="modoContato4">Forma de contato:</label>
+<div class="forma-contato-checkboxes" id="modoContato4" data-contato-group="modoContato4">
+  <label><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+  <label><input type="checkbox" value="Ligação"> Ligação</label>
+</div>
 </div>
 <div class="opcoes hidden" id="refMk4">
 <label for="ref4">Referência do local: </label>
@@ -498,6 +592,11 @@
 <div class="opcoes hidden" id="telefoneMk7">
 <label for="telefone7">Telefone para contato: </label>
 <input id="telefone7" name="telefone7" placeholder="Ex: 4836600800" type="text"/>
+<label for="modoContato7">Forma de contato:</label>
+<div class="forma-contato-checkboxes" id="modoContato7" data-contato-group="modoContato7">
+  <label><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+  <label><input type="checkbox" value="Ligação"> Ligação</label>
+</div>
 </div>
 <div class="opcoes hidden" id="refMk7">
 <label for="ref7">Referência do local: </label>
@@ -581,6 +680,11 @@
 <div>
 <label for="telefoneComercial">Telefone para contato:</label>
 <input id="telefoneComercial" name="telefoneComercial" placeholder="Ex: 4836600800" type="text"/>
+<label for="modoContatoComercial">Forma de contato:</label>
+<div class="forma-contato-checkboxes" id="modoContatoComercial" data-contato-group="modoContatoComercial">
+  <label><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+  <label><input type="checkbox" value="Ligação"> Ligação</label>
+</div>
 </div>
 <div>
 <label for="refComercial">Referência do local:</label>
@@ -592,6 +696,7 @@
 </div>
 </div>
 <button onclick="gerarTexto()" type="button">Gerar texto</button>
+<p id="avisoConferenciaOS" class="aviso-conferencia-os hidden" role="status">⚠️ Confira com atenção todas as informações, telefone, forma de contato, endereço e procedimentos antes de copiar e colar esta O.S. no sistema.</p>
 <p id="textoGerado"></p>
 <button class="hidden" id="copiarTextoo" type="button">Copiar Texto</button>
 </form>
@@ -796,6 +901,6 @@
 <button onclick="verificarMac()">Verificar</button>
 <p id="resultado"></p>
 <iframe frameborder="no" id="iframeResultado" scrolling=""></iframe>
-</div></div></div></div>  <script src="script.js" defer></script>
+</div></div></div></div>  <script src="script.js?v=20261030-2" defer></script>
 </body>
 </html>
