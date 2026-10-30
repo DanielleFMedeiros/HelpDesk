@@ -868,3 +868,58 @@ body.modo-escuro .card-atendimento textarea { border-color: var(--hd-line); }
   color: inherit;
   font-weight: 600;
 }
+
+
+/* Validação visual dos campos obrigatórios da O.S. */
+.campo-com-erro {
+  border: 2px solid #d93025 !important;
+  outline: 2px solid rgba(217, 48, 37, .12);
+}
+
+/* No modo escuro, manter o fundo original dos campos mesmo durante a validação */
+body.modo-escuro .campo-com-erro {
+  background-color: var(--hd-field, #20352e) !important;
+  color: var(--hd-text, #e5f5ed) !important;
+}
+
+.forma-contato-checkboxes.campo-com-erro {
+  padding: 6px;
+  border-radius: 6px;
+}
+
+
+/* Asterisco discreto para identificar campos obrigatórios */
+.campo-obrigatorio-asterisco {
+  color: #d93025;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+
+/* Checkbox para indicar foto anexada ao cadastro */
+.checkbox-foto-cadastro {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 8px 0 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.checkbox-foto-cadastro input {
+  width: auto;
+  margin: 0;
+  accent-color: #198754;
+}
+
+/* Placeholder mais suave para não parecer um campo já preenchido */
+input::placeholder,
+textarea::placeholder {
+    color: #a6a6a6;
+    opacity: 1;
+}
+
+body.modo-escuro input::placeholder,
+body.modo-escuro textarea::placeholder {
+    color: #888888;
+    opacity: 1;
+}
