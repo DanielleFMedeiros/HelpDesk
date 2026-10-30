@@ -9,37 +9,100 @@ function abrirLink1() {
 }
 
 // FORMATADOR AUTOMÁTICO DE CPF/CNPJ
-function formatadorDoc() {
-    const campo = document.getElementById("docInput");
-    const docNumeros = campo.value.replace(/\D/g, "");
-    const resultado = document.getElementById("docResultado");
-    const botaoCopiar = document.getElementById("botaoCopiarDoc");
+function obterDocumentoFormatado(valor) {
+  const numeros = valor.replace(/\D/g, "");
+  if (numeros.length === 11) {
+    return numeros.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+  }
+  if (numeros.length === 14) {
+    return numeros.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+  }
+  return "";
+}
 
-    if (docNumeros.length === 11) {
-        resultado.textContent = docNumeros.replace(
-            /(\d{3})(\d{3})(\d{3})(\d{2})/,
-            "$1.$2.$3-$4"
-        );
-        botaoCopiar.style.display = "inline-block";
-    } else if (docNumeros.length === 14) {
-        resultado.textContent = docNumeros.replace(
-            /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
-            "$1.$2.$3/$4-$5"
-        );
-        botaoCopiar.style.display = "inline-block";
-    } else {
-        resultado.textContent = "";
-        botaoCopiar.style.display = "none";
+function formatadorDoc() {
+  const campo = document.getElementById("docInput");
+  const resultado = document.getElementById("docResultado");
+  if (!campo || !resultado) return;
+  resultado.textContent = obterDocumentoFormatado(campo.value);
+}
+
+let temporizadorAvisoCopia;
+function mostrarAvisoCopia() {
+  let aviso = document.getElementById("avisoTextoCopiado");
+  if (!aviso) {
+    aviso = document.createElement("div");
+    aviso.id = "avisoTextoCopiado";
+    aviso.className = "copy-toast";
+    aviso.setAttribute("role", "status");
+    aviso.setAttribute("aria-live", "polite");
+    aviso.textContent = "✓ Texto copiado!";
+    document.body.appendChild(aviso);
+  }
+  aviso.classList.add("visivel");
+  clearTimeout(temporizadorAvisoCopia);
+  temporizadorAvisoCopia = setTimeout(() => aviso.classList.remove("visivel"), 2200);
+}
+
+async function copiarEInformar(texto) {
+  const copiado = await copiarAutomaticamente(texto);
+  if (copiado) mostrarAvisoCopia();
+  return copiado;
+}
+
+async function copiarAutomaticamente(texto) {
+  if (!texto) return false;
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(texto);
+      return true;
     }
+  } catch (erro) {
+    // Usa o método alternativo quando a permissão do navegador impedir a cópia.
+  }
+  return copiarComFallback(texto);
+}
+
+function copiarComFallback(texto) {
+  const temporario = document.createElement("textarea");
+  temporario.value = texto;
+  temporario.setAttribute("readonly", "");
+  temporario.style.position = "fixed";
+  temporario.style.left = "-9999px";
+  temporario.style.top = "0";
+  document.body.appendChild(temporario);
+  temporario.select();
+  temporario.setSelectionRange(0, temporario.value.length);
+  let copiado = false;
+  try { copiado = document.execCommand("copy"); }
+  finally { document.body.removeChild(temporario); }
+  return copiado;
 }
 
 function configurarFormatadoresAutomaticos() {
   const campoDoc = document.getElementById("docInput");
   const campoLocalizacao = document.getElementById("localizacaoInput");
   let temporizadorLocalizacao;
+  let temporizadorDocumento;
 
   if (campoDoc) {
-    campoDoc.addEventListener("input", formatadorDoc);
+    campoDoc.addEventListener("input", () => {
+      formatadorDoc();
+      clearTimeout(temporizadorDocumento);
+      temporizadorDocumento = setTimeout(() => {
+        const documento = obterDocumentoFormatado(campoDoc.value);
+        if (documento) copiarEInformar(documento);
+      }, 450);
+    });
+    campoDoc.addEventListener("paste", (evento) => {
+      const textoColado = evento.clipboardData?.getData("text") || "";
+      const documento = obterDocumentoFormatado(textoColado);
+      if (!documento) return;
+      evento.preventDefault();
+      campoDoc.value = documento;
+      formatadorDoc();
+      copiarEInformar(documento);
+    });
   }
 
   if (campoLocalizacao) {
@@ -47,27 +110,20 @@ function configurarFormatadoresAutomaticos() {
       clearTimeout(temporizadorLocalizacao);
       temporizadorLocalizacao = setTimeout(() => {
         formatarLocalizacao();
+        const link = obterLinkLocalizacao(campoLocalizacao.value);
+        if (link) copiarEInformar(link);
       }, 450);
     });
+    campoLocalizacao.addEventListener("paste", (evento) => {
+      const textoColado = evento.clipboardData?.getData("text") || "";
+      const link = obterLinkLocalizacao(textoColado);
+      if (!link) return;
+      evento.preventDefault();
+      campoLocalizacao.value = textoColado;
+      formatarLocalizacao();
+      copiarEInformar(link);
+    });
   }
-}
-
-function copiarDocumento() {
-    const resultadoDoc = document.getElementById("docResultado").textContent;
-
-    if (resultadoDoc) {
-        copiarParaAreaTransferencia(resultadoDoc);
-    }
-}
-
-function copiarParaAreaTransferencia(texto) {
-  const tempInput = document.createElement("textarea");
-  tempInput.value = texto;
-  document.body.appendChild(tempInput);
-  tempInput.select();
-  document.execCommand("copy");
-  document.body.removeChild(tempInput);
-  alert("Texto copiado para a área de transferência: " + texto);
 }
 
 /*//DMVIEW
@@ -140,48 +196,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // FORMATADOR AUTOMÁTICO DE LOCALIZAÇÃO
+function obterLinkLocalizacao(valor) {
+  const numeros = valor.match(/-?\d+[.,]\d+/g)?.map(n => n.replace(",", "."));
+  if (!numeros || numeros.length < 2) return "";
+  return "https://maps.google.com/?q=" + numeros.slice(0, 2).join(",");
+}
+
 function formatarLocalizacao() {
   const campo = document.getElementById("localizacaoInput");
   const saida = document.getElementById("localizacaoFormatada");
-  const botaoCopiar = document.getElementById("botaoCopiarLocalizacao");
-  const localizacaoEntrada = campo.value;
-  const numeros = localizacaoEntrada.match(/-?\d+\.\d+/g);
-
-  if (numeros && numeros.length >= 2) {
-    const localizacaoFormatada = "https://maps.google.com/?q=" + numeros.slice(0, 2).join(",");
-    saida.textContent = localizacaoFormatada;
-    saida.setAttribute("data-link-mapa", localizacaoFormatada);
-    if (botaoCopiar) botaoCopiar.style.display = "inline-block";
-  } else {
-    saida.textContent = "";
-    saida.removeAttribute("data-link-mapa");
-    if (botaoCopiar) botaoCopiar.style.display = "none";
-  }
-}
-
-// Função para copiar o resultado
-function copiarResultado() {
-  // Obtém o resultado formatado
-  let resultado = document.getElementById("localizacaoFormatada").getAttribute("data-link-mapa");
-  if (!resultado) return;
-
-  // Cria um elemento de texto temporário para a área de transferência
-  const tempInput = document.createElement("textarea");
-  tempInput.value = resultado;
-  document.body.appendChild(tempInput);
-
-  // Seleciona o texto no elemento temporário
-  tempInput.select();
-  tempInput.setSelectionRange(0, 99999); // Para dispositivos móveis
-
-  // Copia o texto para a área de transferência
-  document.execCommand("copy");
-
-  // Remove o elemento temporário
-  document.body.removeChild(tempInput);
-
-  // Exibe mensagem de sucesso
-  alert("Link do mapa copiado para a área de transferência:\n" + resultado);
+  if (!campo || !saida) return;
+  const link = obterLinkLocalizacao(campo.value);
+  saida.textContent = link;
+  if (link) saida.setAttribute("data-link-mapa", link);
+  else saida.removeAttribute("data-link-mapa");
 }
 
 // Função para gerar o link do mapa com coordenadas
@@ -193,20 +221,40 @@ function gerarLinkMapa(coordenadas) {
   document.getElementById("linkMapa").setAttribute("href", linkMapa);
 }
 
-/* CONVERSÃO MINÚSCULA PARA MAIÚSCULA */
-function converterMaiusculas() {
-  let textoOriginal = document.getElementById("inputTexto").value;
-  let textoConvertido = textoOriginal.toUpperCase();
-  document.getElementById("textoConvertido").textContent = textoConvertido;
-  document.getElementById("botaoCopiarTexto").style.display = "inline-block";
-}
-function converterMinusculas() {
-  let textoOriginal = document.getElementById("inputTexto").value;
-  let textoConvertido = textoOriginal.toLowerCase();
-  document.getElementById("textoConvertido").textContent = textoConvertido;
-  document.getElementById("botaoCopiarTexto").style.display = "inline-block";
+/* CONVERSÃO AUTOMÁTICA PARA O FORMATO OPOS​TO */
+function converterTextoAutomaticamente() {
+  const campo = document.getElementById("inputTexto");
+  const saida = document.getElementById("textoConvertido");
+  const textoOriginal = campo.value;
+  const letras = textoOriginal.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || [];
 
+  if (!letras.length) {
+    saida.textContent = "";
+    return;
+  }
+
+  const minusculas = (textoOriginal.match(/[a-zà-öø-ÿ]/g) || []).length;
+  const maiusculas = (textoOriginal.match(/[A-ZÀ-Ö]/g) || []).length;
+  // Em textos mistos, considera o padrão predominante; em empate, converte para maiúsculas.
+  const textoConvertido = minusculas > maiusculas
+    ? textoOriginal.toUpperCase()
+    : textoOriginal.toLowerCase();
+
+  saida.textContent = textoConvertido;
 }
+
+function converterMaiusculas() {
+  const campo = document.getElementById("inputTexto");
+  campo.value = campo.value.toUpperCase();
+  converterTextoAutomaticamente();
+}
+
+function converterMinusculas() {
+  const campo = document.getElementById("inputTexto");
+  campo.value = campo.value.toLowerCase();
+  converterTextoAutomaticamente();
+}
+
 function copiarTextoConversor() {
   let textoConvertido = document.getElementById("textoConvertido").textContent;
   const tempInput = document.createElement("textarea");
@@ -1323,4 +1371,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const temaSalvo = localStorage.getItem("temaHelpDesk");
 
     aplicarTema(temaSalvo === "escuro");
+});
+
+
+// Atualiza a conversão enquanto o usuário digita ou cola o texto.
+document.addEventListener("DOMContentLoaded", function () {
+  const campoConversor = document.getElementById("inputTexto");
+  if (!campoConversor) return;
+
+  let temporizadorConversor;
+  campoConversor.addEventListener("input", function () {
+    converterTextoAutomaticamente();
+    clearTimeout(temporizadorConversor);
+    temporizadorConversor = setTimeout(async function () {
+      const resultado = document.getElementById("textoConvertido");
+      const texto = resultado ? resultado.textContent.trim() : "";
+      if (!texto) return;
+
+      await copiarEInformar(texto);
+    }, 700);
+  });
 });

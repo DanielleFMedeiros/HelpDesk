@@ -24,19 +24,17 @@
 
 <div class="dashboard-layout"><div class="dashboard-column coluna-esquerda"><div class="container card-conversor">
 <h2>🔠Conversor de texto</h2>
-<p>Converta entre maiúsculas e minúsculas.</p>
-<textarea id="inputTexto" placeholder="Digite seu texto"></textarea>
-<button onclick="converterMaiusculas()">MAIÚSCULAS</button>
-<button onclick="converterMinusculas()">minúsculas</button>
+<p class="tool-instruction">Digite em MAIÚSCULAS para converter em minúsculas, ou em minúsculas para converter em MAIÚSCULAS. O resultado será copiado automaticamente!</p>
+<textarea id="inputTexto" placeholder="Digite ou cole seu texto aqui..."></textarea>
+
 <p id="textoConvertido"></p>
-<button id="botaoCopiarTexto" onclick="copiarTextoConversor()">Copiar Texto</button>
 </div><div class="container card-localizacao">
 <h2>📍 Formatador de Localização</h2>
-<p>Transforme coordenadas em um link do Google Maps.</p>
-<label for="localizacaoInput">Cole a localização:</label>
+<p class="tool-instruction">Digite ou cole as coordenadas. O link do Google Maps será gerado e copiado automaticamente!</p>
+<label for="localizacaoInput">Localização:</label>
 <input id="localizacaoInput" placeholder="Lat: -28.7134130 / Long: -49.054707" type="text"/>
 <p id="localizacaoFormatada"></p>
-<button id="botaoCopiarLocalizacao" onclick="copiarResultado()" style="display: none;">Copiar Link</button>
+
 </div></div><div class="dashboard-column coluna-meio"><div class="container card-os">
 <h2>🧰 Gerador de O.S</h2>
 <p>Selecione o tipo de solicitação e preencha os campos necessários.</p>
@@ -923,13 +921,11 @@
 </form>
 </div></div><div class="dashboard-column coluna-direita"><div class="container card-documento">
 <h2>🪪 Formatador de CPF e CNPJ</h2>
-<p>Formate documentos rapidamente.</p>
+<p class="tool-instruction">Digite ou cole o CPF ou CNPJ. O documento será formatado e copiado automaticamente!</p>
 <label for="docInput">Documento</label>
-<input id="docInput" placeholder="Digite ou cole o CPF/CNPJ" type="text"/>
+<input id="docInput" placeholder="Digite ou cole CPF/CNPJ..." type="text"/>
 <p id="docResultado"></p>
-<button id="botaoCopiarDoc" onclick="copiarDocumento()" style="display: none;">
-              Copiar
-          </button>
+
 </div><div class="container card-mac">
 <h2>🔎Verificar MAC</h2>
 <p>Consulte o fabricante associado a um endereço MAC.</p>
